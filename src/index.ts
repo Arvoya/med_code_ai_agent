@@ -326,210 +326,210 @@ ${batch.map(q => `${q.number}: [A/B/C/D] | Confidence: [1-10]`).join('\n')}`;
 async function verifyLowConfidenceAnswers(questions: Question[]): Promise<Question[]> {
   const lowConfidenceQuestions = questions.filter(q => (q.confidence || 0) < 6);
 
-  const questionsToVerify = [...lowConfidenceQuestions];
-
-  if (questionsToVerify.length === 0) {
-    console.log("✅ No questions selected for verification");
+  if (lowConfidenceQuestions.length === 0) {
+    console.log("✅ No low-confidence questions to verify.");
     return questions;
   }
 
-  console.log(`🔍 Verifying ${questionsToVerify.length} questions with Perplexity 2025 models...`);
+  console.log(`🔍 Verifying ${lowConfidenceQuestions.length} low-confidence questions (Confidence < 6)...`);
 
   const verifiedQuestions = [...questions];
-  let perplexitySuccessCount = 0;
+  let perplexityReasoningSuccessCount = 0;
+  let perplexitySearchSuccessCount = 0;
   let gptFallbackCount = 0;
 
-  for (let i = 0; i < questionsToVerify.length; i++) {
-    const question = questionsToVerify[i];
-    console.log(`Verifying ${i + 1}/${questionsToVerify.length}: Question ${question.number} (Confidence: ${question.confidence})...`);
+  for (let i = 0; i < lowConfidenceQuestions.length; i++) {
+    const question = lowConfidenceQuestions[i];
+    console.log(`Verifying ${i + 1}/${lowConfidenceQuestions.length}: Question ${question.number} (Initial Confidence: ${question.confidence})...`);
 
-    const perplexityPrompt = `Analyze this medical coding question and provide your answer:
+    let success = false;
 
-Question ${question.number}: ${question.text}
+    // --- Attempt 1: Perplexity Reasoning Pro ---
+    try {
+      const reasoningPrompt = `You are a world-class medical coding auditor. Analyze the following question, provide detailed reasoning, and give a definitive final answer.
 
+**Question Details:**
+- **Number:** ${question.number}
+- **Text:** ${question.text}
+- **Options:**
 ${question.options ? question.options.join('\n') : ''}
 
-Current Answer: ${question.myAnswer} (Confidence: ${question.confidence}/10)
+**Initial Assessment:**
+- **Current Answer:** ${question.myAnswer}
+- **Current Confidence:** ${question.confidence}/10
 
-Please analyze each option against current ICD-10-CM/CPT/HCPCS guidelines and provide:
+**Your Task:**
+1.  **Analyze the Scenario:** Break down the medical scenario presented in the question.
+2.  **Evaluate Each Option:** Systematically review options A, B, C, and D against the latest ICD-10-CM/CPT/HCPCS guidelines. State why each option is correct or incorrect in your reasoning.
+3.  **Provide a Final Conclusion:** Based on your analysis, provide a final answer.
 
-1. Your final answer (A, B, C, or D)
-2. Your confidence level (1-10)
-3. Brief reasoning for your choice
-4. Why the other options are incorrect
+**Output Format:**
+First, provide all your detailed reasoning as free text. Then, you MUST conclude your entire response with a single JSON code block in the following format. Do not add any text after this block.
 
-Respond clearly with your final answer and reasoning.`;
+\`\`\`json
+{
+  "reasoningSummary": "A brief summary of why you chose your answer and why others are incorrect.",
+  "finalAnswer": "[A/B/C/D]",
+  "confidence": [A number from 1-10]
+}
+\`\`\``;
 
-    const systemPrompt = "You are a certified medical coding expert. Analyze the question step-by-step and provide a clear, definitive answer with reasoning.";
-
-    try {
-      const perplexityResponse = await perplexity.query(
-        perplexityPrompt,
-        systemPrompt,
+      const response = await perplexity.query(
+        reasoningPrompt,
+        "You are a certified medical coding expert. Analyze the question step-by-step and provide a clear, definitive answer with reasoning, ending with the required JSON block.",
         'reasoning',
         true
       );
 
-      console.log(`  📝 Raw Perplexity response preview: ${perplexityResponse.substring(0, 500)}...`);
-
-      let perplexityAnswer: string | null = null;
-      let perplexityConfidence: number = 7;
-      let perplexityReasoning: string = perplexityResponse;
-
-
-      let answerMatch = perplexityResponse.match(/(?:ANSWER|Answer|answer):\s*([A-D])/i);
-
-      if (!answerMatch) {
-        answerMatch = perplexityResponse.match(/(?:the\s+(?:correct\s+)?answer\s+is\s+)([A-D])/i);
+      const jsonBlockStart = response.lastIndexOf('```json');
+      if (jsonBlockStart === -1) {
+        throw new Error("Could not find the mandatory JSON block in the 'Reasoning' response.");
       }
 
-      if (!answerMatch) {
-        answerMatch = perplexityResponse.match(/(?:therefore|thus|so|conclusion|final answer).*?([A-D])/i);
-      }
+      const jsonString = response.substring(jsonBlockStart + 7, response.lastIndexOf('```'));
+      const result = JSON.parse(jsonString);
 
-      if (!answerMatch) {
-        const lines = perplexityResponse.split('\n');
-        for (let j = lines.length - 1; j >= Math.max(0, lines.length - 10); j--) {
-          const lineMatch = lines[j].match(/\b([A-D])\b/);
-          if (lineMatch) {
-            answerMatch = lineMatch;
-            break;
-          }
-        }
-      }
+      const fullReasoning = `Perplexity Reasoning Pro Analysis:\n${response.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
 
-      const confidenceMatch = perplexityResponse.match(/(?:confidence|confident).*?(\d+)/i);
-      if (confidenceMatch) {
-        perplexityConfidence = parseInt(confidenceMatch[1]);
-        if (perplexityConfidence > 10) perplexityConfidence = 8;
-      }
+      const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
+      verifiedQuestions[questionIndex] = {
+        ...verifiedQuestions[questionIndex],
+        perplexityAnswer: result.finalAnswer,
+        perplexityReasoning: fullReasoning,
+        verifiedAnswer: result.finalAnswer,
+        confidence: result.confidence,
+        reasoning: fullReasoning
+      };
 
-      if (answerMatch) {
-        perplexityAnswer = answerMatch[1].toUpperCase();
+      console.log(`  ✅ Question ${question.number}: Verified with Reasoning Pro. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
+      perplexityReasoningSuccessCount++;
+      success = true;
 
-        const fullReasoning = `Perplexity Reasoning Pro Analysis:
-${perplexityReasoning}
+    } catch (reasoningError: any) {
+      console.log(`  ⚠️  Reasoning Pro failed for Q${question.number} (${reasoningError.message}). Trying Search Pro...`);
+    }
 
-EXTRACTED_ANSWER: ${perplexityAnswer}
-PERPLEXITY_CONFIDENCE: ${perplexityConfidence}/10`;
+    if (success) continue;
 
-        const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
-        if (questionIndex !== -1) {
-          verifiedQuestions[questionIndex] = {
-            ...verifiedQuestions[questionIndex],
-            perplexityAnswer: perplexityAnswer,
-            perplexityReasoning: fullReasoning,
-            verifiedAnswer: perplexityAnswer,
-            confidence: Math.max(perplexityConfidence, question.confidence || 0),
-            reasoning: fullReasoning
-          };
-        }
+    // --- Attempt 2: Perplexity Search Pro (Fallback) ---
+    try {
+      const searchPrompt = `You are a medical coding researcher. Use your search capabilities to find the correct answer for the following question based on current guidelines.
 
-        if (perplexityAnswer !== question.myAnswer) {
-          console.log(`  🔄 Question ${question.number}: ${question.myAnswer} → ${perplexityAnswer} (Reasoning Pro, Confidence: ${perplexityConfidence})`);
-        } else {
-          console.log(`  ✅ Question ${question.number}: Confirmed ${question.myAnswer} (Reasoning Pro, Confidence: ${perplexityConfidence})`);
-        }
-
-        perplexitySuccessCount++;
-      } else {
-        console.log(`  🔄 Couldn't parse reasoning response, trying search model...`);
-
-        const searchResponse = await perplexity.query(
-          `${perplexityPrompt}\n\nIMPORTANT: End your response with "FINAL ANSWER: [A/B/C/D]"`,
-          systemPrompt,
-          'search',
-          true
-        );
-
-        const searchAnswerMatch = searchResponse.match(/FINAL\s+ANSWER:\s*([A-D])/i);
-        if (searchAnswerMatch) {
-          perplexityAnswer = searchAnswerMatch[1].toUpperCase();
-
-          const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
-          if (questionIndex !== -1) {
-            verifiedQuestions[questionIndex] = {
-              ...verifiedQuestions[questionIndex],
-              perplexityAnswer: perplexityAnswer,
-              verifiedAnswer: perplexityAnswer,
-              reasoning: `Perplexity Search Pro: ${searchResponse}`
-            };
-          }
-
-          console.log(`  ✅ Question ${question.number}: Search model answer: ${perplexityAnswer}`);
-          perplexitySuccessCount++;
-        } else {
-          throw new Error("Could not parse answer from either reasoning or search model");
-        }
-      }
-
-
-    } catch (perplexityError: any) {
-      console.log(`  ⚠️  Perplexity failed for Question ${question.number}, using GPT-4o fallback...`);
-      console.log(`  📋 Error details: ${perplexityError.message}`);
-
-      try {
-        const gptPrompt = `You are a senior medical coding auditor. Re-examine this question with detailed analysis.
-
-Question ${question.number}: ${question.text}
-
+**Question ${question.number}:** ${question.text}
 ${question.options ? question.options.join('\n') : ''}
 
-Current Answer: ${question.myAnswer} (Confidence: ${question.confidence})
+**Task:**
+Research the correct answer. Provide a brief justification based on your findings, then conclude with the mandatory JSON block.
 
-Analyze each option against current coding guidelines and provide your response in this EXACT format:
+**Output Format:**
+You MUST conclude your entire response with a single JSON code block in the following format. Do not add any text after this block.
 
-ANSWER: [A/B/C/D]
-CONFIDENCE: [1-10]
-REASONING: [detailed explanation of why your answer is correct and others are wrong]`;
+\`\`\`json
+{
+  "reasoningSummary": "A brief summary of the evidence found.",
+  "finalAnswer": "[A/B/C/D]",
+  "confidence": [A number from 1-10, based on the clarity of search results]
+}
+\`\`\``;
 
-        const gptResponse = await llmVerify.invoke([
-          { role: "system", content: "You are a senior medical coding auditor. Respond in the exact format requested." },
-          { role: "user", content: gptPrompt }
-        ]);
+      const response = await perplexity.query(
+        searchPrompt,
+        "You are a medical coding researcher. Find the answer and respond in the required format, ending with the JSON block.",
+        'search',
+        true
+      );
 
-        const gptContent = typeof gptResponse.content === 'string' ? gptResponse.content : '';
-        const gptAnswerMatch = gptContent.match(/ANSWER:\s*([A-D])/i);
-        const gptConfidenceMatch = gptContent.match(/CONFIDENCE:\s*(\d+)/i);
-        const gptReasoningMatch = gptContent.match(/REASONING:\s*(.+)/s);
-
-        if (gptAnswerMatch) {
-          const gptAnswer = gptAnswerMatch[1].toUpperCase();
-          const gptConfidence = gptConfidenceMatch ? parseInt(gptConfidenceMatch[1]) : 6;
-          const gptReasoning = gptReasoningMatch ? gptReasoningMatch[1].trim() : 'GPT-4o verification';
-
-          const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
-          if (questionIndex !== -1) {
-            verifiedQuestions[questionIndex] = {
-              ...verifiedQuestions[questionIndex],
-              verifiedAnswer: gptAnswer,
-              confidence: gptConfidence,
-              reasoning: `GPT-4o Fallback: ${gptReasoning}`
-            };
-          }
-
-          console.log(`  ✅ Question ${question.number}: GPT-4o fallback: ${gptAnswer} (Confidence: ${gptConfidence})`);
-          gptFallbackCount++;
-        } else {
-          console.log(`  ❌ Question ${question.number}: Could not parse GPT response either`);
-          console.log(`  📋 GPT response preview: ${gptContent.substring(0, 200)}...`);
-        }
-
-      } catch (gptError: any) {
-        console.log(`  ❌ Question ${question.number}: All verification methods failed`);
-        console.log(`  📋 GPT error: ${gptError.message}`);
+      const jsonBlockStart = response.lastIndexOf('```json');
+      if (jsonBlockStart === -1) {
+        throw new Error("Could not find the mandatory JSON block in the 'Search' response.");
       }
+
+      const jsonString = response.substring(jsonBlockStart + 7, response.lastIndexOf('```'));
+      const result = JSON.parse(jsonString);
+
+      const fullReasoning = `Perplexity Search Pro Analysis:\n${response.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
+
+      const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
+      verifiedQuestions[questionIndex] = {
+        ...verifiedQuestions[questionIndex],
+        perplexityAnswer: result.finalAnswer,
+        perplexityReasoning: fullReasoning,
+        verifiedAnswer: result.finalAnswer,
+        confidence: result.confidence,
+        reasoning: fullReasoning
+      };
+
+      console.log(`  ✅ Question ${question.number}: Verified with Search Pro. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
+      perplexitySearchSuccessCount++;
+      success = true;
+
+    } catch (searchError: any) {
+      console.log(`  ⚠️  Search Pro failed for Q${question.number} (${searchError.message}). Using GPT-4o fallback...`);
+    }
+
+    if (success) continue;
+
+    // --- Attempt 3: GPT-4o (Final Fallback) ---
+    try {
+      const gptPrompt = `You are a senior medical coding auditor. Re-examine this question with detailed analysis and provide your response in the requested format.
+
+**Question ${question.number}:** ${question.text}
+${question.options ? question.options.join('\n') : ''}
+Current Answer: ${question.myAnswer}
+
+**Task:**
+Analyze each option against current coding guidelines. Provide your reasoning, then conclude with the mandatory JSON block.
+
+**Output Format:**
+You MUST conclude your entire response with a single JSON code block in the following format. Do not add any text after this block.
+
+\`\`\`json
+{
+  "reasoningSummary": "A brief summary of why your answer is correct and others are wrong.",
+  "finalAnswer": "[A/B/C/D]",
+  "confidence": [A number from 1-10]
+}
+\`\`\``;
+
+      const gptResponse = await llmVerify.invoke(gptPrompt);
+      const content = typeof gptResponse.content === 'string' ? gptResponse.content : '';
+
+      const jsonBlockStart = content.lastIndexOf('```json');
+      if (jsonBlockStart === -1) {
+        throw new Error("Could not find the mandatory JSON block in the GPT-4o response.");
+      }
+
+      const jsonString = content.substring(jsonBlockStart + 7, content.lastIndexOf('```'));
+      const result = JSON.parse(jsonString);
+
+      const fullReasoning = `GPT-4o Fallback Analysis:\n${content.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
+
+      const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
+      verifiedQuestions[questionIndex] = {
+        ...verifiedQuestions[questionIndex],
+        verifiedAnswer: result.finalAnswer,
+        confidence: result.confidence,
+        reasoning: fullReasoning
+      };
+
+      console.log(`  ✅ Question ${question.number}: Verified with GPT-4o. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
+      gptFallbackCount++;
+      success = true;
+
+    } catch (gptError: any) {
+      console.log(`  ❌ Question ${question.number}: All verification methods failed. Last error: ${gptError.message}`);
     }
   }
 
+  const totalVerified = perplexityReasoningSuccessCount + perplexitySearchSuccessCount + gptFallbackCount;
   const changedAnswers = verifiedQuestions.filter(q => q.verifiedAnswer && q.verifiedAnswer !== q.myAnswer).length;
-  const totalVerified = perplexitySuccessCount + gptFallbackCount;
 
-  console.log(`✅ Verification complete:`);
-  console.log(`  📊 Total questions verified: ${totalVerified}/${questionsToVerify.length}`);
-  console.log(`  🧠 Perplexity verifications: ${perplexitySuccessCount}`);
-  console.log(`  🤖 GPT fallbacks: ${gptFallbackCount}`);
-  console.log(`  🔄 Answers changed: ${changedAnswers}`);
+  console.log(`\n✅ Verification complete:`);
+  console.log(`  - Total questions verified: ${totalVerified}/${lowConfidenceQuestions.length}`);
+  console.log(`  - Perplexity Reasoning Pro: ${perplexityReasoningSuccessCount}`);
+  console.log(`  - Perplexity Search Pro: ${perplexitySearchSuccessCount}`);
+  console.log(`  - GPT-4o Fallbacks: ${gptFallbackCount}`);
+  console.log(`  - Answers changed: ${changedAnswers}`);
 
   return verifiedQuestions;
 }
