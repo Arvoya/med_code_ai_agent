@@ -1,7 +1,7 @@
 # README
 
-This is a quick mock up of AI agent designed to answer the questions on a medical
-coding practice test. The agent make use of multiple LLM's and verification strategies
+This is version 1 of an AI agent designed to answer the questions on a medical
+coding practice test. The agent makes use of multiple LLM's and verification strategies
 to maximize accuracy.
 
 ## Usage Instructions
@@ -55,6 +55,8 @@ npm start
 
 ## Agent Architecture
 
+This agent is structured with a Hierarchical Model Strategy
+
 ### Core Components
 
 1. Primary Model: GPT-4o (OpenAI)
@@ -70,9 +72,10 @@ npm start
     * Temperature: 0.3 for creative changes
     * Used when Perplexity fails
 
-### Workflow Pipeline
+## Workflow Pipeline
 
-Agent is made using **LangGraph**.
+Agent is made using **LangGraph** as their framework is incredibly robust and
+enables quick development time.
 
 ``Extract -> Answer -> Verify -> Challenge -> Compare``
 
@@ -113,3 +116,35 @@ Agent is made using **LangGraph**.
 * Generates performance metrics
 * Saves results to file
 
+## Performance & Limitations
+
+* Final Score: The current architecture achieves a consistent score of ~70%
+* Analysis: This score is a good base line and can potentially pass the test as
+long as it can keep a 70%. It does reveal the limitations of relying on a
+web-based agent architecture
+  * It can be confidently wrong. Most likely overconfidence is found within the initial
+  answers which are bypassing the verification process
+
+## Blueprint for Higher Performance
+
+To get past the 70% ceiling and achieve a higher score, I believe the following
+architectural upgrades would be promising. However, it would require sourcing
+the official PDF manuals for ICD-10-CM, CPT, and other guidelines.
+
+1. Custom RAG with Source Documents
+    * Address the limitations of web-based RAG by using proper documentation
+    * Instead of using the Perplexity API I would use the source documents and
+    have them chunked and stored in a efficiently accessible database as the
+    core library of data. Maybe using metadata with code ranges, or organized by
+    anatomical structures, or other ideas. Research more into **Vector embedding**.
+2. Experts Round Table
+    * Instead of simply asking the LLM's to gauge their own confidence, create 3
+    distinct personas ("Doctor", "Insurance Code Auditor", "Medical Code
+    Professor"), and have them each give separate answers.
+    * Any disagreement found within the three answers could flag the question
+    for deeper review.
+3. Dispute Resolution
+    * If a questioned is flagged, it can then be used with a higher end LLM
+    alongside the Source Documentation to higher accuracy.
+    * This mimics more of a human workflow, creating a more naturalized
+    **reasoning** process for the most challenging questions.
