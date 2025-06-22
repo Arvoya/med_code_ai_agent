@@ -534,21 +534,26 @@ REASONING: [detailed explanation of why your answer is correct and others are wr
   return verifiedQuestions;
 }
 
-//NOTE: Doesn't seem to change any high confidence answers. So might be a waste of 💸
 async function devilsAdvocateCheck(questions: Question[]): Promise<Question[]> {
-  console.log("😈 Running devil's advocate check with Perplexity on high-confidence answers...");
+  console.log("😈 Running devil's advocate check with Perplexity on medium-confidence answers...");
 
-  const highConfidenceQuestions = questions.filter(q => (q.confidence || 0) >= 9);
-  const sampledHigh = highConfidenceQuestions
+  const mediumConfidenceQuestions = questions.filter(q => {
+    const conf = q.confidence || 0;
+    return conf >= 6 && conf <= 7;
+  });
+
+  // Select 50% of medium confidence questions randomly
+  const sampleSize = Math.ceil(mediumConfidenceQuestions.length * 0.5);
+  const sampledQuestions = mediumConfidenceQuestions
     .sort(() => 0.5 - Math.random())
-    .slice(0, Math.min(10, Math.ceil(highConfidenceQuestions.length * 0.2)));
+    .slice(0, sampleSize);
 
   let challengedCount = 0;
 
-  if (sampledHigh.length > 0) {
-    console.log(`🔍 Devil's advocate check with Perplexity on ${sampledHigh.length} high-confidence answers...`);
+  if (sampledQuestions.length > 0) {
+    console.log(`🔍 Devil's advocate check with Perplexity on ${sampledQuestions.length} medium-confidence answers (50% of ${mediumConfidenceQuestions.length})...`);
 
-    for (const question of sampledHigh) {
+    for (const question of sampledQuestions) {
       console.log(`Challenging Question ${question.number} with Perplexity...`);
 
       const challengePrompt = `Challenge this medical coding answer by researching potential alternative interpretations or recent guideline changes.
@@ -556,7 +561,7 @@ async function devilsAdvocateCheck(questions: Question[]): Promise<Question[]> {
 Question ${question.number}: ${question.text}
 ${question.options?.join('\n') || ''}
 
-Current High-Confidence Answer: ${question.verifiedAnswer || question.myAnswer}
+Current Medium-Confidence Answer: ${question.verifiedAnswer || question.myAnswer}
 
 Please:
 1. Research if there are any recent coding guideline changes that might affect this
@@ -607,7 +612,7 @@ EVIDENCE: [detailed research-based reasoning]`;
       }
     }
   } else {
-    console.log("No high-confidence answers to challenge");
+    console.log("No medium-confidence answers to challenge");
   }
 
   console.log(`✅ Devil's advocate complete: ${challengedCount} answers challenged and changed by Perplexity`);
