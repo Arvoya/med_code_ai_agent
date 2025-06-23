@@ -93,18 +93,18 @@ type GraphStateType = typeof GraphState.State;
 //NOTE: OLD MODELS
 //
 const llm = new ChatOpenAI({
-  modelName: "gpt-4o",
+  model: "gpt-4o",
   temperature: 0.1,
 });
 //
-// const llmVerify = new ChatOpenAI({
-//   modelName: "o4-mini",
-// });
-//
-//
-// const llmAnswer = new ChatOpenAI({
-//   model: "gpt-4o",
-// });
+const llmVerify = new ChatOpenAI({
+  model: "o4-mini",
+});
+
+
+const llmAnswer = new ChatOpenAI({
+  model: "gpt-4o",
+});
 
 
 //NOTE: NEW MODELS
@@ -117,22 +117,22 @@ const llm = new ChatOpenAI({
 //     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
 //   },
 // });
-
-const llmVerify = new ChatOpenAI({
-  model: "Gemma", // This name is ignored by LM Studio
-  openAIApiKey: "lm-studio",
-  configuration: {
-    baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
-  },
-});
-
-const llmAnswer = new ChatOpenAI({
-  model: "Gemma", // This name is ignored by LM Studio
-  openAIApiKey: "lm-studio",
-  configuration: {
-    baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
-  },
-});
+//
+// const llmVerify = new ChatOpenAI({
+//   model: "Gemma", // This name is ignored by LM Studio
+//   openAIApiKey: "lm-studio",
+//   configuration: {
+//     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
+//   },
+// });
+//
+// const llmAnswer = new ChatOpenAI({
+//   model: "Gemma", // This name is ignored by LM Studio
+//   openAIApiKey: "lm-studio",
+//   configuration: {
+//     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
+//   },
+// });
 
 
 class PerplexityAPI {
@@ -635,7 +635,8 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
       ...question,
       myAnswer: answer,
       confidence: confidence,
-      reasoning: reasoning
+      reasoning: reasoning,
+      modelUsed: llmAnswer.model
     });
 
   } else {
@@ -840,7 +841,7 @@ async function handleCPTQuestions(question: Question, answeredQuestions: Questio
     }
 
     // Use o4-mini with the code descriptions as context
-    console.log('USING o3 with code descriptions:');
+    console.log(`USING ${llmAnswer.model} with code descriptions:`);
     // const contextInfo = Array.from(codeDescriptions.entries())
     //   .map(([code, desc]) => `${code}: ${desc}`)
     //   .join('\n');
@@ -852,7 +853,8 @@ async function handleCPTQuestions(question: Question, answeredQuestions: Questio
       ...question,
       myAnswer: result.answer,
       confidence: result.confidence,
-      reasoning: result.reasoning
+      reasoning: result.reasoning,
+      modelUsed: llmAnswer.model
     });
 
   } else {
@@ -1013,8 +1015,7 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
       .map(([code, desc]) => `${code}: ${desc}`)
       .join('\n');
 
-    console.log('USING o3 with code descriptions:');
-    console.log(contextInfo);
+    console.log(`USING ${llmAnswer.model} with code descriptions:`);
 
     const result = await useO4MiniForQuestion(question, codeDescriptions);
 
@@ -1022,7 +1023,8 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
       ...question,
       myAnswer: result.answer,
       confidence: result.confidence,
-      reasoning: result.reasoning
+      reasoning: result.reasoning,
+      modelUsed: llmAnswer.model
     });
 
   } else {
@@ -1036,7 +1038,6 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
 async function handleCPTOrGeneralQuestion(question: Question, answeredQuestions: Question[]): Promise<void> {
   console.log(`Processing CPT/General question ${question.number} with 04mini...`);
 
-  const o4Mini = llmAnswer
   const questionPrompt = `You are a certified medical coding expert. Answer this question and rate your confidence CONSERVATIVELY.
 
 IMPORTANT: Be honest about uncertainty. Medical coding has many nuances and edge cases.
@@ -1053,7 +1054,7 @@ Answer: [A/B/C/D]
 Confidence: [1-10]
 Reasoning: [brief explanation of your choice]`;
 
-  const response = await o4Mini.invoke([
+  const response = await llmAnswer.invoke([
     { role: "system", content: "You are a medical coding expert. Be conservative with confidence ratings." },
     { role: "user", content: questionPrompt }
   ]);
@@ -1073,7 +1074,8 @@ Reasoning: [brief explanation of your choice]`;
       ...question,
       myAnswer: answer,
       confidence: confidence,
-      reasoning: reasoning
+      reasoning: reasoning,
+      modelUsed: llmAnswer.model
     });
   } else {
     // Fallback if response format is incorrect
