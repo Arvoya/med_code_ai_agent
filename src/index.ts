@@ -5,6 +5,7 @@ import axios from 'axios';
 import * as readline from 'readline';
 import * as fs from 'fs-extra';
 import * as dotenv from 'dotenv';
+import * as cheerio from 'cheerio';
 
 dotenv.config();
 
@@ -49,6 +50,10 @@ const GraphState = Annotation.Root({
   testResults: Annotation<TestResults | null>({
     reducer: (current: TestResults | null, update: TestResults | null) => update,
     default: () => null
+  }),
+  questionLimit: Annotation<number | undefined>({
+    reducer: (current: number | undefined, update: number | undefined) => update,
+    default: () => undefined
   })
 });
 
@@ -60,8 +65,12 @@ const llm = new ChatOpenAI({
 });
 
 const llmVerify = new ChatOpenAI({
-  modelName: "gpt-4o",
-  temperature: 0.3,
+  modelName: "o4-mini",
+});
+
+
+const llmAnswer = new ChatOpenAI({
+  model: "gpt-4o",
 });
 
 
@@ -163,10 +172,13 @@ class PerplexityAPI {
 }
 
 const perplexity = new PerplexityAPI();
-
+//NOTE:FILES
 const TEST_PDF = "./test.pdf";
 const ANSWERS_PDF = "./answers.pdf";
 const OUTPUT_FILE = "./answers.txt";
+const QUESTIONS_JSON = "./questions.json";
+const ANSWER_KEY_JSON = "./answer_key.json";
+const CACHED_CODE_DESCRIPTIONS_JSON = "./cached_code_descriptions.json";
 
 async function processPdf(filePath: string): Promise<string> {
   try {
@@ -245,65 +257,33 @@ async function answerQuestionsWithConfidence(questions: Question[]): Promise<Que
     const batch = questions.slice(i, i + batchSize);
     console.log(`Answering batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(questions.length / batchSize)} (Questions ${batch[0].number}-${batch[batch.length - 1].number})...`);
 
-    const batchPrompt = `You are a certified medical coding expert. Answer these ${batch.length} questions and rate your confidence CONSERVATIVELY.
+    for (const question of batch) {
+      try {
+        const questionType = determineQuestionType(question);
+        console.log(`Question ${question.number} identified as ${questionType} question`);
 
-IMPORTANT: Be honest about uncertainty. Medical coding has many nuances and edge cases.
-- Rate 10 only if you're absolutely certain based on clear guidelines
-- Rate 7-9 for solid answers with good reasoning
-- Rate 4-6 if you're unsure between options
-- Rate 1-3 if you're guessing
-
-For each question:
-1. Analyze each option carefully against coding guidelines
-2. Consider common coding pitfalls and exceptions
-3. Choose your answer (A, B, C, or D)
-4. Rate your HONEST confidence (1-10)
-
-${batch.map(q => `
-Question ${q.number}: ${q.text}
-${q.options ? q.options.join('\n') : ''}
-`).join('\n---\n')}
-
-Respond in this exact format:
-${batch.map(q => `${q.number}: [A/B/C/D] | Confidence: [1-10]`).join('\n')}`;
-
-    try {
-      const response = await llm.invoke([
-        { role: "system", content: "You are a medical coding expert. Be conservative with confidence ratings. Provide answers and confidence ratings in the exact format requested." },
-        { role: "user", content: batchPrompt }
-      ]);
-
-      const content = typeof response.content === 'string' ? response.content : '';
-
-      const answerMap = new Map<number, { answer: string, confidence: number }>();
-      const lines = content.split('\n');
-
-      for (const line of lines) {
-        const match = line.match(/(\d+):\s*([A-D])\s*\|\s*Confidence:\s*(\d+)/);
-        if (match) {
-          const questionNum = parseInt(match[1]);
-          const answer = match[2];
-          const confidence = parseInt(match[3]);
-          answerMap.set(questionNum, { answer, confidence });
+        switch (questionType) {
+          case 'HCPCS':
+            await handleHCPCSQuestion(question, answeredQuestions);
+            break;
+          case 'ICD-10':
+            await handleICD10Question(question, answeredQuestions);
+            break;
+          case 'CPT':
+            await handleCPTQuestions(question, answeredQuestions);
+            break;
+          default:
+            await handleCPTOrGeneralQuestion(question, answeredQuestions);
+            break;
         }
-      }
-
-      for (const question of batch) {
-        const result = answerMap.get(question.number) || { answer: 'A', confidence: 5 };
-        answeredQuestions.push({
-          ...question,
-          myAnswer: result.answer,
-          confidence: result.confidence
-        });
-      }
-
-    } catch (error) {
-      console.error(`Error answering batch:`, error);
-      for (const question of batch) {
+      } catch (questionError) {
+        console.error(`Error processing question ${question.number}:`, questionError);
+        // Add with default values if error occurs
         answeredQuestions.push({
           ...question,
           myAnswer: "A",
-          confidence: 5
+          confidence: 5,
+          reasoning: "Error occurred during processing"
         });
       }
     }
@@ -323,6 +303,813 @@ ${batch.map(q => `${q.number}: [A/B/C/D] | Confidence: [1-10]`).join('\n')}`;
   return answeredQuestions;
 }
 
+// Helper function to determine question type
+// Helper function to determine question type
+function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' | 'GENERAL' {
+  const text = question.text.toLowerCase();
+  const options = question.options ? question.options.join(' ').toLowerCase() : '';
+  const fullText = text + ' ' + options;
+
+  // Check for HCPCS indicators
+  if (
+    fullText.includes('hcpcs') ||
+    fullText.includes('level ii code') ||
+    fullText.includes('durable medical equipment') ||
+    fullText.includes('prosthetic')
+  ) {
+    return 'HCPCS';
+  }
+
+  // Check for HCPCS code pattern in options (safely)
+  if (question.options) {
+    for (const opt of question.options) {
+      const match = opt.match(/[A-Z]\d{4}/);
+      if (match && match[0] && match[0][0] !== 'C') {
+        return 'HCPCS';
+      }
+    }
+  }
+
+  // Check for ICD-10 indicators
+  if (
+    fullText.includes('icd-10') ||
+    fullText.includes('diagnosis code') ||
+    fullText.includes('diagnostic code') ||
+    fullText.includes('according to icd')
+  ) {
+    return 'ICD-10';
+  }
+
+  // Check for ICD-10 code pattern in options (safely)
+  if (question.options) {
+    for (const opt of question.options) {
+      if (opt.match(/[A-Z]\d{2}(\.\d+)?/)) {
+        return 'ICD-10';
+      }
+    }
+  }
+
+  // Check for CPT indicators
+  if (
+    fullText.includes('cpt') ||
+    fullText.includes('procedure code') ||
+    fullText.includes('surgical code')
+  ) {
+    return 'CPT';
+  }
+
+  // Check for CPT code pattern in options (safely)
+  if (question.options) {
+    for (const opt of question.options) {
+      if (opt.match(/\b\d{5}\b/)) {
+        return 'CPT';
+      }
+    }
+  }
+
+  // Default to general
+  return 'GENERAL';
+}
+
+
+// Handle HCPCS questions
+async function handleHCPCSQuestion(question: Question, answeredQuestions: Question[]): Promise<void> {
+  console.log(`Processing HCPCS question ${question.number}...`);
+
+  // Extract potential HCPCS codes from options
+  const hcpcsCodes: string[] = [];
+  if (question.options) {
+    for (const option of question.options) {
+      const matches = option.match(/[A-Z]\d{4}/g);
+      if (matches) {
+        hcpcsCodes.push(...matches);
+      }
+    }
+  }
+
+  if (hcpcsCodes.length > 0) {
+    // console.log(`Found HCPCS codes in options: ${hcpcsCodes.join(', ')}`);
+
+    // Create a map to store results for each code
+    const codeDescriptions: Map<string, string> = new Map();
+
+    // Initialize or load the cached codes file
+    let cachedCodes: any;
+    try {
+      // Check if file exists
+      if (await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
+        cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+        // console.log("Loaded existing cache file:", JSON.stringify(cachedCodes).substring(0, 100) + "...");
+      } else {
+        throw new Error("File doesn't exist");
+      }
+    } catch (error) {
+      // If file doesn't exist or can't be read, initialize with empty structure
+      console.log("Creating new cache file with empty structure");
+      cachedCodes = {
+        "CPT": [],
+        "ICD-10": [],
+        "HCPCS": []
+      };
+      await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
+      console.log("New cache file created");
+    }
+
+    // Make sure HCPCS array exists
+    if (!cachedCodes["HCPCS"]) {
+      console.log("HCPCS array missing in cache, initializing it");
+      cachedCodes["HCPCS"] = [];
+    }
+
+    // Check which codes we need to fetch from the API
+    const codesToFetch: string[] = [];
+    for (const code of hcpcsCodes) {
+      // Check if code exists in cached data
+      const cachedCode = cachedCodes["HCPCS"].find((item: any) => item.code === code);
+      if (cachedCode) {
+        // console.log(`Found cached HCPCS code ${code}: ${cachedCode.description}`);
+        codeDescriptions.set(code, cachedCode.description);
+      } else {
+        console.log(`Code ${code} not found in cache, will fetch from API`);
+        codesToFetch.push(code);
+      }
+    }
+
+    // Fetch any codes not found in cache
+    if (codesToFetch.length > 0) {
+      console.log(`Fetching ${codesToFetch.length} HCPCS codes from API...`);
+
+      for (const code of codesToFetch) {
+        try {
+          // console.log(`Querying API for code: ${code}`);
+          const response = await axios.get(`https://clinicaltables.nlm.nih.gov/api/hcpcs/v3/search?terms=${code}`);
+          // console.log(`API response for ${code}:`, JSON.stringify(response.data));
+
+          let description: string | null = null;
+
+          // Based on the actual response format observed in logs
+          if (response.data && Array.isArray(response.data)) {
+            const data = response.data;
+
+            // Format appears to be [count, [codes], null, [[code, description], ...]]
+            if (data.length >= 4 && Array.isArray(data[3])) {
+              // console.log(`Parsing response format: [count, [codes], null, [[code, description], ...]]`);
+
+              const codeDescPairs = data[3];
+              if (Array.isArray(codeDescPairs)) {
+                for (const pair of codeDescPairs) {
+                  if (Array.isArray(pair) && pair.length >= 2 && pair[0] === code) {
+                    description = pair[1];
+                    // console.log(`Found exact match: ${pair[0]} = ${pair[1]}`);
+                    break;
+                  }
+                }
+              }
+            }
+            // Try other formats if needed
+            else if (data[0] && Array.isArray(data[0])) {
+              // console.log(`Trying alternate format: [[code, description], ...]`);
+              for (const pair of data) {
+                if (Array.isArray(pair) && pair.length >= 2 && pair[0] === code) {
+                  description = pair[1];
+                  // console.log(`Found match in alternate format: ${pair[0]} = ${pair[1]}`);
+                  break;
+                }
+              }
+            }
+          }
+
+          if (description) {
+            codeDescriptions.set(code, description);
+            // console.log(`  Code ${code}: ${description}`);
+
+            // Add to cache
+            cachedCodes["HCPCS"].push({
+              code: code,
+              description: description
+            });
+
+            // console.log('ADDING TO JSON:', code, description);
+          } else {
+            console.log(`No description found for code ${code} in API response`);
+          }
+        } catch (error) {
+          console.error(`  Error querying HCPCS API for code ${code}:`, error);
+        }
+      }
+
+      // Save the updated cache
+      // console.log("Saving updated cache to file...");
+      await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
+
+      // Verify the file was written correctly
+      try {
+        const verifyData = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+        console.log(`Cache file updated successfully. Contains ${verifyData["HCPCS"].length} HCPCS codes.`);
+      } catch (error) {
+        console.error("Error verifying cache file update:", error);
+      }
+    }
+
+    // Determine the answer based on the question and code descriptions
+    let answer = '';
+    let confidence = 6;
+    let reasoning = '';
+
+    // Extract the key condition or item from the question
+    const questionKeywords = extractKeywords(question.text);
+
+    // Compare each option with the results
+    if (question.options) {
+      for (let i = 0; i < question.options.length; i++) {
+        const option = question.options[i];
+        const optionLetter = String.fromCharCode(65 + i); // A, B, C, D
+
+        // Extract code from option
+        const codeMatch = option.match(/[A-Z]\d{4}/);
+        if (codeMatch) {
+          const code = codeMatch[0];
+          const description = codeDescriptions.get(code);
+
+          if (description) {
+            // Check if description matches the question context
+            const matchScore = calculateMatchScore(description, questionKeywords);
+
+            if (matchScore > 0.7) { // Threshold for a good match
+              answer = optionLetter;
+              confidence = 8;
+              reasoning = `HCPCS code ${code} description "${description}" matches the question context. Verification confirms this is the correct code.`;
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    // If no good match was found, use o4-mini to determine the answer
+    if (!answer) {
+      console.log(`USING ${llm.model} with code descriptions:`);
+      // const contextInfo = Array.from(codeDescriptions.entries())
+      //   .map(([code, desc]) => `${code}: ${desc}`)
+      //   .join('\n');
+      // console.log(contextInfo);
+
+      const result = await useO4MiniForQuestion(question, codeDescriptions);
+      answer = result.answer;
+      confidence = result.confidence;
+      reasoning = result.reasoning;
+    }
+
+    answeredQuestions.push({
+      ...question,
+      myAnswer: answer,
+      confidence: confidence,
+      reasoning: reasoning
+    });
+
+  } else {
+    // No HCPCS codes found in options, use o4-mini
+    console.log(`No HCPCS codes found in options for question ${question.number}, using o4-mini...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+  }
+}
+
+async function handleCPTQuestions(question: Question, answeredQuestions: Question[]): Promise<void> {
+  console.log(`Processing CPT question ${question.number}...`);
+
+  // Extract potential CPT codes from options
+  const cptCodes: string[] = [];
+  if (question.options) {
+    for (const option of question.options) {
+      // CPT codes are typically 5 digits
+      const matches = option.match(/\b\d{5}\b/g);
+      if (matches) {
+        cptCodes.push(...matches);
+      }
+    }
+  }
+
+  if (cptCodes.length > 0) {
+    // console.log(`Found CPT codes in options: ${cptCodes.join(', ')}`);
+
+    // Create a map to store results for each code
+    const codeDescriptions: Map<string, string> = new Map();
+
+    // Initialize or load the cached codes file
+    let cachedCodes: any;
+    try {
+      // Check if file exists
+      if (await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
+        cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+        // console.log("Loaded existing cache file:", JSON.stringify(cachedCodes).substring(0, 100) + "...");
+      } else {
+        throw new Error("File doesn't exist");
+      }
+    } catch (error) {
+      // If file doesn't exist or can't be read, initialize with empty structure
+      // console.log("Creating new cache file with empty structure");
+      cachedCodes = {
+        "CPT": [],
+        "ICD-10": [],
+        "HCPCS": []
+      };
+      await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
+      console.log("New cache file created");
+    }
+
+    // Make sure CPT array exists
+    if (!cachedCodes["CPT"]) {
+      // console.log("CPT array missing in cache, initializing it");
+      cachedCodes["CPT"] = [];
+    }
+
+    // Check which codes we need to fetch from the website
+    const codesToFetch: string[] = [];
+    for (const code of cptCodes) {
+      // Check if code exists in cached data
+      const cachedCode = cachedCodes["CPT"].find((item: any) => item.code === code);
+      if (cachedCode) {
+        // console.log(`Found cached CPT code ${code}: ${cachedCode.description}`);
+        codeDescriptions.set(code, cachedCode.description);
+      } else {
+        // console.log(`Code ${code} not found in cache, will fetch from website`);
+        codesToFetch.push(code);
+      }
+    }
+
+    // Fetch any codes not found in cache
+    if (codesToFetch.length > 0) {
+      console.log(`Fetching ${codesToFetch.length} CPT codes from AAPC website...`);
+
+      for (const code of codesToFetch) {
+        try {
+          // console.log(`Querying website for code: ${code}`);
+          const url = `https://www.aapc.com/codes/cpt-codes/${code}`;
+          const response = await axios.get(url);
+
+          // Use cheerio to parse the HTML
+          const $ = cheerio.load(response.data);
+
+          // Find the description in the sub_head_detail class
+          const subHeadDetail = $('.sub_head_detail').text();
+          // console.log(`Raw sub_head_detail: ${subHeadDetail}`);
+
+          let description: string | null = null;
+
+          if (subHeadDetail) {
+            // Extract the description from the text
+            // The format is typically: "The Current Procedural Terminology (CPT®) code XXXXX as maintained by American Medical Association, is a medical procedural code under the range - DESCRIPTION."
+            const descMatch = subHeadDetail.match(/under the range - (.+?)\.$/);
+            if (descMatch && descMatch[1]) {
+              description = descMatch[1].trim();
+            } else {
+              // If we can't extract with regex, just use the whole text
+              description = subHeadDetail.trim();
+            }
+          }
+
+          // If we couldn't find the description in sub_head_detail, try looking for it elsewhere
+          if (!description) {
+            // Try to find the code description in other common locations
+            const codeTitle = $('h1.cpt_code').text().trim();
+            if (codeTitle) {
+              const titleMatch = codeTitle.match(/\d{5} (.+)$/);
+              if (titleMatch && titleMatch[1]) {
+                description = titleMatch[1].trim();
+              }
+            }
+          }
+
+          // Extract the summary - first try from cpt_layterms
+          let summary = '';
+          const cptLayterms = $('#cpt_layterms').find('p').first();
+          if (cptLayterms.length > 0 && cptLayterms.text().trim()) {
+            summary = cptLayterms.text().trim();
+          } else {
+            // If no summary in cpt_layterms, try offlongdesc
+            const offLongDesc = $('#offlongdesc').find('p').first();
+            if (offLongDesc.length > 0 && offLongDesc.text().trim()) {
+              summary = offLongDesc.text().trim();
+            }
+          }
+
+          // Combine description and summary if both exist
+          let fullDescription = description || '';
+          if (summary && fullDescription) {
+            fullDescription += ` Summary: ${summary}`;
+          } else if (summary) {
+            fullDescription = summary;
+          }
+
+          if (fullDescription) {
+            codeDescriptions.set(code, fullDescription);
+            // console.log(`  Code ${code}: ${fullDescription}`);
+
+            // Add to cache
+            cachedCodes["CPT"].push({
+              code: code,
+              description: fullDescription
+            });
+
+            // console.log('ADDING TO JSON:', code, fullDescription);
+          } else {
+            // console.log(`No description found for code ${code} on the website`);
+
+            // Add a placeholder description
+            const placeholderDesc = `CPT code ${code} - Description not found. Please research this code further for accurate information.`;
+            codeDescriptions.set(code, placeholderDesc);
+
+            // Add to cache with placeholder
+            cachedCodes["CPT"].push({
+              code: code,
+              description: placeholderDesc
+            });
+
+            // console.log('ADDING TO JSON WITH PLACEHOLDER:', code, placeholderDesc);
+          }
+        } catch (error: any) {
+          console.error(`  Error fetching CPT code ${code} from website:`, error);
+
+          // Check if it's a 404 error
+          let errorMessage = "";
+          if (error.response && error.response.status === 404) {
+            errorMessage = `CPT code ${code} - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.`;
+          } else {
+            errorMessage = `CPT code ${code} - Unable to retrieve description due to technical error. Please research this code further.`;
+          }
+
+          // Add to the descriptions map with the error message
+          codeDescriptions.set(code, errorMessage);
+
+          // Add to cache with the error message
+          cachedCodes["CPT"].push({
+            code: code,
+            description: errorMessage
+          });
+
+          // console.log('ADDING TO JSON WITH ERROR MESSAGE:', code, errorMessage);
+        }
+
+        // Add a more conservative delay of 3 seconds between requests
+        console.log(`Waiting 3 seconds before next request...`);
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+
+      // Save the updated cache
+      console.log("Saving updated cache to file...");
+      await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
+
+      // Verify the file was written correctly
+      try {
+        const verifyData = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+        // console.log(`Cache file updated successfully. Contains ${verifyData["CPT"].length} CPT codes.`);
+      } catch (error) {
+        console.error("Error verifying cache file update:", error);
+      }
+    }
+
+    // Use o4-mini with the code descriptions as context
+    console.log('USING o3 with code descriptions:');
+    // const contextInfo = Array.from(codeDescriptions.entries())
+    //   .map(([code, desc]) => `${code}: ${desc}`)
+    //   .join('\n');
+    // console.log(contextInfo);
+
+    const result = await useO4MiniForQuestion(question, codeDescriptions);
+
+    answeredQuestions.push({
+      ...question,
+      myAnswer: result.answer,
+      confidence: result.confidence,
+      reasoning: result.reasoning
+    });
+
+  } else {
+    // No CPT codes found in options, use o4-mini
+    console.log(`No CPT codes found in options for question ${question.number}, using o4-mini...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+  }
+}
+
+// Handle ICD-10 questions
+async function handleICD10Question(question: Question, answeredQuestions: Question[]): Promise<void> {
+  console.log(`Processing ICD-10 question ${question.number}...`);
+
+  // For ICD-10 guideline questions without specific codes, use o4-mini
+  if (!question.options || !question.options.some(opt => /[A-Z]\d{2}(\.\d+)?/.test(opt))) {
+    console.log(`No ICD-10 codes found in options for question ${question.number}, using o4-mini...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+    return;
+  }
+
+  // Extract potential ICD-10 codes from options
+  const icdCodes: string[] = [];
+  if (question.options) {
+    for (const option of question.options) {
+      const matches = option.match(/[A-Z]\d{2}(\.\d+)?/g);
+      if (matches) {
+        icdCodes.push(...matches);
+      }
+    }
+  }
+
+  if (icdCodes.length > 0) {
+    console.log(`Found ICD-10 codes in options: ${icdCodes.join(', ')}`);
+
+    // Create a map to store results for each code
+    const codeDescriptions: Map<string, string> = new Map();
+
+    // Initialize or load the cached codes file
+    let cachedCodes: any;
+    try {
+      // Check if file exists
+      if (await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
+        cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+        // console.log("Loaded existing cache file:", JSON.stringify(cachedCodes).substring(0, 100) + "...");
+      } else {
+        throw new Error("File doesn't exist");
+      }
+    } catch (error) {
+      // If file doesn't exist or can't be read, initialize with empty structure
+      console.log("Creating new cache file with empty structure");
+      cachedCodes = {
+        "CPT": [],
+        "ICD-10": [],
+        "HCPCS": []
+      };
+      await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
+      // console.log("New cache file created");
+    }
+
+    // Make sure ICD-10 array exists
+    if (!cachedCodes["ICD-10"]) {
+      // console.log("ICD-10 array missing in cache, initializing it");
+      cachedCodes["ICD-10"] = [];
+    }
+
+    // Check which codes we need to fetch from the API
+    const codesToFetch: string[] = [];
+    for (const code of icdCodes) {
+      // Check if code exists in cached data
+      const cachedCode = cachedCodes["ICD-10"].find((item: any) => item.code === code);
+      if (cachedCode) {
+        // console.log(`Found cached ICD-10 code ${code}: ${cachedCode.description}`);
+        codeDescriptions.set(code, cachedCode.description);
+      } else {
+        console.log(`Code ${code} not found in cache, will fetch from API`);
+        codesToFetch.push(code);
+      }
+    }
+
+    // Fetch any codes not found in cache
+    if (codesToFetch.length > 0) {
+      console.log(`Fetching ${codesToFetch.length} ICD-10 codes from API...`);
+
+      for (const code of codesToFetch) {
+        try {
+          // console.log(`Querying API for code: ${code}`);
+          const response = await axios.get(`https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?terms=${code}`);
+          // console.log(`API response for ${code}:`, JSON.stringify(response.data));
+
+          let description: string | null = null;
+
+          // Based on the actual response format observed in logs
+          if (response.data && Array.isArray(response.data)) {
+            const data = response.data;
+
+            // Format appears to be [count, [codes], null, [[code, description], ...]]
+            if (data.length >= 4 && Array.isArray(data[3])) {
+              // console.log(`Parsing response format: [count, [codes], null, [[code, description], ...]]`);
+
+              const codeDescPairs = data[3];
+              if (Array.isArray(codeDescPairs)) {
+                for (const pair of codeDescPairs) {
+                  if (Array.isArray(pair) && pair.length >= 2 && pair[0] === code) {
+                    description = pair[1];
+                    console.log(`Found exact match: ${pair[0]} = ${pair[1]}`);
+                    break;
+                  }
+                }
+              }
+            }
+            // Try other formats if needed
+            else if (data[0] && Array.isArray(data[0])) {
+              // console.log(`Trying alternate format: [[code, description], ...]`);
+              for (const pair of data) {
+                if (Array.isArray(pair) && pair.length >= 2 && pair[0] === code) {
+                  description = pair[1];
+                  // console.log(`Found match in alternate format: ${pair[0]} = ${pair[1]}`);
+                  break;
+                }
+              }
+            }
+          }
+
+          if (description) {
+            codeDescriptions.set(code, description);
+            // console.log(`  Code ${code}: ${description}`);
+
+            // Add to cache
+            cachedCodes["ICD-10"].push({
+              code: code,
+              description: description
+            });
+
+            // console.log('ADDING TO JSON:', code, description);
+          } else {
+            console.log(`No description found for code ${code} in API response`);
+          }
+        } catch (error) {
+          console.error(`  Error querying ICD-10 API for code ${code}:`, error);
+        }
+      }
+
+      // Save the updated cache
+      // console.log("Saving updated cache to file...");
+      await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
+
+      // Verify the file was written correctly
+      try {
+        const verifyData = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+        // console.log(`Cache file updated successfully. Contains ${verifyData["ICD-10"].length} ICD-10 codes.`);
+      } catch (error) {
+        console.error("Error verifying cache file update:", error);
+      }
+    }
+
+    // Use o4-mini with the code descriptions as context
+    const contextInfo = Array.from(codeDescriptions.entries())
+      .map(([code, desc]) => `${code}: ${desc}`)
+      .join('\n');
+
+    console.log('USING o3 with code descriptions:');
+    console.log(contextInfo);
+
+    const result = await useO4MiniForQuestion(question, codeDescriptions);
+
+    answeredQuestions.push({
+      ...question,
+      myAnswer: result.answer,
+      confidence: result.confidence,
+      reasoning: result.reasoning
+    });
+
+  } else {
+    // No ICD-10 codes found in options, use o4-mini
+    console.log(`No ICD-10 codes found in options for question ${question.number}, using o4-mini...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+  }
+}
+
+// Handle CPT or general medical coding questions
+async function handleCPTOrGeneralQuestion(question: Question, answeredQuestions: Question[]): Promise<void> {
+  console.log(`Processing CPT/General question ${question.number} with 04mini...`);
+
+  const o4Mini = llmAnswer
+  const questionPrompt = `You are a certified medical coding expert. Answer this question and rate your confidence CONSERVATIVELY.
+
+IMPORTANT: Be honest about uncertainty. Medical coding has many nuances and edge cases.
+- Rate 10 only if you're absolutely certain based on clear guidelines
+- Rate 7-9 for solid answers with good reasoning
+- Rate 4-6 if you're unsure between options
+- Rate 1-3 if you're guessing
+
+Question ${question.number}: ${question.text}
+${question.options ? question.options.join('\n') : ''}
+
+Respond in this exact format:
+Answer: [A/B/C/D]
+Confidence: [1-10]
+Reasoning: [brief explanation of your choice]`;
+
+  const response = await o4Mini.invoke([
+    { role: "system", content: "You are a medical coding expert. Be conservative with confidence ratings." },
+    { role: "user", content: questionPrompt }
+  ]);
+
+  const content = typeof response.content === 'string' ? response.content : '';
+
+  const answerMatch = content.match(/Answer:\s*([A-D])/);
+  const confidenceMatch = content.match(/Confidence:\s*(\d+)/);
+  const reasoningMatch = content.match(/Reasoning:\s*(.*?)(?=\n\n|$)/s);
+
+  if (answerMatch && confidenceMatch) {
+    const answer = answerMatch[1];
+    const confidence = parseInt(confidenceMatch[1]);
+    const reasoning = reasoningMatch ? reasoningMatch[1].trim() : '';
+
+    answeredQuestions.push({
+      ...question,
+      myAnswer: answer,
+      confidence: confidence,
+      reasoning: reasoning
+    });
+  } else {
+    // Fallback if response format is incorrect
+    console.error(`Unexpected response format from o4-mini for question ${question.number}`);
+    answeredQuestions.push({
+      ...question,
+      myAnswer: "A",
+      confidence: 5,
+      reasoning: "Could not parse model response"
+    });
+  }
+}
+
+// Helper function to use o4-mini with code descriptions as context
+async function useO4MiniForQuestion(
+  question: Question,
+  codeDescriptions: Map<string, string>
+): Promise<{ answer: string, confidence: number, reasoning: string }> {
+  const o4Mini = llmAnswer;
+
+  // console.log("USING O3-mini with code descriptions:");
+  // codeDescriptions.forEach((description, code) => {
+  //   console.log(`  ${code}: ${description}`);
+  // });
+
+  // Create context from code descriptions
+  const contextInfo = Array.from(codeDescriptions.entries())
+    .map(([code, desc]) => `${code}: ${desc}`)
+    .join('\n');
+
+  const questionPrompt = `You are a certified medical coding expert. Answer this question using the provided code descriptions and rate your confidence CONSERVATIVELY.
+
+IMPORTANT: Be honest about uncertainty. Medical coding has many nuances and edge cases.
+- Rate 10 only if you're absolutely certain based on clear guidelines
+- Rate 7-9 for solid answers with good reasoning
+- Rate 4-6 if you're unsure between options
+- Rate 1-3 if you're guessing
+
+Question ${question.number}: ${question.text}
+${question.options ? question.options.join('\n') : ''}
+
+Code Descriptions from Official Database:
+${contextInfo}
+
+If Descriptions have duplicates reason more into each one.
+
+Respond in this exact format:
+Answer: [A/B/C/D]
+Confidence: [1-10]
+Reasoning: [brief explanation of your choice]`;
+
+  const response = await o4Mini.invoke([
+    { role: "system", content: "You are a medical coding expert. Be conservative with confidence ratings." },
+    { role: "user", content: questionPrompt }
+  ]);
+
+  const content = typeof response.content === 'string' ? response.content : '';
+
+  const answerMatch = content.match(/Answer:\s*([A-D])/);
+  const confidenceMatch = content.match(/Confidence:\s*(\d+)/);
+  const reasoningMatch = content.match(/Reasoning:\s*(.*?)(?=\n\n|$)/s);
+
+  if (answerMatch && confidenceMatch) {
+    return {
+      answer: answerMatch[1],
+      confidence: parseInt(confidenceMatch[1]),
+      reasoning: reasoningMatch ? reasoningMatch[1].trim() : ''
+    };
+  } else {
+    // Fallback if response format is incorrect
+    console.error(`Unexpected response format from o4-mini`);
+    return {
+      answer: "A",
+      confidence: 5,
+      reasoning: "Could not parse model response"
+    };
+  }
+}
+
+// Helper function to extract keywords from question text
+function extractKeywords(text: string): string[] {
+  // Remove common words and extract key medical terms
+  const words = text.toLowerCase()
+    .replace(/[^\w\s]/g, '')
+    .split(/\s+/)
+    .filter(word =>
+      word.length > 3 &&
+      !['what', 'which', 'when', 'where', 'this', 'that', 'with', 'from', 'have', 'code', 'represents'].includes(word)
+    );
+
+  return words;
+}
+
+// Helper function to calculate match score between description and keywords
+function calculateMatchScore(description: string, keywords: string[]): number {
+  const descriptionLower = description.toLowerCase();
+  let matchCount = 0;
+
+  for (const keyword of keywords) {
+    if (descriptionLower.includes(keyword)) {
+      matchCount++;
+    }
+  }
+
+  return keywords.length > 0 ? matchCount / keywords.length : 0;
+}
+
 async function verifyLowConfidenceAnswers(questions: Question[]): Promise<Question[]> {
   const lowConfidenceQuestions = questions.filter(q => (q.confidence || 0) < 6);
 
@@ -334,142 +1121,13 @@ async function verifyLowConfidenceAnswers(questions: Question[]): Promise<Questi
   console.log(`🔍 Verifying ${lowConfidenceQuestions.length} low-confidence questions (Confidence < 6)...`);
 
   const verifiedQuestions = [...questions];
-  let perplexityReasoningSuccessCount = 0;
-  let perplexitySearchSuccessCount = 0;
-  let gptFallbackCount = 0;
+  let gptSuccessCount = 0;
 
   for (let i = 0; i < lowConfidenceQuestions.length; i++) {
     const question = lowConfidenceQuestions[i];
     console.log(`Verifying ${i + 1}/${lowConfidenceQuestions.length}: Question ${question.number} (Initial Confidence: ${question.confidence})...`);
 
-    let success = false;
-
-    // --- Attempt 1: Perplexity Reasoning Pro ---
-    try {
-      const reasoningPrompt = `You are a world-class medical coding auditor. Analyze the following question, provide detailed reasoning, and give a definitive final answer.
-
-**Question Details:**
-- **Number:** ${question.number}
-- **Text:** ${question.text}
-- **Options:**
-${question.options ? question.options.join('\n') : ''}
-
-**Initial Assessment:**
-- **Current Answer:** ${question.myAnswer}
-- **Current Confidence:** ${question.confidence}/10
-
-**Your Task:**
-1.  **Analyze the Scenario:** Break down the medical scenario presented in the question.
-2.  **Evaluate Each Option:** Systematically review options A, B, C, and D against the latest ICD-10-CM/CPT/HCPCS guidelines. State why each option is correct or incorrect in your reasoning.
-3.  **Provide a Final Conclusion:** Based on your analysis, provide a final answer.
-
-**Output Format:**
-First, provide all your detailed reasoning as free text. Then, you MUST conclude your entire response with a single JSON code block in the following format. Do not add any text after this block.
-
-\`\`\`json
-{
-  "reasoningSummary": "A brief summary of why you chose your answer and why others are incorrect.",
-  "finalAnswer": "[A/B/C/D]",
-  "confidence": [A number from 1-10]
-}
-\`\`\``;
-
-      const response = await perplexity.query(
-        reasoningPrompt,
-        "You are a certified medical coding expert. Analyze the question step-by-step and provide a clear, definitive answer with reasoning, ending with the required JSON block.",
-        'reasoning',
-        true
-      );
-
-      const jsonBlockStart = response.lastIndexOf('```json');
-      if (jsonBlockStart === -1) {
-        throw new Error("Could not find the mandatory JSON block in the 'Reasoning' response.");
-      }
-
-      const jsonString = response.substring(jsonBlockStart + 7, response.lastIndexOf('```'));
-      const result = JSON.parse(jsonString);
-
-      const fullReasoning = `Perplexity Reasoning Pro Analysis:\n${response.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
-
-      const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
-      verifiedQuestions[questionIndex] = {
-        ...verifiedQuestions[questionIndex],
-        perplexityAnswer: result.finalAnswer,
-        perplexityReasoning: fullReasoning,
-        verifiedAnswer: result.finalAnswer,
-        confidence: result.confidence,
-        reasoning: fullReasoning
-      };
-
-      console.log(`  ✅ Question ${question.number}: Verified with Reasoning Pro. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
-      perplexityReasoningSuccessCount++;
-      success = true;
-
-    } catch (reasoningError: any) {
-      console.log(`  ⚠️  Reasoning Pro failed for Q${question.number} (${reasoningError.message}). Trying Search Pro...`);
-    }
-
-    if (success) continue;
-
-    // --- Attempt 2: Perplexity Search Pro (Fallback) ---
-    try {
-      const searchPrompt = `You are a medical coding researcher. Use your search capabilities to find the correct answer for the following question based on current guidelines.
-
-**Question ${question.number}:** ${question.text}
-${question.options ? question.options.join('\n') : ''}
-
-**Task:**
-Research the correct answer. Provide a brief justification based on your findings, then conclude with the mandatory JSON block.
-
-**Output Format:**
-You MUST conclude your entire response with a single JSON code block in the following format. Do not add any text after this block.
-
-\`\`\`json
-{
-  "reasoningSummary": "A brief summary of the evidence found.",
-  "finalAnswer": "[A/B/C/D]",
-  "confidence": [A number from 1-10, based on the clarity of search results]
-}
-\`\`\``;
-
-      const response = await perplexity.query(
-        searchPrompt,
-        "You are a medical coding researcher. Find the answer and respond in the required format, ending with the JSON block.",
-        'search',
-        true
-      );
-
-      const jsonBlockStart = response.lastIndexOf('```json');
-      if (jsonBlockStart === -1) {
-        throw new Error("Could not find the mandatory JSON block in the 'Search' response.");
-      }
-
-      const jsonString = response.substring(jsonBlockStart + 7, response.lastIndexOf('```'));
-      const result = JSON.parse(jsonString);
-
-      const fullReasoning = `Perplexity Search Pro Analysis:\n${response.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
-
-      const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
-      verifiedQuestions[questionIndex] = {
-        ...verifiedQuestions[questionIndex],
-        perplexityAnswer: result.finalAnswer,
-        perplexityReasoning: fullReasoning,
-        verifiedAnswer: result.finalAnswer,
-        confidence: result.confidence,
-        reasoning: fullReasoning
-      };
-
-      console.log(`  ✅ Question ${question.number}: Verified with Search Pro. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
-      perplexitySearchSuccessCount++;
-      success = true;
-
-    } catch (searchError: any) {
-      console.log(`  ⚠️  Search Pro failed for Q${question.number} (${searchError.message}). Using GPT-4o fallback...`);
-    }
-
-    if (success) continue;
-
-    // --- Attempt 3: GPT-4o (Final Fallback) ---
+    // --- GPT-4o Verification ---
     try {
       const gptPrompt = `You are a senior medical coding auditor. Re-examine this question with detailed analysis and provide your response in the requested format.
 
@@ -496,13 +1154,13 @@ You MUST conclude your entire response with a single JSON code block in the foll
 
       const jsonBlockStart = content.lastIndexOf('```json');
       if (jsonBlockStart === -1) {
-        throw new Error("Could not find the mandatory JSON block in the GPT-4o response.");
+        throw new Error("Could not find the mandatory JSON block in the o3-pro response.");
       }
 
       const jsonString = content.substring(jsonBlockStart + 7, content.lastIndexOf('```'));
       const result = JSON.parse(jsonString);
 
-      const fullReasoning = `GPT-4o Fallback Analysis:\n${content.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
+      const fullReasoning = `o3-pro Analysis:\n${content.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
 
       const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
       verifiedQuestions[questionIndex] = {
@@ -513,22 +1171,17 @@ You MUST conclude your entire response with a single JSON code block in the foll
       };
 
       console.log(`  ✅ Question ${question.number}: Verified with GPT-4o. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
-      gptFallbackCount++;
-      success = true;
+      gptSuccessCount++;
 
     } catch (gptError: any) {
-      console.log(`  ❌ Question ${question.number}: All verification methods failed. Last error: ${gptError.message}`);
+      console.log(`  ❌ Question ${question.number}: Verification failed. Error: ${gptError.message}`);
     }
   }
 
-  const totalVerified = perplexityReasoningSuccessCount + perplexitySearchSuccessCount + gptFallbackCount;
   const changedAnswers = verifiedQuestions.filter(q => q.verifiedAnswer && q.verifiedAnswer !== q.myAnswer).length;
 
   console.log(`\n✅ Verification complete:`);
-  console.log(`  - Total questions verified: ${totalVerified}/${lowConfidenceQuestions.length}`);
-  console.log(`  - Perplexity Reasoning Pro: ${perplexityReasoningSuccessCount}`);
-  console.log(`  - Perplexity Search Pro: ${perplexitySearchSuccessCount}`);
-  console.log(`  - GPT-4o Fallbacks: ${gptFallbackCount}`);
+  console.log(`  - Total questions verified: ${gptSuccessCount}/${lowConfidenceQuestions.length}`);
   console.log(`  - Answers changed: ${changedAnswers}`);
 
   return verifiedQuestions;
@@ -543,10 +1196,11 @@ async function devilsAdvocateCheck(questions: Question[]): Promise<Question[]> {
   });
 
   // Select 50% of medium confidence questions randomly
-  const sampleSize = Math.ceil(mediumConfidenceQuestions.length * 0.5);
-  const sampledQuestions = mediumConfidenceQuestions
-    .sort(() => 0.5 - Math.random())
-    .slice(0, sampleSize);
+  // const sampleSize = Math.ceil(mediumConfidenceQuestions.length * 0.5);
+  // const sampledQuestions = mediumConfidenceQuestions
+  //   .sort(() => 0.5 - Math.random())
+  //   .slice(0, sampleSize);
+  const sampledQuestions = [] as Question[];
 
   let challengedCount = 0;
 
@@ -741,13 +1395,43 @@ Return JSON:
 }
 
 async function extractNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
-  const pdfContent = await processPdf(TEST_PDF);
-  const questions = await extractQuestions(pdfContent);
-  return { extractedQuestions: questions };
+  console.log("🔍 Looking for questions.json file...");
+
+  try {
+    // First check if questions.json exists
+    if (await fs.pathExists(QUESTIONS_JSON)) {
+      console.log(`✅ Found ${QUESTIONS_JSON}! Loading questions from JSON file...`);
+      const questionsData = await fs.readJSON(QUESTIONS_JSON);
+      console.log(`✅ Loaded ${questionsData.length} questions from JSON file`);
+      return { extractedQuestions: questionsData };
+    }
+
+    // If JSON file doesn't exist, fall back to PDF processing
+    console.log(`⚠️ ${QUESTIONS_JSON} not found. Falling back to PDF processing...`);
+    const pdfContent = await processPdf(TEST_PDF);
+    const questions = await extractQuestions(pdfContent);
+
+    // Save the extracted questions to JSON for future use
+    console.log(`💾 Saving extracted questions to ${QUESTIONS_JSON} for future use...`);
+    await fs.writeJSON(QUESTIONS_JSON, questions, { spaces: 2 });
+    console.log(`✅ Saved ${questions.length} questions to JSON file`);
+
+    return { extractedQuestions: questions };
+  } catch (error) {
+    console.error("❌ Error in extractNode:", error);
+    throw error;
+  }
 }
 
 async function answerNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
-  const answered = await answerQuestionsWithConfidence(state.extractedQuestions);
+  let questionsToProcess = state.extractedQuestions;
+
+  if (state.questionLimit && state.questionLimit > 0 && state.questionLimit < questionsToProcess.length) {
+    console.log(`⚙️ Limiting to ${state.questionLimit} questions as requested`);
+    questionsToProcess = questionsToProcess.slice(0, state.questionLimit);
+  }
+
+  const answered = await answerQuestionsWithConfidence(questionsToProcess);
   return { answeredQuestions: answered };
 }
 
@@ -763,9 +1447,73 @@ async function devilsAdvocateNode(state: GraphStateType): Promise<Partial<GraphS
 }
 
 async function compareNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
-  const answerKeyContent = await processPdf(ANSWERS_PDF);
-  const results = await compareWithAnswerKey(state.verifiedQuestions, answerKeyContent);
-  return { testResults: results };
+  console.log("📊 Comparing final answers with answer key...");
+
+  try {
+    // First check if answer_key.json exists
+    if (await fs.pathExists(ANSWER_KEY_JSON)) {
+      console.log(`✅ Found ${ANSWER_KEY_JSON}! Loading answer key from JSON file...`);
+
+      const answerKeyData = await fs.readJSON(ANSWER_KEY_JSON);
+
+      // Process the answer key data
+      const finalAnswers = state.verifiedQuestions.map(q => ({
+        number: q.number,
+        myAnswer: q.verifiedAnswer || q.myAnswer
+      }));
+
+      // Compare answers with the key
+      const results = answerKeyData.map((keyItem: any) => {
+        const myAnswer = finalAnswers.find(a => a.number === keyItem.number);
+        return {
+          number: keyItem.number,
+          myAnswer: myAnswer?.myAnswer || "N/A",
+          correctAnswer: keyItem.answer,
+          isCorrect: myAnswer?.myAnswer === keyItem.answer
+        };
+      });
+
+      const correctCount = results.filter((r: any) => r.isCorrect).length;
+      const totalCount = results.length;
+      const percentage = Math.round((correctCount / totalCount) * 100);
+      const verifiedCount = state.verifiedQuestions.filter(q => q.verifiedAnswer).length;
+      const challengedCount = state.verifiedQuestions.filter(q => q.reasoning?.includes("Perplexity challenge")).length;
+      const perplexityCount = state.verifiedQuestions.filter(q => q.perplexityAnswer).length;
+
+      const testResults: TestResults = {
+        totalQuestions: totalCount,
+        correctAnswers: correctCount,
+        incorrectAnswers: totalCount - correctCount,
+        percentage: percentage,
+        details: results,
+        verifiedCount: verifiedCount,
+        challengedCount: challengedCount,
+        perplexityCount: perplexityCount
+      };
+
+      console.log(`✅ Comparison complete: ${correctCount}/${totalCount} (${percentage}%)`);
+      return { testResults: testResults };
+    }
+
+    // If JSON file doesn't exist, fall back to PDF processing
+    console.log(`⚠️ ${ANSWER_KEY_JSON} not found. Falling back to PDF processing...`);
+    const answerKeyContent = await processPdf(ANSWERS_PDF);
+    const results = await compareWithAnswerKey(state.verifiedQuestions, answerKeyContent);
+
+    // Save the answer key to JSON for future use
+    console.log(`💾 Saving answer key to ${ANSWER_KEY_JSON} for future use...`);
+    const answerKeyData = results.details.map(item => ({
+      number: item.number,
+      answer: item.correctAnswer
+    }));
+    await fs.writeJSON(ANSWER_KEY_JSON, answerKeyData, { spaces: 2 });
+    console.log(`✅ Saved answer key to JSON file`);
+
+    return { testResults: results };
+  } catch (error) {
+    console.error("❌ Error in compareNode:", error);
+    throw error;
+  }
 }
 
 const workflow = new StateGraph(GraphState)
@@ -787,7 +1535,7 @@ async function startCLI() {
   console.log("🏥 Advanced Medical Coding Test Assistant!");
   console.log("Features: GPT-4o + Perplexity Verification + Research-Based Devil's Advocate");
   console.log(`Files: ${TEST_PDF} → ${OUTPUT_FILE} ← ${ANSWERS_PDF}`);
-  console.log("Commands: /run, /status, quit\n");
+  console.log("Commands: /run [number], /status, quit\n");
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -798,7 +1546,8 @@ async function startCLI() {
     extractedQuestions: [],
     answeredQuestions: [],
     verifiedQuestions: [],
-    testResults: null
+    testResults: null,
+    questionLimit: undefined
   };
 
   const ask = () => {
@@ -808,15 +1557,24 @@ async function startCLI() {
         return;
       }
 
-      if (input === '/run') {
+      if (input.startsWith('/run')) {
         try {
-          console.log("🚀 Starting advanced medical coding testing Agent!!!");
+          // Extract number of questions if provided
+          const match = input.match(/\/run\s+(\d+)/);
+          const questionLimit = match ? parseInt(match[1]) : undefined;
+
+          console.log(`🚀 Starting advanced medical coding testing Agent${questionLimit ? ` (limited to ${questionLimit} questions)` : ''}!!!`);
+
+          // Store the limit in the state
+          state.questionLimit = questionLimit;
+
           const result = await app.invoke(state);
           state = { ...state, ...result };
 
           if (state.testResults) {
             console.log(`\n🎯 FINAL RESULTS:`);
             console.log(`Questions found: ${state.extractedQuestions.length}/100`);
+            console.log(`Questions processed: ${state.testResults.totalQuestions}`);
             console.log(`Questions verified: ${state.testResults.verifiedCount}`);
             console.log(`Perplexity verifications: ${state.testResults.perplexityCount}`);
             console.log(`Questions challenged: ${state.testResults.challengedCount}`);

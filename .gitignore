@@ -39,3 +39,8 @@ coverage/
 ehthumbs.db
 Thumbs.db
 EOF
+
+answer_key.json
+cached_code_descriptions.json
+
+questions.json
