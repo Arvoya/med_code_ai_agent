@@ -6,6 +6,7 @@ import * as readline from 'readline';
 import * as fs from 'fs-extra';
 import * as dotenv from 'dotenv';
 import * as cheerio from 'cheerio';
+import { exec } from 'child_process'; // Add this line
 
 dotenv.config();
 
@@ -85,6 +86,10 @@ const GraphState = Annotation.Root({
   questionLimit: Annotation<number | undefined>({
     reducer: (current: number | undefined, update: number | undefined) => update,
     default: () => undefined
+  }),
+  useExplanations: Annotation<boolean>({
+    reducer: (current: boolean, update: boolean) => update,
+    default: () => false
   })
 });
 
@@ -110,7 +115,7 @@ const llmAnswer = new ChatOpenAI({
 //NOTE: NEW MODELS
 //
 // const llm = new ChatOpenAI({
-//   model: "Gemma", // This name is ignored by LM Studio
+//   model: "Medical LLM", // This name is ignored by LM Studio
 //   temperature: 0.1,
 //   openAIApiKey: "lm-studio", // Any non-empty string works
 //   configuration: {
@@ -119,7 +124,7 @@ const llmAnswer = new ChatOpenAI({
 // });
 //
 // const llmVerify = new ChatOpenAI({
-//   model: "Gemma", // This name is ignored by LM Studio
+//   model: "Medical LLM", // This name is ignored by LM Studio
 //   openAIApiKey: "lm-studio",
 //   configuration: {
 //     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
@@ -127,7 +132,7 @@ const llmAnswer = new ChatOpenAI({
 // });
 //
 // const llmAnswer = new ChatOpenAI({
-//   model: "Gemma", // This name is ignored by LM Studio
+//   model: "Medical LLM", // This name is ignored by LM Studio
 //   openAIApiKey: "lm-studio",
 //   configuration: {
 //     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
@@ -236,6 +241,7 @@ const perplexity = new PerplexityAPI();
 //NOTE:FILES
 const TEST_PDF = "./test.pdf";
 const ANSWERS_PDF = "./answers.pdf";
+const EXPLANATIONS_MERGE_PDF = "./explanations"
 const OUTPUT_FILE = "./answers.txt";
 const QUESTIONS_JSON = "./questions.json";
 const ANSWER_KEY_JSON = "./answer_key.json";
@@ -310,7 +316,7 @@ Return ONLY the JSON array.`;
   }
 }
 
-async function answerQuestionsWithConfidence(questions: Question[]): Promise<Question[]> {
+async function answerQuestionsWithConfidence(questions: Question[], state: GraphStateType): Promise<Question[]> {
   console.log(`🩺 Answering ${questions.length} questions with confidence scoring...`);
 
   const batchSize = 8;
@@ -327,16 +333,16 @@ async function answerQuestionsWithConfidence(questions: Question[]): Promise<Que
 
         switch (questionType) {
           case 'HCPCS':
-            await handleHCPCSQuestion(question, answeredQuestions);
+            await handleHCPCSQuestion(question, answeredQuestions, state);
             break;
           case 'ICD-10':
-            await handleICD10Question(question, answeredQuestions);
+            await handleICD10Question(question, answeredQuestions, state);
             break;
           case 'CPT':
-            await handleCPTQuestions(question, answeredQuestions);
+            await handleCPTQuestions(question, answeredQuestions, state);
             break;
           default:
-            await handleCPTOrGeneralQuestion(question, answeredQuestions);
+            await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
             break;
         }
       } catch (questionError) {
@@ -352,6 +358,7 @@ async function answerQuestionsWithConfidence(questions: Question[]): Promise<Que
     }
   }
 
+  // Rest of the function remains the same
   const lowConfidence = answeredQuestions.filter(q => (q.confidence || 0) < 6).length;
   const mediumConfidence = answeredQuestions.filter(q => {
     const conf = q.confidence || 0;
@@ -443,7 +450,7 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
 
 
 // Handle HCPCS questions
-async function handleHCPCSQuestion(question: Question, answeredQuestions: Question[]): Promise<void> {
+async function handleHCPCSQuestion(question: Question, answeredQuestions: Question[], state: GraphStateType): Promise<void> {
   console.log(`Processing HCPCS question ${question.number}...`);
 
   // Extract potential HCPCS codes from options
@@ -466,13 +473,8 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
     // Initialize or load the cached codes file
     let cachedCodes: any;
     try {
-      // Check if file exists
-      if (await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
-        cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
-        // console.log("Loaded existing cache file:", JSON.stringify(cachedCodes).substring(0, 100) + "...");
-      } else {
-        throw new Error("File doesn't exist");
-      }
+      // Load cached code descriptions (using merged if enabled)
+      cachedCodes = await loadCodeDescriptions(state);
     } catch (error) {
       // If file doesn't exist or can't be read, initialize with empty structure
       console.log("Creating new cache file with empty structure");
@@ -498,7 +500,11 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
       const cachedCode = cachedCodes["HCPCS"].find((item: any) => item.code === code);
       if (cachedCode) {
         // console.log(`Found cached HCPCS code ${code}: ${cachedCode.description}`);
-        codeDescriptions.set(code, cachedCode.description);
+        if (state.useExplanations && cachedCode.explanation) {
+          codeDescriptions.set(code, cachedCode.description + cachedCode.explanation);
+        } else {
+          codeDescriptions.set(code, cachedCode.description);
+        }
       } else {
         console.log(`Code ${code} not found in cache, will fetch from API`);
         codesToFetch.push(code);
@@ -641,12 +647,12 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
 
   } else {
     // No HCPCS codes found in options, use o4-mini
-    console.log(`No HCPCS codes found in options for question ${question.number}, using o4-mini...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+    console.log(`No HCPCS codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
   }
 }
 
-async function handleCPTQuestions(question: Question, answeredQuestions: Question[]): Promise<void> {
+async function handleCPTQuestions(question: Question, answeredQuestions: Question[], state: GraphStateType): Promise<void> {
   console.log(`Processing CPT question ${question.number}...`);
 
   // Extract potential CPT codes from options
@@ -670,16 +676,11 @@ async function handleCPTQuestions(question: Question, answeredQuestions: Questio
     // Initialize or load the cached codes file
     let cachedCodes: any;
     try {
-      // Check if file exists
-      if (await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
-        cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
-        // console.log("Loaded existing cache file:", JSON.stringify(cachedCodes).substring(0, 100) + "...");
-      } else {
-        throw new Error("File doesn't exist");
-      }
+      // Use the loadCodeDescriptions function with state
+      cachedCodes = await loadCodeDescriptions(state);
     } catch (error) {
       // If file doesn't exist or can't be read, initialize with empty structure
-      // console.log("Creating new cache file with empty structure");
+      console.log("Creating new cache file with empty structure");
       cachedCodes = {
         "CPT": [],
         "ICD-10": [],
@@ -702,7 +703,11 @@ async function handleCPTQuestions(question: Question, answeredQuestions: Questio
       const cachedCode = cachedCodes["CPT"].find((item: any) => item.code === code);
       if (cachedCode) {
         // console.log(`Found cached CPT code ${code}: ${cachedCode.description}`);
-        codeDescriptions.set(code, cachedCode.description);
+        if (state.useExplanations && cachedCode.explanation) {
+          codeDescriptions.set(code, cachedCode.description + cachedCode.explanation);
+        } else {
+          codeDescriptions.set(code, cachedCode.description);
+        }
       } else {
         // console.log(`Code ${code} not found in cache, will fetch from website`);
         codesToFetch.push(code);
@@ -859,19 +864,19 @@ async function handleCPTQuestions(question: Question, answeredQuestions: Questio
 
   } else {
     // No CPT codes found in options, use o4-mini
-    console.log(`No CPT codes found in options for question ${question.number}, using o4-mini...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+    console.log(`No CPT codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
   }
 }
 
 // Handle ICD-10 questions
-async function handleICD10Question(question: Question, answeredQuestions: Question[]): Promise<void> {
+async function handleICD10Question(question: Question, answeredQuestions: Question[], state: GraphStateType): Promise<void> {
   console.log(`Processing ICD-10 question ${question.number}...`);
 
   // For ICD-10 guideline questions without specific codes, use o4-mini
   if (!question.options || !question.options.some(opt => /[A-Z]\d{2}(\.\d+)?/.test(opt))) {
-    console.log(`No ICD-10 codes found in options for question ${question.number}, using o4-mini...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+    console.log(`No ICD-10 codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
     return;
   }
 
@@ -895,13 +900,8 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
     // Initialize or load the cached codes file
     let cachedCodes: any;
     try {
-      // Check if file exists
-      if (await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
-        cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
-        // console.log("Loaded existing cache file:", JSON.stringify(cachedCodes).substring(0, 100) + "...");
-      } else {
-        throw new Error("File doesn't exist");
-      }
+      // Use the loadCodeDescriptions function with state
+      cachedCodes = await loadCodeDescriptions(state);
     } catch (error) {
       // If file doesn't exist or can't be read, initialize with empty structure
       console.log("Creating new cache file with empty structure");
@@ -911,7 +911,7 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
         "HCPCS": []
       };
       await fs.writeJSON(CACHED_CODE_DESCRIPTIONS_JSON, cachedCodes, { spaces: 2 });
-      // console.log("New cache file created");
+      console.log("New cache file created");
     }
 
     // Make sure ICD-10 array exists
@@ -927,7 +927,11 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
       const cachedCode = cachedCodes["ICD-10"].find((item: any) => item.code === code);
       if (cachedCode) {
         // console.log(`Found cached ICD-10 code ${code}: ${cachedCode.description}`);
-        codeDescriptions.set(code, cachedCode.description);
+        if (state.useExplanations && cachedCode.explanation) {
+          codeDescriptions.set(code, cachedCode.description + cachedCode.explanation);
+        } else {
+          codeDescriptions.set(code, cachedCode.description);
+        }
       } else {
         console.log(`Code ${code} not found in cache, will fetch from API`);
         codesToFetch.push(code);
@@ -1029,13 +1033,13 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
 
   } else {
     // No ICD-10 codes found in options, use o4-mini
-    console.log(`No ICD-10 codes found in options for question ${question.number}, using o4-mini...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions);
+    console.log(`No ICD-10 codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
+    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
   }
 }
 
 // Handle CPT or general medical coding questions
-async function handleCPTOrGeneralQuestion(question: Question, answeredQuestions: Question[]): Promise<void> {
+async function handleCPTOrGeneralQuestion(question: Question, answeredQuestions: Question[], state: GraphStateType): Promise<void> {
   console.log(`Processing CPT/General question ${question.number} with 04mini...`);
 
   const questionPrompt = `You are a certified medical coding expert. Answer this question and rate your confidence CONSERVATIVELY.
@@ -1079,7 +1083,7 @@ Reasoning: [brief explanation of your choice]`;
     });
   } else {
     // Fallback if response format is incorrect
-    console.error(`Unexpected response format from o4-mini for question ${question.number}`);
+    console.error(`Unexpected response format from ${llmAnswer.model}  for question ${question.number}`);
     answeredQuestions.push({
       ...question,
       myAnswer: "A",
@@ -1105,6 +1109,8 @@ async function useO4MiniForQuestion(
   const contextInfo = Array.from(codeDescriptions.entries())
     .map(([code, desc]) => `${code}: ${desc}`)
     .join('\n');
+
+  console.log("CONTEXT INFO FROM CODE DESCRIPTION: ", contextInfo)
 
   const questionPrompt = `You are a certified medical coding expert. Answer this question using the provided code descriptions and rate your confidence CONSERVATIVELY.
 
@@ -1146,7 +1152,7 @@ Reasoning: [brief explanation of your choice]`;
     };
   } else {
     // Fallback if response format is incorrect
-    console.error(`Unexpected response format from o4-mini`);
+    console.error(`Unexpected response format from ${llmAnswer.model}`);
     return {
       answer: "A",
       confidence: 5,
@@ -1181,6 +1187,342 @@ function calculateMatchScore(description: string, keywords: string[]): number {
   }
 
   return keywords.length > 0 ? matchCount / keywords.length : 0;
+}
+
+
+// Add these functions after the calculateMatchScore function
+
+/**
+ * Extracts explanations for each answer from the answers PDF
+ * @returns {Promise<Array>} Array of explanation objects with question numbers and explanation text
+ */
+async function extractExplanationsFromAnswersPdf(): Promise<any[]> {
+  console.log("📄 Extracting explanations from answers.pdf...");
+
+  try {
+    if (!await fs.pathExists(ANSWERS_PDF)) {
+      throw new Error(`File not found: ${ANSWERS_PDF}`);
+    }
+
+    const pdfContent = await processPdf(ANSWERS_PDF);
+
+    const extractionPrompt = `Extract ALL explanations for each answer from this PDF.
+    
+    For each question, find:
+    1. The question number
+    2. The correct answer (letter and code)
+    3. The complete explanation text
+    
+    Return a JSON array with explanations for each question:
+    [
+      {
+        "number": 1,
+        "correctAnswer": "A. G43.009",
+        "explanation": "Complete explanation text for why this answer is correct..."
+      }
+    ]
+    
+    Full PDF Content:
+    ${pdfContent}
+    
+    Return ONLY the JSON array.`;
+
+    const response = await llm.invoke([
+      { role: "system", content: "Extract explanations for medical coding answers and return only valid JSON." },
+      { role: "user", content: extractionPrompt }
+    ]);
+
+    const content = typeof response.content === 'string' ? response.content.trim() : '';
+
+    const startIndex = content.indexOf('[');
+    const endIndex = content.lastIndexOf(']');
+
+    if (startIndex !== -1 && endIndex !== -1) {
+      const jsonContent = content.substring(startIndex, endIndex + 1);
+      const explanations = JSON.parse(jsonContent);
+      explanations.sort((a: any, b: any) => a.number - b.number);
+
+      console.log(`✅ Extracted explanations for ${explanations.length} questions`);
+      return explanations;
+    } else {
+      throw new Error("Could not find valid JSON array in the response");
+    }
+  } catch (error) {
+    console.error("❌ Error extracting explanations:", error);
+    throw error;
+  }
+}
+
+/**
+ * Extracts all medical codes from text with their context
+ * @param {string} text The text containing codes
+ * @returns {Array<{code: string, codeType: string, context: string}>} Array of code objects
+ */
+function extractCodesWithContext(text: string): Array<{ code: string, codeType: string, context: string }> {
+  if (!text) return [];
+
+  const results: Array<{ code: string, codeType: string, context: string }> = [];
+
+  // Define regex patterns for different code types
+  const patterns: { [key: string]: RegExp } = {
+    "CPT": /\b(\d{5})\b/g,
+    "ICD-10": /\b([A-Z]\d{2}(\.\d+)?)\b/g,
+    "HCPCS": /\b([A-Z]\d{4})\b/g
+  };
+
+  // For each code type, find all matches and extract context
+  for (const [codeType, pattern] of Object.entries(patterns)) {
+    let match;
+    const patternCopy = new RegExp(pattern); // Create a new RegExp to reset lastIndex
+    while ((match = patternCopy.exec(text)) !== null) {
+      const code = match[1];
+
+      // Extract context (sentence containing the code)
+      const sentenceStart = text.lastIndexOf('.', match.index) + 1;
+      const sentenceEnd = text.indexOf('.', match.index);
+      const context = text.substring(
+        Math.max(0, sentenceStart),
+        sentenceEnd > -1 ? sentenceEnd + 1 : text.length
+      ).trim();
+
+      results.push({
+        code,
+        codeType,
+        context
+      });
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Merges explanations with cached code descriptions and saves to a new file
+ * @returns {Promise<object>} The merged code descriptions
+ */
+async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
+  console.log("🔄 Merging explanations with cached code descriptions...");
+
+  try {
+    // Load cached code descriptions
+    if (!await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
+      throw new Error(`Cached code descriptions file not found: ${CACHED_CODE_DESCRIPTIONS_JSON}`);
+    }
+
+    const cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
+    console.log(`Loaded cached code descriptions with ${Object.values(cachedCodes).flat().length} entries`);
+
+    // Extract explanations from answers PDF
+    const explanations = await extractExplanationsFromAnswersPdf();
+    console.log(`Extracted ${explanations.length} explanations from answers PDF`);
+
+    // Create a deep copy of the cached codes
+    const mergedCodes = JSON.parse(JSON.stringify(cachedCodes));
+
+    // Create a map for quick lookup of explanations by question number
+    const explanationMap = new Map();
+    explanations.forEach(exp => explanationMap.set(exp.number, exp));
+
+    // Create a map for quick lookup of explanations by code
+    const codeExplanationMap = new Map();
+
+    // Process explanations to extract codes and map them
+    for (const explanation of explanations) {
+      // If explanation already has a code property, add it to the map
+      if (explanation.correctAnswer) {
+        // Extract code from answer (e.g., "A. G43.009" -> "G43.009")
+        const codeMatch = explanation.correctAnswer.match(/[A-Z]\d{2}(\.\d+)?|\d{5}|[A-Z]\d{4}/);
+        if (codeMatch) {
+          const primaryCode = codeMatch[0];
+          codeExplanationMap.set(primaryCode, explanation.explanation);
+        }
+      }
+
+      // Extract codes from the explanation text
+      const extractedCodes = extractCodesWithContext(explanation.explanation);
+
+      // Add all extracted codes to the map
+      for (const codeInfo of extractedCodes) {
+        codeExplanationMap.set(codeInfo.code, explanation.explanation);
+      }
+    }
+
+    // Count of explanations added
+    let explanationsAdded = 0;
+    let newCodesAdded = 0;
+
+    // For each code type (CPT, ICD-10, HCPCS)
+    for (const codeType of ["CPT", "ICD-10", "HCPCS"]) {
+      if (!mergedCodes[codeType]) continue;
+
+      // For each code in this type
+      for (const codeEntry of mergedCodes[codeType]) {
+        // Check if we have an explanation for this code
+        if (codeExplanationMap.has(codeEntry.code)) {
+          codeEntry.explanation = codeExplanationMap.get(codeEntry.code);
+          explanationsAdded++;
+        }
+      }
+
+      // Now check for codes in explanations that aren't in our cache
+      for (const [code, explanation] of codeExplanationMap.entries()) {
+        // Determine code type
+        let detectedCodeType: string;
+        if (/^\d{5}$/.test(code)) {
+          detectedCodeType = "CPT";
+        } else if (/^[A-Z]\d{2}(\.\d+)?$/.test(code)) {
+          detectedCodeType = "ICD-10";
+        } else if (/^[A-Z]\d{4}$/.test(code)) {
+          detectedCodeType = "HCPCS";
+        } else {
+          continue; // Skip if we can't determine the code type
+        }
+
+        // Skip if not matching the current codeType
+        if (detectedCodeType !== codeType) continue;
+
+        // Check if this code exists in our cache
+        const codeExists = mergedCodes[codeType].some((entry: any) => entry.code === code);
+
+        // If code doesn't exist, add it
+        if (!codeExists) {
+          mergedCodes[codeType].push({
+            code,
+            description: `Code extracted from explanation in answers PDF`,
+            explanation,
+            source: "answers_pdf_explanation"
+          });
+          newCodesAdded++;
+        }
+      }
+    }
+
+    // Add a metadata section to track the merge
+    mergedCodes.metadata = {
+      originalSource: CACHED_CODE_DESCRIPTIONS_JSON,
+      explanationsSource: ANSWERS_PDF,
+      mergeDate: new Date().toISOString(),
+      totalCodes: Object.values(mergedCodes)
+        .filter(arr => Array.isArray(arr))
+        .reduce((sum: number, arr: any[]) => sum + arr.length, 0),
+      explanationsAdded,
+      newCodesAdded
+    };
+
+    // Create the directory if it doesn't exist
+    const dirPath = EXPLANATIONS_MERGE_PDF;
+    await fs.ensureDir(dirPath);
+
+    // Save the merged data to a new file
+    const outputPath = `${dirPath}/merged_code_descriptions.json`;
+    await fs.writeJSON(outputPath, mergedCodes, { spaces: 2 });
+    console.log(`✅ Merged explanations saved to: ${outputPath}`);
+    console.log(`   Added explanations to ${explanationsAdded} existing code entries`);
+    console.log(`   Added ${newCodesAdded} new code entries from explanations`);
+
+    return mergedCodes;
+  } catch (error) {
+    console.error("❌ Error merging explanations:", error);
+    throw error;
+  }
+}
+
+/**
+ * Compares original cached descriptions with merged explanations
+ * @returns {Promise<void>}
+ */
+async function compareOriginalAndMergedDescriptions(): Promise<void> {
+  console.log("🔍 Comparing original and merged code descriptions...");
+
+  try {
+    // Load original cached code descriptions
+    const originalPath = CACHED_CODE_DESCRIPTIONS_JSON;
+    if (!await fs.pathExists(originalPath)) {
+      throw new Error(`Original file not found: ${originalPath}`);
+    }
+
+    // Load merged code descriptions
+    const mergedPath = `${EXPLANATIONS_MERGE_PDF}/merged_code_descriptions.json`;
+    if (!await fs.pathExists(mergedPath)) {
+      throw new Error(`Merged file not found: ${mergedPath}`);
+    }
+
+    const originalCodes = await fs.readJSON(originalPath);
+    const mergedCodes = await fs.readJSON(mergedPath);
+
+    // Count codes with explanations
+    let totalOriginal = 0;
+    let totalMerged = 0;
+    let codesWithExplanations = 0;
+
+    // Compare each code type
+    for (const codeType of ["CPT", "ICD-10", "HCPCS"]) {
+      if (!originalCodes[codeType] || !mergedCodes[codeType]) continue;
+
+      console.log(`\n${codeType} Codes:`);
+
+      const originalCount = originalCodes[codeType].length;
+      const mergedCount = mergedCodes[codeType].length;
+
+      totalOriginal += originalCount;
+      totalMerged += mergedCount;
+
+      // Count codes with explanations in this type
+      const withExplanations = mergedCodes[codeType].filter((code: any) => code.explanation).length;
+      codesWithExplanations += withExplanations;
+
+      console.log(`  Original: ${originalCount} codes`);
+      console.log(`  Merged: ${mergedCount} codes`);
+      console.log(`  With explanations: ${withExplanations} codes (${Math.round(withExplanations / mergedCount * 100)}%)`);
+
+      // Show a sample of codes with explanations
+      if (withExplanations > 0) {
+        const sample = mergedCodes[codeType].find((code: any) => code.explanation);
+        if (sample) {
+          console.log(`\n  Sample code with explanation:`);
+          console.log(`  Code: ${sample.code}`);
+          console.log(`  Description: ${sample.description}`);
+          console.log(`  Explanation: ${sample.explanation.substring(0, 150)}...`);
+        }
+      }
+    }
+
+    console.log(`\n📊 Summary:`);
+    console.log(`  Total original codes: ${totalOriginal}`);
+    console.log(`  Total merged codes: ${totalMerged}`);
+    console.log(`  Codes with explanations: ${codesWithExplanations} (${Math.round(codesWithExplanations / totalMerged * 100)}%)`);
+
+  } catch (error) {
+    console.error("❌ Error comparing descriptions:", error);
+  }
+}
+
+/**
+ * Function to load code descriptions (either original or merged)
+ * @param useMerged Whether to use merged descriptions with explanations
+ * @returns The loaded code descriptions
+ */
+async function loadCodeDescriptions(state: GraphStateType): Promise<any> {
+  try {
+    let filePath;
+
+    if (state.useExplanations) {
+      filePath = `${EXPLANATIONS_MERGE_PDF}/merged_code_descriptions.json`;
+      console.log("Using merged code descriptions with explanations");
+    } else {
+      filePath = CACHED_CODE_DESCRIPTIONS_JSON;
+      console.log("Using original cached code descriptions");
+    }
+
+    if (!await fs.pathExists(filePath)) {
+      throw new Error(`File not found: ${filePath}`);
+    }
+
+    return await fs.readJSON(filePath);
+  } catch (error: any) {
+    console.error(`Error loading code descriptions: ${error.message}`);
+    throw error;
+  }
 }
 
 async function verifyLowConfidenceAnswers(questions: Question[]): Promise<Question[]> {
@@ -1504,7 +1846,7 @@ async function answerNode(state: GraphStateType): Promise<Partial<GraphStateType
     questionsToProcess = questionsToProcess.slice(0, state.questionLimit);
   }
 
-  const answered = await answerQuestionsWithConfidence(questionsToProcess);
+  const answered = await answerQuestionsWithConfidence(questionsToProcess, state);
   return { answeredQuestions: answered };
 }
 
@@ -1752,11 +2094,13 @@ const workflow = new StateGraph(GraphState)
 
 const app = workflow.compile();
 
+
+
 async function startCLI() {
   console.log("🏥 Advanced Medical Coding Test Assistant!");
   console.log("Features: LocalLLM or OpenAI API + Verification + Research-Based Devil's Advocate");
   console.log(`Files: ${TEST_PDF} → ${OUTPUT_FILE} ← ${ANSWERS_PDF}`);
-  console.log("Commands: /run [number], /status, /print-by-type, /performance, quit\n");
+  console.log("Commands: /run [number], /status, /print-by-type, /performance, /merge-explanations, /compare-explanations, /use-explanations, /use-original, quit\n");
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -1768,7 +2112,8 @@ async function startCLI() {
     answeredQuestions: [],
     verifiedQuestions: [],
     testResults: null,
-    questionLimit: undefined
+    questionLimit: undefined,
+    useExplanations: false
   };
 
   const ask = () => {
@@ -1801,16 +2146,42 @@ async function startCLI() {
             console.log(`Questions challenged: ${state.testResults.challengedCount}`);
             console.log(`Score: ${state.testResults.correctAnswers}/${state.testResults.totalQuestions} (${state.testResults.percentage}%)`);
             console.log(`Answers saved to: ${OUTPUT_FILE}\n`);
+            exec('afplay /System/Library/Sounds/Glass.aiff && say "Your coding test is complete. Relax!"');
           }
         } catch (error) {
           console.log("❌ Error:", error);
         }
+      }
+      else if (input === '/merge-explanations') {
+        try {
+          console.log("🔄 Starting explanation merge process...");
+          await mergeExplanationsWithCachedDescriptions();
+          console.log("✅ Explanation merge complete!");
+        } catch (error) {
+          console.error("❌ Error merging explanations:", error);
+        }
+      }
+      else if (input === '/compare-explanations') {
+        try {
+          await compareOriginalAndMergedDescriptions();
+        } catch (error) {
+          console.error("❌ Error comparing explanations:", error);
+        }
+      }
+      else if (input === '/use-explanations') {
+        state.useExplanations = true;
+        console.log("✅ Now using merged code descriptions with explanations");
+      }
+      else if (input === '/use-original') {
+        state.useExplanations = false;
+        console.log("✅ Now using original cached code descriptions");
       }
       else if (input === '/status') {
         console.log(`📋 Status:`);
         console.log(`Questions extracted: ${state.extractedQuestions.length}/100`);
         console.log(`Questions answered: ${state.answeredQuestions.length}`);
         console.log(`Questions verified: ${state.verifiedQuestions.length}`);
+        console.log(`Using explanations: ${state.useExplanations ? 'Yes' : 'No'}`);
         console.log(`Test results: ${state.testResults ? `${state.testResults.percentage}%` : 'Not available'}\n`);
       }
       else if (input === '/print-by-type') {
@@ -1847,7 +2218,7 @@ async function startCLI() {
         }
       }
       else {
-        console.log("Commands: /run (start test), /status (check progress)\n");
+        console.log("Commands: /run (start test), /status (check progress), /merge-explanations, /compare-explanations, /use-explanations, /use-original\n");
       }
 
       ask();
