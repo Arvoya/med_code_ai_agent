@@ -1,0 +1,892 @@
+{
+  "CPT": [
+    {
+      "code": "40800",
+      "description": "Incision Procedures on the Vestibule of Mouth Summary: The provider drains fluid from an abscess, cyst, or hematoma, from the vestibule or anterior most portion of the oral cavity of the patient’s mouth. This procedure involves a simple drainage."
+    },
+    {
+      "code": "41105",
+      "description": "Excision Procedures on the Tongue and Floor of Mouth Summary: In this procedure, the provider makes an incision in the posterior one third of the tongue and excises the affected tissues for the purpose of biopsy."
+    },
+    {
+      "code": "41113",
+      "description": "Excision Procedures on the Tongue and Floor of Mouth Summary: In this procedure, the provider excises a lesion from the posterior one thirds of the tongue."
+    },
+    {
+      "code": "40804",
+      "description": "Incision Procedures on the Vestibule of Mouth Summary: The provider removes a foreign body present in the vestibule or anterior most portion of the oral cavity of the patient’s mouth. This procedure involves a simple removal."
+    },
+    {
+      "code": "10080",
+      "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider open (incises) and drains the contents of a pilonidal cyst."
+    },
+    {
+      "code": "10021",
+      "description": "Fine Needle Aspiration Biopsy Procedures Summary: The provider performs a fine needle aspiration (FNA), a diagnostic procedure that involves collecting a small number of cells, a small amount of tissue, or fluid from a cyst or mass using a specialized needle and syringe. Report this code for the first lesion biopsied."
+    },
+    {
+      "code": "10060",
+      "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider incises the area of abscess and drains the collection of pus from a lesion, such as a carbuncle, hidradenitis, cyst, furuncle, or paronychia, with the help of surgical instruments. A simple incision and drainage usually involves a single incision of an abscess situated just below the skin's surface."
+    },
+    {
+      "code": "10160",
+      "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider inserts a needle into a fluid deposit area on the skin and aspirates fluid or pus to obtain a culture."
+    },
+    {
+      "code": "20005",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "20055",
+      "description": "CPT code 20055 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "20010",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "20020",
+      "description": "CPT code 20020 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "83036",
+      "description": "Chemistry Procedures Summary: Sugar in the bloodstream can get attached to the hemoglobin in red blood cells. Once the sugar is attached, it stays there for the lifetime of the red blood cell (around 120 days or over 3 months). The higher the amount of blood sugar, the more the quantity of sugar attached to the blood cells. This A1C test measures the amount of sugar sticking to the red blood cells, displaying the result as a percentage. This gives the physician an understanding about the blood sugar level of the patient for the preceding three months. A normal, healthy person should have A1C level below 7%."
+    },
+    {
+      "code": "83033",
+      "description": "Chemistry Procedures Summary: The analyst tests for the presence of hemoglobin F, typically in a whole blood sample. The amount is usually very low, except in the newborn infant, in whom almost all the hemoglobin is type F."
+    },
+    {
+      "code": "83035",
+      "description": "CPT code 83035 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "83034",
+      "description": "CPT code 83034 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "60210",
+      "description": "Excision Procedures on the Thyroid Gland Summary: This is a procedure involving surgical removal of a part of one of the two lobes the thyroid gland is divided into. The provider may perform the procedure with or without surgical removal of the isthmus, the tissue connecting the two lobes of the thyroid gland in the middle."
+    },
+    {
+      "code": "60212",
+      "description": "Excision Procedures on the Thyroid Gland Summary: The procedure involves surgical removal of a part of one lobe of the thyroid gland and most of the portion of the other lobe of the thyroid gland. The provider also performs surgical removal of the isthmus, the tissue connecting the two lobes of the thyroid gland in the middle."
+    },
+    {
+      "code": "60220",
+      "description": "Excision Procedures on the Thyroid Gland Summary: This is a procedure involving complete surgical removal of one of the two lobes the thyroid gland is divided into. The provider may perform the procedure with or without surgical removal of the isthmus, the tissue connecting the two lobes of the thyroid gland in the middle."
+    },
+    {
+      "code": "60225",
+      "description": "Excision Procedures on the Thyroid Gland Summary: The procedure involves surgical removal of one whole lobe of the thyroid gland and most of the other lobe of the thyroid gland. The provider also performs surgical removal of the isthmus, the tissue connecting the two lobes of the thyroid gland in the middle."
+    },
+    {
+      "code": "50010",
+      "description": "Incision Procedures on the Kidney Summary: The provider examines the kidney for diagnostic purposes, without any curative surgical intervention, such as inspection for hemorrhage, urinary leakage, or tissue damage due to trauma."
+    },
+    {
+      "code": "50020",
+      "description": "Incision Procedures on the Kidney Summary: The provider drains an abscess from the kidney (renal) or the area surrounding the kidney (perirenal) with an open approach."
+    },
+    {
+      "code": "50200",
+      "description": "Excision Procedures on the Kidney Summary: In this procedure.  A physician inserts a collection needle into the kidney to collect a sample for further diagnostic biopsy."
+    },
+    {
+      "code": "50543",
+      "description": "Laparoscopic Procedures on the Kidney Summary: The provider uses a surgical laparoscopic technique to remove part of a kidney."
+    },
+    {
+      "code": "50220",
+      "description": "Excision Procedures on the Kidney Summary: Nephrectomy is a surgical procedure for removal of a kidney or part of a kidney."
+    },
+    {
+      "code": "50398",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "30000",
+      "description": "Incision Procedures on the Nose Summary: In this procedure, the provider aspirates the excess fluid from within the nasal cavity, which may be due to an abscess or hematoma."
+    },
+    {
+      "code": "30140",
+      "description": "Excision Procedures on the Nose Summary: This CPT code is for a submucous resection of the inferior turbinate (partial or complete by any method)."
+    },
+    {
+      "code": "31231",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity to examine the structures of the nasal cavity on one or both sides."
+    },
+    {
+      "code": "31237",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity. She examines the nasal contents. The provider then performs a nasal biopsy, polypectomy, or debridement."
+    },
+    {
+      "code": "20016",
+      "description": "CPT code 20016 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "31020",
+      "description": "Incision Procedures on the Accessory Sinuses Summary: In this procedure, the provider makes an intranasal incision. The provider then uses cutting forceps to perform a middle meatal sinusotomy."
+    },
+    {
+      "code": "31256",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity. He then gains access to the maxillary sinus through a cut in the uncinate process. The provider opens the maxillary sinus."
+    },
+    {
+      "code": "31287",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity and creates an opening in the sphenoid sinus."
+    },
+    {
+      "code": "31288",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity. The provider widens the sphenoid sinus opening. He then removes tissues from the sphenoid sinus."
+    },
+    {
+      "code": "60240",
+      "description": "Excision Procedures on the Thyroid Gland Summary: The procedure involves surgical removal of the entire thyroid gland."
+    },
+    {
+      "code": "60100",
+      "description": "Excision Procedures on the Thyroid Gland Summary: This is a diagnostic procedure in which the provider removes a tissue sample from the thyroid gland, typically under imaging guidance, using an automatic, spring–powered core needle."
+    },
+    {
+      "code": "60500",
+      "description": "Excision Procedures on the Parathyroid, Thymus, Adrenal Glands, Pancreas, and Carotid Body Summary: In the traditional procedure of parathyroid exploration, the provider surgically visualizes and screens the parathyroid glands for pathology based on their appearance and relative size. He may then perform parathyroidectomy, which is surgical removal of one or more parathyroid glands as indicated. The glands are a set of four small glands situated on the rear of the four corners of the butterfly shaped thyroid gland."
+    },
+    {
+      "code": "73110",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Upper Extremities Summary: The provider takes at least three X–ray images of a patient’s complete wrist to check for any fracture, swelling, or reason of pain in the wrist area."
+    },
+    {
+      "code": "73100",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Upper Extremities Summary: In this procedure, the provider takes two X–ray images of a patient’s wrist to check for any fracture, swelling, or reason of pain in the wrist area."
+    },
+    {
+      "code": "73120",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Upper Extremities Summary: X–rays of the extremities have been performed to assess injury, fracture, arthritis, bone spurs, tumors, or congenital abnormalities. Extremity X–rays include the hand, wrist, arm, foot, ankle, hip, leg, shoulder, or knee. X–rays of the affected site focus on the specific area that is injured or damaged."
+    },
+    {
+      "code": "73115",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Upper Extremities Summary: In this procedure, the provider performs imaging supervision and interpretation for a wrist joint study. The provider injects contrast material or air into the patient’s wrist joint and takes a series of X–rays as it flows through the joint to evaluate the different joint structures for conditions such as arthritis, adhesive capsulitis, or a frozen joint, tears, or abnormalities of the cartilage. Report this code to represent only imaging supervision and interpretation for this procedure."
+    },
+    {
+      "code": "40812",
+      "description": "Excision and Destruction Procedures on the Vestibule of Mouth Summary: The provider excises a lesion or area of damaged or diseased tissue of the mucosa, a membrane lining the anterior most part of the mouth, and the submucosa, the layer beneath the mucosa. This procedure involves a simple repair of the surgical wound."
+    },
+    {
+      "code": "41108",
+      "description": "Excision Procedures on the Tongue and Floor of Mouth Summary: In this procedure, the provider performs an incision in the floor of the mouth and excises tissue for the purpose of biopsy."
+    },
+    {
+      "code": "40819",
+      "description": "Excision and Destruction Procedures on the Vestibule of Mouth Summary: In this procedure, the provider removes the labial or buccal frenum, each of which is a membrane structure in the mouth. Labial refers to the lip and buccal refers to the cheek."
+    },
+    {
+      "code": "52000",
+      "description": "Endoscopy-Cystoscopy, Urethroscopy, Cystourethroscopy Procedures on the Bladder Summary: In this procedure, the provider performs an examination of the interior of the bladder, the urethra, and the ureteric openings by means of a cystourethroscope, a thin flexible or rigid tube with a camera on one end."
+    },
+    {
+      "code": "50250",
+      "description": "Excision Procedures on the Kidney Summary: Cryoablation or cryosurgery is a procedure in which very low temperatures are used to destroy a mass lesion, tumor cells, or cancer cells by freezing them. In this procedure cold is introduced to the intended target through a probe containing liquid nitrogen that is inserted into the kidney."
+    },
+    {
+      "code": "50395",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "31255",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: The provider performs anterior and posterior ethmoidectomy (removal or excision of cells in the ethmoid bone or ethmoid sinus), generally performed if the anterior part and the posterior compartment of ethmoid sinus are involved with sinusitis."
+    },
+    {
+      "code": "31267",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity. She then gains access to the maxillary sinus through a cut in the uncinate process. The provider opens the maxillary sinus and removes diseased tissues."
+    },
+    {
+      "code": "31276",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the frontal sinus to explore it for abnormalities. The provider may also remove bone, scar tissue, polyps, or other tissue from the frontal sinus."
+    },
+    {
+      "code": "50320",
+      "description": "Renal Transplantation Procedures Summary: Nephrectomy is a surgical procedure for removal of a kidney or part of a kidney."
+    },
+    {
+      "code": "50430",
+      "description": "Other Renal Introduction (Injection/Change/Removal) Procedures Summary: The provider creates a new access route percutaneously (through a small incision made in the patient’s skin) and injects contrast material into the ureters (ureterogram) or kidney (nephrostogram) to analyze the internal structures of the kidneys, renal pelvis, and/or ureters using imaging guidance. The provider typically performs this procedure to assess nephrostomy or pyelostomy tube function, identify blockage in the ureteropelvic junction, or check for urine leakage around the tube insertion site. The procedure covers the complete diagnostic procedure and all radiological supervision and interpretation."
+    },
+    {
+      "code": "50390",
+      "description": "Other Renal Introduction (Injection/Change/Removal) Procedures Summary: The provider aspirates, or drains, a renal cyst or injects the cyst with a fluid. Aspiration is mainly performed by injecting a sclerotic agent, such as an acetic acid or ethanol into the renal cyst when the cyst causes abdominal pain, repeated urination, or hematuria."
+    },
+    {
+      "code": "99391",
+      "description": "Established Patient Summary: Preventive medicine services are provided to individuals who are not in need of any immediate medical attention, but need to undergo a periodic health checkup as a preventive measure. Well–baby visits, well–woman visits, and routine annual physical check–ups come under the purview of preventive medicine reevaluation and management services. These visits are different from other visits where the patient has a problem for which medical attention is sought. The age, gender, and associated risk factors of the person are important considerations while providing a preventive medicine service. The physician performs a comprehensive review of systems, comprehensive past family and social history (PFSH), and makes a thorough assessment of age and gender–related risk factors. The physician may order and obtain diagnostic/laboratory procedures and administer immunizations during the preventive service."
+    },
+    {
+      "code": "99382",
+      "description": "New Patient Summary: The provider performs a well–patient visit for a child who is between the ages of 1 and 4 who meets the definition of new patient."
+    },
+    {
+      "code": "99392",
+      "description": "Established Patient Summary: Preventive medicine services are provided to individuals who are not in need of any immediate medical attention, but need to undergo a periodic health checkup as a preventive measure. Well–baby visits, well–woman visits, and routine annual physical check–ups come under the purview of preventive medicine reevaluation and management services. These visits are different from other visits where the patient has a problem for which medical attention is sought. The age, gender, and associated risk factors of the person are important considerations while providing a preventive medicine service. The physician performs a comprehensive review of systems, comprehensive past family and social history (PFSH), and makes a thorough assessment of age and gender–related risk factors. The physician may order and obtain diagnostic/laboratory procedures and administer immunizations during the preventive service."
+    },
+    {
+      "code": "99381",
+      "description": "New Patient Summary: The provider performs a well–baby visit for a child under the age of one."
+    },
+    {
+      "code": "80053",
+      "description": "Organ or Disease Oriented Panels Summary: The lab analyst performs a comprehensive metabolic panel, or CMP test in which he measures the blood level of 14 chemicals the code descriptor lists for the panel."
+    },
+    {
+      "code": "80051",
+      "description": "Organ or Disease Oriented Panels Summary: The lab analyst performs an electrolyte panel; this panel must include measurement of carbon dioxide, chloride, potassium, and sodium."
+    },
+    {
+      "code": "80050",
+      "description": "Organ or Disease Oriented Panels Summary: The lab analyst performs testing for the specific group of clinical laboratory procedures in the general health panel. Payers typically consider 80050 to apply only when the clinician orders the general health panel specifically as a screening, so the panel code would not apply when the clinician orders the component tests for diagnostic purposes."
+    },
+    {
+      "code": "80055",
+      "description": "Organ or Disease Oriented Panels Summary: The lab analyst performs an obstetric panel; this panel must include tests for a complete blood count with differential, a hepatitis B surface antigen, a rubella antibody, a qualitative non treponemal syphilis test, a red blood cell antibody screen, ABO blood typing, and Rh typing."
+    },
+    {
+      "code": "30110",
+      "description": "Excision Procedures on the Nose Summary: In this procedure the provider removes a nasal polyp or polyps from within the nasal cavity. The provider performs this procedure to remove the obstruction that the polyp is causing."
+    },
+    {
+      "code": "30220",
+      "description": "Introduction Procedures on the Nose Summary: In this procedure the provider inserts a silastic button prosthesis to repair a  tear of the nasal septum."
+    },
+    {
+      "code": "70551",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Head and Neck Summary: The provider uses magnetic resonance imaging, or MRI, to examine the brain and brain stem. The provider does not administer contrast for this exam."
+    },
+    {
+      "code": "70553",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Head and Neck Summary: In this procedure, the provider performs a magnetic resonance imaging, or MRI, study of the brain including the brain stem. He performs this procedure without using contrast material. He then follows with contrast material and takes more images."
+    },
+    {
+      "code": "70549",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Head and Neck Summary: The provider performs magnetic resonance angiography of the vessels of the neck and surrounding areas without contrast and then takes images again using contrast."
+    },
+    {
+      "code": "70550",
+      "description": "CPT code 70550 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "99221",
+      "description": "New or Established Patient Summary: The provider sees a patient for an initial hospital inpatient or observation care visit involving evaluation and management (E/M). The visit involves a straightforward or low level of medical decision making or the provider spends at least 40 minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "99218",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "99223",
+      "description": "New or Established Patient Summary: The provider sees a patient for an initial hospital inpatient or observation care visit involving evaluation and management (E/M). The visit involves a high level of medical decision making or the provider spends at least 75 minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "99220",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "40810",
+      "description": "Excision and Destruction Procedures on the Vestibule of Mouth Summary: The provider excises a lesion or area of damaged or diseased tissue of the mucosa, a membrane lining the anterior most part of the mouth, and the submucosa, the layer beneath the mucosa. This procedure does not include repair of the surgical wound."
+    },
+    {
+      "code": "40820",
+      "description": "Excision and Destruction Procedures on the Vestibule of Mouth Summary: In this procedure, the provider eradicates a lesion present in the vestibule of the mouth using various techniques, except for excision."
+    },
+    {
+      "code": "99212",
+      "description": "Established Patient Summary: The provider sees an established patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a straightforward level of medical decision making, and/or the provider spends 10 or more minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "99214",
+      "description": "Established Patient Summary: The provider sees an established patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a moderate level of medical decision making, and/or the provider spends 30 minutes or more of total time on the encounter on a single date."
+    },
+    {
+      "code": "99213",
+      "description": "Established Patient Summary: The provider sees an established patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a low level of medical decision making, and/or the provider spends 20 or more minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "99215",
+      "description": "Established Patient Summary: The provider sees an established patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a high level of medical decision making, and/or the provider spends 40 or more minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "50225",
+      "description": "Excision Procedures on the Kidney Summary: Nephrectomy is a surgical procedure for removal of a kidney or part of a kidney."
+    },
+    {
+      "code": "50230",
+      "description": "Excision Procedures on the Kidney Summary: Nephrectomy is a surgical procedure for removal of a kidney or part of a kidney."
+    },
+    {
+      "code": "00520",
+      "description": "Anesthesia for Intrathoracic Procedures Summary: The provider performs anesthesia services for a patient undergoing closed chest procedures including bronchoscopy, which means viewing the windpipe for investigation. This code includes procedures that are not specifically described by another anesthesia code."
+    },
+    {
+      "code": "00522",
+      "description": "Anesthesia for Intrathoracic Procedures Summary: The provider performs anesthesia services for a patient undergoing a closed chest procedure involving a needle biopsy of the pleura, which is the double–layered membrane covering the lungs."
+    },
+    {
+      "code": "00524",
+      "description": "Anesthesia for Intrathoracic Procedures Summary: The provider performs anesthesia services for a patient undergoing the closed chest procedure of pneumocentesis in which another provider inserts a needle into the lung to drain the fluid contents."
+    },
+    {
+      "code": "00526",
+      "description": "CPT code 00526 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "20000",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "20025",
+      "description": "CPT code 20025 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "41115",
+      "description": "Excision Procedures on the Tongue and Floor of Mouth Summary: In this procedure, the provider makes an incision at the base of the tongue and excises the frenum."
+    },
+    {
+      "code": "40801",
+      "description": "Incision Procedures on the Vestibule of Mouth Summary: The provider drains fluid from an abscess, cyst, or hematoma from the vestibule or anterior most portion of the oral cavity of the patient’s mouth. This code is applicable if the procedure requires extended time or the case is complex or complicated. The operative report should indicate the complexity involved and the provider’s additional time."
+    },
+    {
+      "code": "40806",
+      "description": "Incision Procedures on the Vestibule of Mouth Summary: The provider incises the labial frenum, the tag of tissue in the center of the upper or the lower lip that attaches the lip to the gums of the patient. The provider does not remove the frenum. The provider commonly performs this procedure to release a tight frenum and its surrounding tissues."
+    },
+    {
+      "code": "00102",
+      "description": "Anesthesia for Procedures on the Head Summary: The provider performs anesthesia services for a patient undergoing a plastic repair of cleft lip."
+    },
+    {
+      "code": "00144",
+      "description": "Anesthesia for Procedures on the Head Summary: The provider performs anesthesia services for a patient undergoing a corneal transplant."
+    },
+    {
+      "code": "00145",
+      "description": "Anesthesia for Procedures on the Head Summary: The provider performs anesthesia services for a patient undergoing vitreoretinal surgery."
+    },
+    {
+      "code": "00148",
+      "description": "Anesthesia for Procedures on the Head Summary: The provider performs anesthesia services for a patient undergoing an ophthalmoscopy."
+    },
+    {
+      "code": "76805",
+      "description": "Diagnostic Ultrasound Procedures of the Pelvis Obstetrical Summary: In this procedure, the provider performs an ultrasound of a pregnant uterus for examination of the first or a single fetus and to examine the mother after the first trimester, or more than 14 weeks of pregnancy, using a transabdominal approach."
+    },
+    {
+      "code": "76810",
+      "description": "Diagnostic Ultrasound Procedures of the Pelvis Obstetrical Summary: In this add–on procedure, the provider performs a transabdominal ultrasound to examine each additional gestation sac, or fetus, after the first trimester."
+    },
+    {
+      "code": "76815",
+      "description": "Diagnostic Ultrasound Procedures of the Pelvis Obstetrical Summary: The provider performs a limited examination of the fetus using ultrasound. The provider performs the examination of certain parameters for one or more fetuses."
+    },
+    {
+      "code": "76816",
+      "description": "Diagnostic Ultrasound Procedures of the Pelvis Obstetrical Summary: The provider reexamines the fetus to follow up on a prior abnormal transabdominal ultrasound."
+    },
+    {
+      "code": "30903",
+      "description": "Other Procedures on the Nose Summary: The provider uses a complex or extensive approach to stop a heavy nosebleed caused by a vessel in the front area of the nose."
+    },
+    {
+      "code": "71250",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Chest Summary: In this diagnostic procedure, the provider performs a computed tomography, or CT, examination of the thorax without using contrast material."
+    },
+    {
+      "code": "71260",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Chest Summary: In this diagnostic procedure, the provider performs a computed tomography, or CT, examination of the thorax using contrast material."
+    },
+    {
+      "code": "71270",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Chest Summary: In this diagnostic procedure, the provider performs a computed tomography, or CT, examination of the thorax without using contrast material. He then follows with contrast material and takes more images."
+    },
+    {
+      "code": "71275",
+      "description": "Diagnostic Radiology (Diagnostic Imaging) Procedures of the Chest Summary: In this procedure, the provider performs a computed tomographic angiography, or CTA imaging of the chest to get detailed images of the blood vessels but not the heart. He performs this study using a contrast material injection and may also take non contrast images of the blood vessels as well."
+    },
+    {
+      "code": "90832",
+      "description": "Psychotherapy Services and Procedures Summary: In this service, the provider performs psychotherapy, a series of techniques for treating the psychiatric disorders of the patient. The treatment session with the patient typically lasts for anywhere between16 to 37 minutes."
+    },
+    {
+      "code": "90834",
+      "description": "Psychotherapy Services and Procedures Summary: In this service, the provider performs psychotherapy, a series of techniques for treating the psychiatric disorders of the patient. The treatment session with the patient typically lasts for anywhere between 38 to 52 minutes."
+    },
+    {
+      "code": "90837",
+      "description": "Psychotherapy Services and Procedures Summary: In this service, the provider performs psychotherapy, a series of technique for treating the psychiatric disorders of the patient. The treatment session typically lasts for a minimum of 53 minutes or more."
+    },
+    {
+      "code": "90839",
+      "description": "Psychotherapy for Crisis Services and Procedures Summary: In this service, the provider performs psychotherapy for a crisis situation when the patient is in a life–threatening state and needs immediate attention. The treatment session typically lasts anywhere between 30 to 74 minutes."
+    },
+    {
+      "code": "45378",
+      "description": "Endoscopy Procedures on the Rectum Summary: The provider examines the colon and rectum using a colonoscope, a flexible tube with a camera at its inserted end. If he sees any areas of abnormal mucosa or tissue, he takes samples using a brush passed through the scope or irrigates the area with warm saline and aspirates the washings through the scope. He sends the specimens to the laboratory for diagnostic analysis."
+    },
+    {
+      "code": "45379",
+      "description": "Endoscopy Procedures on the Rectum Summary: The provider examines the colon and rectum using a colonoscope, a tubular instrument with a light source and camera, which he inserts through the rectum to look for a blockage. He identifies and removes foreign bodies, such as swallowed objectives that could damage or obstruct the colon."
+    },
+    {
+      "code": "45380",
+      "description": "Endoscopy Procedures on the Rectum Summary: The provider examines the rectum and colon using a flexible colonoscope, a tubular instrument with a light source and camera, to look for the cause of a patient's symptoms, which may include diarrhea, constipation, rectal bleeding, or abdominal pain. He excises one or more suspicious areas of tissue using biopsy forceps and submits the specimens for laboratory analysis."
+    },
+    {
+      "code": "45381",
+      "description": "Endoscopy Procedures on the Rectum Summary: The provider inserts a flexible endoscope into the anus and navigates the scope through the entire colon. The provider performs one or more injections into the submucosa (the tissue below the mucous membrane)."
+    },
+    {
+      "code": "99222",
+      "description": "New or Established Patient Summary: The provider sees a patient for an initial hospital inpatient or observation care visit involving evaluation and management (E/M). The visit involves a moderate level of medical decision making or the provider spends at least 55 minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "66982",
+      "description": "Intraocular Lens Procedures Summary: The provider inserts an intraocular lens prosthesis after extracapsular cataract extraction using complex techniques and devices. He may perform this by means of an iris expansion device, providing support to the intraocular lens, or capsulorrhexis. This procedure is done without the use of an endoscopic laser probe to shrink the ciliary processes, a procedure to treat glaucoma."
+    },
+    {
+      "code": "66984",
+      "description": "Intraocular Lens Procedures Summary: The provider inserts an artificial lens after removing an extracapsular cataract by aspiration or use of ultrasonic waves. This procedure is done without the use of an endoscopic laser probe to shrink the ciliary processes, a procedure to treat glaucoma."
+    },
+    {
+      "code": "66983",
+      "description": "Intraocular Lens Procedures Summary: The provider removes the cataract lens and capsule as one and then inserts a lens prosthesis. The goal of the procedure is to correct a cataract, an opacity of the lens that affects the vision of the eye."
+    },
+    {
+      "code": "66985",
+      "description": "Intraocular Lens Procedures Summary: The provider inserts an intraocular lens into the eye of a patient who had previously had cataract removal."
+    },
+    {
+      "code": "85027",
+      "description": "Hematology and Coagulation Procedures Summary: The lab analyst performs a blood count on the red and white blood cells and platelets also known as thrombocytes. He also determines the hemoglobin, typically by spectrophotometry, and the hematocrit, or packed red cell volume, by calculation in a whole blood sample."
+    },
+    {
+      "code": "85025",
+      "description": "Hematology and Coagulation Procedures Summary: A complete blood count (better known as a CBC) is a blood test request by a doctor that provides detailed information about various types of cells in a patient's blood. Usually a pathologist or a technician conducts the test and provides the results of CBC to the requesting doctor. The blood is drawn from the patient's vein using a syringe and is stored in a test tube containing an anticoagulant (usually EDTA or citrate) to prevent clotting and transported to laboratory.  Nowadays, most often, the cell counting process is done in an automated way using an instrument known as an \"automated analyzer\". The automatic cell counter counts the number of different cells in the blood and the results are printed out for review by the physician."
+    },
+    {
+      "code": "85029",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "85023",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "00860",
+      "description": "Anesthesia for Procedures on the Lower Abdomen Summary: The provider performs anesthesia services for an extraperitoneal procedure in lower abdomen, including the urinary tract."
+    },
+    {
+      "code": "00864",
+      "description": "Anesthesia for Procedures on the Lower Abdomen Summary: The provider performs anesthesia services for an extraperitoneal procedure in the lower abdomen, including urinary tract; total cystectomy."
+    },
+    {
+      "code": "00862",
+      "description": "Anesthesia for Procedures on the Lower Abdomen Summary: The provider performs anesthesia services for an extraperitoneal procedure in the lower abdomen, including the urinary tract; renal procedures, including upper one third of ureter, or donor nephrectomy."
+    },
+    {
+      "code": "00868",
+      "description": "Anesthesia for Procedures on the Lower Abdomen Summary: The provider performs anesthesia services for a patient undergoing a renal transplant."
+    },
+    {
+      "code": "94010",
+      "description": "Pulmonary Diagnostic Testing and Therapies Summary: The provider or technician administers a spirometry test to assess the patient's respiratory function. The spirometer is attached to a computer that records the total and timed vital capacity (maximum expired air) and expiratory flow rate (speed of expiration) and displays the results as a graph. The patient may or may not be required to exhale rapidly over 12 to 15 seconds after deep breathing."
+    },
+    {
+      "code": "94060",
+      "description": "Pulmonary Diagnostic Testing and Therapies Summary: The spirometry test is performed with a spirometer. The instrument displays a graphical representation, known as a spirogram, of the test results. The basic forced volume vital capacity (FVC) test is done by asking the patient to inhale and exhale air through the sensors of the device. The speed and volume of the air is measured and the result is displayed on a graph. A bronchodilator drug is also given to the patient and the spirometry test is performed before and after the drug administration to find out the difference between results obtained in two different phases. The difference in results helps to deduce the responsiveness of the respiratory system to the bronchodilator."
+    },
+    {
+      "code": "94070",
+      "description": "Pulmonary Diagnostic Testing and Therapies Summary: In this procedure, the provider deliberately induces bronchospasm by controlled and measurable exposure to a specific stimulant. He then performs spirometry multiple times to evaluate the lung function under induced bronchospasm."
+    },
+    {
+      "code": "94015",
+      "description": "Pulmonary Diagnostic Testing and Therapies Summary: This procedure requires the patient to perform spirometry at a predetermined time each day. The patient records the spirometry findings over a period of 30 days and includes hook–up of spirometer, education on spirometer’s use, spirometric tracing, data capture, trend analysis, and periodic recalibration. This code represents the technical component of the service only."
+    },
+    {
+      "code": "20100",
+      "description": "Wound Exploration-Trauma (eg, Penetrating Gunshot, Stab Wound) Procedures on the Musculoskeletal System Summary: The provider explores a penetrating wound in the neck, such as from a sharp object or gunshot, to assess and repair internal damage and remove any foreign material retained in the wound."
+    },
+    {
+      "code": "10040",
+      "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider may extract the contents of an acne lesion with a suction–type instrument or excise or perform marsupialization on larger lesions or cysts."
+    },
+    {
+      "code": "10120",
+      "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider removes a foreign body such as a thorn, piece of wood, sliver of glass or fishook, from the lower layer of skin."
+    },
+    {
+      "code": "60271",
+      "description": "Excision Procedures on the Thyroid Gland Summary: The procedure involves surgical removal of the thyroid gland including its extension into the thorax below the sternum."
+    },
+    {
+      "code": "60101",
+      "description": "CPT code 60101 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "01402",
+      "description": "Anesthesia for Procedures on the Knee and Popliteal Area Summary: The provider performs anesthesia services for a patient undergoing an open or arthroscopic total knee arthroplasty."
+    },
+    {
+      "code": "01400",
+      "description": "Anesthesia for Procedures on the Knee and Popliteal Area Summary: The provider performs anesthesia services for a patient undergoing an open or arthroscopic procedure on the knee joint."
+    },
+    {
+      "code": "01404",
+      "description": "Anesthesia for Procedures on the Knee and Popliteal Area Summary: The provider performs anesthesia services for a patient undergoing an open or arthroscopic procedure, including disarticulation, at the knee joint."
+    },
+    {
+      "code": "01406",
+      "description": "CPT code 01406 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "10005",
+      "description": "Fine Needle Aspiration Biopsy Procedures Summary: Under ultrasound guidance, the provider performs a fine needle aspiration (FNA), a diagnostic procedure that involves collecting a specimen from tissue, a cyst, or mass using a specialized needle and syringe. Report this code for the first lesion biopsied."
+    },
+    {
+      "code": "11104",
+      "description": "Biopsy Procedures on the Skin Summary: The provider biopsies a skin lesion using a punch technique with a sharp hollow instrument; punch biopsies are commonly performed for deeper circular skin lesions."
+    },
+    {
+      "code": "11100",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "10030",
+      "description": "Introduction and Removal Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider places a catheter through the skin of the abdominal wall, extremity, or neck to drain a fluid collection using imaging guidance."
+    },
+    {
+      "code": "60252",
+      "description": "Excision Procedures on the Thyroid Gland Summary: The procedure involves surgical removal of the entire thyroid or most of the thyroid, including the isthmus. The provider also performs limited lymph node dissection of the neck."
+    },
+    {
+      "code": "99201",
+      "description": "No Summary found for this code"
+    },
+    {
+      "code": "99203",
+      "description": "New Patient Summary: The provider sees a new patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a low level of medical decision making, and/or the provider spends 30 or more minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "99204",
+      "description": "New Patient Summary: The provider sees a new patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a moderate level of medical decision making, and/or the provider spends 45 or more minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "11200",
+      "description": "Removal of Skin Tags Procedures Summary: The provider removes skin tags in any area of the body, up to and including 15 lesions."
+    },
+    {
+      "code": "30901",
+      "description": "Other Procedures on the Nose Summary: The provider uses a simple or limited approach to stop a nosebleed caused by a vessel in the front area of the nose."
+    },
+    {
+      "code": "40000",
+      "description": "CPT code 40000 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "40100",
+      "description": "CPT code 40100 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "93619",
+      "description": "Intracardiac Electrophysiological Procedures/Studies Summary: The provider inserts and repositions multiple electrode catheters in the right atrium, His bundle region, and right ventricle to evaluate abnormal heart rhythm disturbances. This code represents both the technical and professional components of the service."
+    },
+    {
+      "code": "93620",
+      "description": "Intracardiac Electrophysiological Procedures/Studies Summary: The provider performs a comprehensive electrophysiologic study (EPS) by inserting multiple electrode–tipped catheters into the high right atrium, His bundle region, and right ventricle. The provider performs right atrial pacing and recording, His bundle recording, and right ventricular pacing and recording and induces or attempts to induce an arrhythmia."
+    },
+    {
+      "code": "93621",
+      "description": "Intracardiac Electrophysiological Procedures/Studies Summary: In this add–on procedure, after initial induction of arrhythmia with pacing and recording of the right side of the heart and bundle of His, the provider inserts an additional catheter threaded through a venous sheath and moves it under fluoroscopic guidance through the coronary sinus for left atrial pacing and recording."
+    },
+    {
+      "code": "93622",
+      "description": "Intracardiac Electrophysiological Procedures/Studies Summary: In this add–on procedure, after initial induction of arrhythmia with pacing and recording of the right side of the heart and bundle of His, the provider inserts an additional catheter threaded through a venous sheath and moves it under fluoroscopic guidance for left ventricular pacing and recording."
+    },
+    {
+      "code": "20002",
+      "description": "CPT code 20002 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "99202",
+      "description": "New Patient Summary: The provider sees a new patient for an office visit or other outpatient visit involving evaluation and management. The visit involves straightforward medical decision making, and/or the provider spends 15 or more minutes of total time on the encounter on a single date."
+    },
+    {
+      "code": "51600",
+      "description": "Introduction Procedures on the Bladder Summary: Voiding cystourethrogram (VCUG) is also known as micturating cystourethrogram (MCUG). This is a technique which is performed to detect reflux by watching a person's urethra and urinary bladder during his or her micturition."
+    },
+    {
+      "code": "20060",
+      "description": "CPT code 20060 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "82784",
+      "description": "Chemistry Procedures Summary: The lab analyst performs the technical lab test to analyze the concentration of a particular gamma globulin in the specimen. The analyst may test for immunoglobulin A, immunoglobulin D, immunoglobulin G, or immunoglobulin M. Specimens include serum, plasma, cerebrospinal fluid, or other bodily fluids."
+    },
+    {
+      "code": "82782",
+      "description": "CPT code 82782 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "82785",
+      "description": "Chemistry Procedures Summary: The lab analyst performs the technical lab test to analyze the quantity of immunoglobulin E in the specimen."
+    },
+    {
+      "code": "82783",
+      "description": "CPT code 82783 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+    },
+    {
+      "code": "41110",
+      "description": "Excision Procedures on the Tongue and Floor of Mouth Summary: In this procedure, the provider makes an incision in the tongue and excises the lesion from the tongue."
+    },
+    {
+      "code": "31000",
+      "description": "Incision Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts a flexible cannula in the maxillary sinus through a cut in the antrum or through a natural opening to wash out the contents of the maxillary sinus."
+    },
+    {
+      "code": "31254",
+      "description": "Endoscopy Procedures on the Accessory Sinuses Summary: Partial surgical anterior ethmoidectomy involves the removal of the uncinate process (infundibulotomy), opening of the bulla, and partial removal of the anterior ethmoid cells."
+    },
+    {
+      "code": "30520",
+      "description": "Repair Procedures on the Nose Summary: Septoplasty is most often performed for a deviated septum which can be either C–shaped, S–shaped, or a cartilaginous deviation."
+    }
+  ],
+  "ICD-10": [
+    {
+      "code": "I10",
+      "description": "Essential (primary) hypertension"
+    },
+    {
+      "code": "I11.9",
+      "description": "Hypertensive heart disease without heart failure"
+    },
+    {
+      "code": "I12.9",
+      "description": "Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
+    },
+    {
+      "code": "I13.10",
+      "description": "Hypertensive heart and chronic kidney disease without heart failure, with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
+    },
+    {
+      "code": "I15.0",
+      "description": "Renovascular hypertension"
+    },
+    {
+      "code": "I15.1",
+      "description": "Hypertension secondary to other renal disorders"
+    },
+    {
+      "code": "I15.2",
+      "description": "Hypertension secondary to endocrine disorders"
+    },
+    {
+      "code": "A90",
+      "description": "Dengue fever [classical dengue]"
+    },
+    {
+      "code": "A91",
+      "description": "Dengue hemorrhagic fever"
+    },
+    {
+      "code": "A92.0",
+      "description": "Chikungunya virus disease"
+    },
+    {
+      "code": "A92.8",
+      "description": "Other specified mosquito-borne viral fevers"
+    },
+    {
+      "code": "M17.0",
+      "description": "Bilateral primary osteoarthritis of knee"
+    },
+    {
+      "code": "M17.2",
+      "description": "Bilateral post-traumatic osteoarthritis of knee"
+    },
+    {
+      "code": "J01.00",
+      "description": "Acute maxillary sinusitis, unspecified"
+    },
+    {
+      "code": "J01.10",
+      "description": "Acute frontal sinusitis, unspecified"
+    },
+    {
+      "code": "J01.01",
+      "description": "Acute recurrent maxillary sinusitis"
+    },
+    {
+      "code": "J01.11",
+      "description": "Acute recurrent frontal sinusitis"
+    },
+    {
+      "code": "E10.9",
+      "description": "Type 1 diabetes mellitus without complications"
+    },
+    {
+      "code": "E11.9",
+      "description": "Type 2 diabetes mellitus without complications"
+    },
+    {
+      "code": "E13.9",
+      "description": "Other specified diabetes mellitus without complications"
+    },
+    {
+      "code": "E08.9",
+      "description": "Diabetes mellitus due to underlying condition without complications"
+    },
+    {
+      "code": "G43.009",
+      "description": "Migraine without aura, not intractable, without status migrainosus"
+    },
+    {
+      "code": "G43.109",
+      "description": "Migraine with aura, not intractable, without status migrainosus"
+    },
+    {
+      "code": "L20.81",
+      "description": "Atopic neurodermatitis"
+    },
+    {
+      "code": "L20.82",
+      "description": "Flexural eczema"
+    },
+    {
+      "code": "L20.83",
+      "description": "Infantile (acute) (chronic) eczema"
+    },
+    {
+      "code": "L20.84",
+      "description": "Intrinsic (allergic) eczema"
+    },
+    {
+      "code": "D50.0",
+      "description": "Iron deficiency anemia secondary to blood loss (chronic)"
+    },
+    {
+      "code": "D50.1",
+      "description": "Sideropenic dysphagia"
+    },
+    {
+      "code": "D50.8",
+      "description": "Other iron deficiency anemias"
+    },
+    {
+      "code": "D50.9",
+      "description": "Iron deficiency anemia, unspecified"
+    }
+  ],
+  "HCPCS": [
+    {
+      "code": "K0001",
+      "description": "Standard wheelchair"
+    },
+    {
+      "code": "K0002",
+      "description": "Stnd hemi (low seat) whlchr"
+    },
+    {
+      "code": "K0003",
+      "description": "Lightweight wheelchair"
+    },
+    {
+      "code": "K0004",
+      "description": "High strength ltwt whlchr"
+    },
+    {
+      "code": "A4450",
+      "description": "Non-waterproof tape"
+    },
+    {
+      "code": "A4465",
+      "description": "Non-elastic extremity binder"
+    },
+    {
+      "code": "A4466",
+      "description": "Elastic garment/covering"
+    },
+    {
+      "code": "A4470",
+      "description": "Gravlee jet washer"
+    },
+    {
+      "code": "J1020",
+      "description": "Methylprednisolone 20 mg inj"
+    },
+    {
+      "code": "J1030",
+      "description": "Methylprednisolone 40 mg inj"
+    },
+    {
+      "code": "J1040",
+      "description": "Methylprednisolone 80 mg inj"
+    },
+    {
+      "code": "J1050",
+      "description": "Medroxyprogesterone acetate"
+    },
+    {
+      "code": "E0601",
+      "description": "Cont airway pressure device"
+    },
+    {
+      "code": "E0621",
+      "description": "Patient lift sling or seat"
+    },
+    {
+      "code": "E0650",
+      "description": "Pneuma compresor non-segment"
+    },
+    {
+      "code": "J1745",
+      "description": "Infliximab not biosimil 10mg"
+    },
+    {
+      "code": "J1750",
+      "description": "Inj iron dextran"
+    },
+    {
+      "code": "J1756",
+      "description": "Iron sucrose injection"
+    },
+    {
+      "code": "L5631",
+      "description": "Ak/knee disartic acrylic soc"
+    },
+    {
+      "code": "L5637",
+      "description": "Below knee total contact"
+    },
+    {
+      "code": "L5645",
+      "description": "Bk flex inner socket ext fra"
+    },
+    {
+      "code": "L5650",
+      "description": "Tot contact ak/knee disart s"
+    },
+    {
+      "code": "J0585",
+      "description": "Injection,onabotulinumtoxina"
+    },
+    {
+      "code": "J0586",
+      "description": "Abobotulinumtoxina"
+    },
+    {
+      "code": "J0587",
+      "description": "Inj, rimabotulinumtoxinb"
+    },
+    {
+      "code": "J0588",
+      "description": "Incobotulinumtoxin a"
+    }
+  ]
+}

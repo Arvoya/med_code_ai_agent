@@ -21,6 +21,8 @@ interface Question {
   perplexityReasoning?: string;
   correctAnswer?: string;
   isCorrect?: boolean;
+  questionType?: 'CPT' | 'ICD-10' | 'HCPCS' | 'GENERAL';
+  modelUsed?: string;
 }
 
 interface TestResults {
@@ -32,6 +34,35 @@ interface TestResults {
   verifiedCount: number;
   challengedCount: number;
   perplexityCount: number;
+}
+
+
+interface PerformanceLog {
+  timestamp: string;
+  questions: {
+    [questionId: string]: {
+      questionType: 'CPT' | 'ICD-10' | 'HCPCS' | 'GENERAL';
+      modelUsed: string;
+      isCorrect: boolean;
+      confidence: number;
+      initialAnswer?: string;
+      verifiedAnswer?: string;
+      correctAnswer?: string;
+    }
+  };
+  summary: {
+    totalQuestions: number;
+    correctAnswers: number;
+    byQuestionType: {
+      CPT: { total: number; correct: number; percentage: number };
+      'ICD-10': { total: number; correct: number; percentage: number };
+      HCPCS: { total: number; correct: number; percentage: number };
+      GENERAL: { total: number; correct: number; percentage: number };
+    };
+    byModel: {
+      [modelName: string]: { total: number; correct: number; percentage: number };
+    };
+  };
 }
 
 const GraphState = Annotation.Root({
@@ -59,18 +90,48 @@ const GraphState = Annotation.Root({
 
 type GraphStateType = typeof GraphState.State;
 
+//NOTE: OLD MODELS
+//
 const llm = new ChatOpenAI({
   modelName: "gpt-4o",
   temperature: 0.1,
 });
+//
+// const llmVerify = new ChatOpenAI({
+//   modelName: "o4-mini",
+// });
+//
+//
+// const llmAnswer = new ChatOpenAI({
+//   model: "gpt-4o",
+// });
+
+
+//NOTE: NEW MODELS
+//
+// const llm = new ChatOpenAI({
+//   model: "Gemma", // This name is ignored by LM Studio
+//   temperature: 0.1,
+//   openAIApiKey: "lm-studio", // Any non-empty string works
+//   configuration: {
+//     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
+//   },
+// });
 
 const llmVerify = new ChatOpenAI({
-  modelName: "o4-mini",
+  model: "Gemma", // This name is ignored by LM Studio
+  openAIApiKey: "lm-studio",
+  configuration: {
+    baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
+  },
 });
 
-
 const llmAnswer = new ChatOpenAI({
-  model: "gpt-4o",
+  model: "Gemma", // This name is ignored by LM Studio
+  openAIApiKey: "lm-studio",
+  configuration: {
+    baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
+  },
 });
 
 
@@ -179,6 +240,8 @@ const OUTPUT_FILE = "./answers.txt";
 const QUESTIONS_JSON = "./questions.json";
 const ANSWER_KEY_JSON = "./answer_key.json";
 const CACHED_CODE_DESCRIPTIONS_JSON = "./cached_code_descriptions.json";
+const PERFORMANCE_LOG_JSON = "./performance_log.json";
+const PERFORMANCE_HISTORY_JSON = "./performance_history.json";
 
 async function processPdf(filePath: string): Promise<string> {
   try {
@@ -317,6 +380,7 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
     fullText.includes('durable medical equipment') ||
     fullText.includes('prosthetic')
   ) {
+    question.questionType = 'HCPCS';
     return 'HCPCS';
   }
 
@@ -325,6 +389,7 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
     for (const opt of question.options) {
       const match = opt.match(/[A-Z]\d{4}/);
       if (match && match[0] && match[0][0] !== 'C') {
+        question.questionType = 'HCPCS';
         return 'HCPCS';
       }
     }
@@ -337,6 +402,7 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
     fullText.includes('diagnostic code') ||
     fullText.includes('according to icd')
   ) {
+    question.questionType = 'ICD-10';
     return 'ICD-10';
   }
 
@@ -344,6 +410,7 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
   if (question.options) {
     for (const opt of question.options) {
       if (opt.match(/[A-Z]\d{2}(\.\d+)?/)) {
+        question.questionType = 'ICD-10';
         return 'ICD-10';
       }
     }
@@ -355,6 +422,7 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
     fullText.includes('procedure code') ||
     fullText.includes('surgical code')
   ) {
+    question.questionType = 'CPT';
     return 'CPT';
   }
 
@@ -362,12 +430,14 @@ function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 'CPT' |
   if (question.options) {
     for (const opt of question.options) {
       if (opt.match(/\b\d{5}\b/)) {
+        question.questionType = 'CPT';
         return 'CPT';
       }
     }
   }
 
   // Default to general
+  question.questionType = 'GENERAL';
   return 'GENERAL';
 }
 
@@ -548,7 +618,7 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
 
     // If no good match was found, use o4-mini to determine the answer
     if (!answer) {
-      console.log(`USING ${llm.model} with code descriptions:`);
+      console.log(`USING ${llmAnswer.model} with code descriptions:`);
       // const contextInfo = Array.from(codeDescriptions.entries())
       //   .map(([code, desc]) => `${code}: ${desc}`)
       //   .join('\n');
@@ -558,6 +628,7 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
       answer = result.answer;
       confidence = result.confidence;
       reasoning = result.reasoning;
+      question.modelUsed = llmAnswer.model;
     }
 
     answeredQuestions.push({
@@ -1446,10 +1517,135 @@ async function devilsAdvocateNode(state: GraphStateType): Promise<Partial<GraphS
   return { verifiedQuestions: challenged };
 }
 
+async function printQuestionsByType(questions: Question[]): Promise<void> {
+  console.log("📋 Questions by Type:");
+
+  // Group questions by type
+  const cptQuestions = questions.filter(q => q.questionType === 'CPT');
+  const icdQuestions = questions.filter(q => q.questionType === 'ICD-10');
+  const hcpcsQuestions = questions.filter(q => q.questionType === 'HCPCS');
+  const generalQuestions = questions.filter(q => q.questionType === 'GENERAL');
+
+  console.log(`CPT Questions (${cptQuestions.length}):`);
+  cptQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
+
+  console.log(`\nICD-10 Questions (${icdQuestions.length}):`);
+  icdQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
+
+  console.log(`\nHCPCS Questions (${hcpcsQuestions.length}):`);
+  hcpcsQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
+
+  console.log(`\nGeneral Questions (${generalQuestions.length}):`);
+  generalQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
+}
+
+async function savePerformanceLog(performanceLog: PerformanceLog): Promise<void> {
+  console.log("💾 Saving performance log...");
+
+  // Save current performance log
+  await fs.writeJSON(PERFORMANCE_LOG_JSON, performanceLog, { spaces: 2 });
+  console.log(`✅ Performance log saved to: ${PERFORMANCE_LOG_JSON}`);
+
+  // Update performance history
+  try {
+    let history: PerformanceLog[] = [];
+
+    // Check if history file exists
+    if (await fs.pathExists(PERFORMANCE_HISTORY_JSON)) {
+      history = await fs.readJSON(PERFORMANCE_HISTORY_JSON);
+    }
+
+    // Add current log to history
+    history.push(performanceLog);
+
+    // Save updated history
+    await fs.writeJSON(PERFORMANCE_HISTORY_JSON, history, { spaces: 2 });
+    console.log(`✅ Performance history updated in: ${PERFORMANCE_HISTORY_JSON}`);
+
+  } catch (error) {
+    console.error("❌ Error updating performance history:", error);
+  }
+}
+
+async function generatePerformanceLog(questions: Question[]): Promise<PerformanceLog> {
+  console.log("📊 Generating performance log...");
+
+  // Initialize counters
+  const summary = {
+    totalQuestions: questions.length,
+    correctAnswers: questions.filter(q => q.isCorrect).length,
+    byQuestionType: {
+      CPT: { total: 0, correct: 0, percentage: 0 },
+      'ICD-10': { total: 0, correct: 0, percentage: 0 },
+      HCPCS: { total: 0, correct: 0, percentage: 0 },
+      GENERAL: { total: 0, correct: 0, percentage: 0 }
+    },
+    byModel: {} as { [modelName: string]: { total: number; correct: number; percentage: number } }
+  };
+
+  // Initialize questions object
+  const questionsLog: { [questionId: string]: any } = {};
+
+  // Process each question
+  for (const q of questions) {
+    const questionType = q.questionType || 'GENERAL';
+    const modelUsed = q.modelUsed || 'unknown';
+
+    // Add to question type stats
+    summary.byQuestionType[questionType].total++;
+    if (q.isCorrect) {
+      summary.byQuestionType[questionType].correct++;
+    }
+
+    // Initialize model stats if needed
+    if (!summary.byModel[modelUsed]) {
+      summary.byModel[modelUsed] = { total: 0, correct: 0, percentage: 0 };
+    }
+
+    // Add to model stats
+    summary.byModel[modelUsed].total++;
+    if (q.isCorrect) {
+      summary.byModel[modelUsed].correct++;
+    }
+
+    // Add question details to log
+    questionsLog[q.number.toString()] = {
+      questionType,
+      modelUsed,
+      isCorrect: q.isCorrect || false,
+      confidence: q.confidence || 0,
+      initialAnswer: q.myAnswer,
+      verifiedAnswer: q.verifiedAnswer,
+      correctAnswer: q.correctAnswer
+    };
+  }
+
+  // Calculate percentages
+  for (const type in summary.byQuestionType) {
+    const stats = summary.byQuestionType[type as keyof typeof summary.byQuestionType];
+    stats.percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+  }
+
+  for (const model in summary.byModel) {
+    const stats = summary.byModel[model];
+    stats.percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+  }
+
+  // Create the log object
+  const performanceLog: PerformanceLog = {
+    timestamp: new Date().toISOString(),
+    questions: questionsLog,
+    summary
+  };
+
+  return performanceLog;
+}
 async function compareNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
   console.log("📊 Comparing final answers with answer key...");
 
   try {
+    let testResults: TestResults;
+
     // First check if answer_key.json exists
     if (await fs.pathExists(ANSWER_KEY_JSON)) {
       console.log(`✅ Found ${ANSWER_KEY_JSON}! Loading answer key from JSON file...`);
@@ -1480,7 +1676,7 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
       const challengedCount = state.verifiedQuestions.filter(q => q.reasoning?.includes("Perplexity challenge")).length;
       const perplexityCount = state.verifiedQuestions.filter(q => q.perplexityAnswer).length;
 
-      const testResults: TestResults = {
+      testResults = {
         totalQuestions: totalCount,
         correctAnswers: correctCount,
         incorrectAnswers: totalCount - correctCount,
@@ -1492,24 +1688,47 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
       };
 
       console.log(`✅ Comparison complete: ${correctCount}/${totalCount} (${percentage}%)`);
-      return { testResults: testResults };
+    } else {
+      // If JSON file doesn't exist, fall back to PDF processing
+      console.log(`⚠️ ${ANSWER_KEY_JSON} not found. Falling back to PDF processing...`);
+      const answerKeyContent = await processPdf(ANSWERS_PDF);
+      testResults = await compareWithAnswerKey(state.verifiedQuestions, answerKeyContent);
+
+      // Save the answer key to JSON for future use
+      console.log(`💾 Saving answer key to ${ANSWER_KEY_JSON} for future use...`);
+      const answerKeyData = testResults.details.map(item => ({
+        number: item.number,
+        answer: item.correctAnswer
+      }));
+      await fs.writeJSON(ANSWER_KEY_JSON, answerKeyData, { spaces: 2 });
+      console.log(`✅ Saved answer key to JSON file`);
     }
 
-    // If JSON file doesn't exist, fall back to PDF processing
-    console.log(`⚠️ ${ANSWER_KEY_JSON} not found. Falling back to PDF processing...`);
-    const answerKeyContent = await processPdf(ANSWERS_PDF);
-    const results = await compareWithAnswerKey(state.verifiedQuestions, answerKeyContent);
+    // Update questions with correctness information
+    const updatedQuestions = state.verifiedQuestions.map(q => {
+      const resultItem = testResults.details.find((r: any) => r.number === q.number);
+      if (resultItem) {
+        return {
+          ...q,
+          correctAnswer: resultItem.correctAnswer,
+          isCorrect: resultItem.isCorrect
+        };
+      }
+      return q;
+    });
 
-    // Save the answer key to JSON for future use
-    console.log(`💾 Saving answer key to ${ANSWER_KEY_JSON} for future use...`);
-    const answerKeyData = results.details.map(item => ({
-      number: item.number,
-      answer: item.correctAnswer
-    }));
-    await fs.writeJSON(ANSWER_KEY_JSON, answerKeyData, { spaces: 2 });
-    console.log(`✅ Saved answer key to JSON file`);
+    // Generate and save performance log
+    const performanceLog = await generatePerformanceLog(updatedQuestions);
+    await savePerformanceLog(performanceLog);
 
-    return { testResults: results };
+    // Print questions by type
+    await printQuestionsByType(updatedQuestions);
+
+    return {
+      testResults: testResults,
+      verifiedQuestions: updatedQuestions
+    };
+
   } catch (error) {
     console.error("❌ Error in compareNode:", error);
     throw error;
@@ -1533,9 +1752,9 @@ const app = workflow.compile();
 
 async function startCLI() {
   console.log("🏥 Advanced Medical Coding Test Assistant!");
-  console.log("Features: GPT-4o + Perplexity Verification + Research-Based Devil's Advocate");
+  console.log("Features: LocalLLM or OpenAI API + Verification + Research-Based Devil's Advocate");
   console.log(`Files: ${TEST_PDF} → ${OUTPUT_FILE} ← ${ANSWERS_PDF}`);
-  console.log("Commands: /run [number], /status, quit\n");
+  console.log("Commands: /run [number], /status, /print-by-type, /performance, quit\n");
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -1591,6 +1810,39 @@ async function startCLI() {
         console.log(`Questions answered: ${state.answeredQuestions.length}`);
         console.log(`Questions verified: ${state.verifiedQuestions.length}`);
         console.log(`Test results: ${state.testResults ? `${state.testResults.percentage}%` : 'Not available'}\n`);
+      }
+      else if (input === '/print-by-type') {
+        if (state.extractedQuestions.length > 0) {
+          await printQuestionsByType(state.extractedQuestions);
+        } else {
+          console.log("❌ No questions extracted yet. Run /run first.");
+        }
+      }
+      else if (input === '/performance') {
+        try {
+          if (await fs.pathExists(PERFORMANCE_LOG_JSON)) {
+            const log = await fs.readJSON(PERFORMANCE_LOG_JSON);
+            console.log("\n📊 Performance Summary:");
+            console.log(`Total Questions: ${log.summary.totalQuestions}`);
+            console.log(`Correct Answers: ${log.summary.correctAnswers} (${Math.round((log.summary.correctAnswers / log.summary.totalQuestions) * 100)}%)`);
+
+            console.log("\nPerformance by Question Type:");
+            for (const type in log.summary.byQuestionType) {
+              const stats = log.summary.byQuestionType[type as keyof typeof log.summary.byQuestionType];
+              console.log(`  ${type}: ${stats.correct}/${stats.total} (${stats.percentage}%)`);
+            }
+
+            console.log("\nPerformance by Model:");
+            for (const model in log.summary.byModel) {
+              const stats = log.summary.byModel[model];
+              console.log(`  ${model}: ${stats.correct}/${stats.total} (${stats.percentage}%)`);
+            }
+          } else {
+            console.log("❌ No performance log found. Run a test first.");
+          }
+        } catch (error) {
+          console.error("❌ Error reading performance log:", error);
+        }
       }
       else {
         console.log("Commands: /run (start test), /status (check progress)\n");

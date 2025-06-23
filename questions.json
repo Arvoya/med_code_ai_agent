@@ -1,0 +1,1002 @@
+[
+  {
+    "number": 1,
+    "text": "During a regular checkup, Dr. Stevens discovered a suspicious lesion on the floor of Paul's mouth and decided to perform an excision. Which CPT code covers the excision of an oral lesion?",
+    "options": [
+      "A. 40800",
+      "B. 41105",
+      "C. 41113",
+      "D. 40804"
+    ]
+  },
+  {
+    "number": 2,
+    "text": "While shaving, Robert accidentally caused a small cut on his chin that later became infected. He visited a healthcare provider who incised and drained the infected area. Which CPT code covers the incision and drainage of an infected cut?",
+    "options": [
+      "A. 10080",
+      "B. 10021",
+      "C. 10060",
+      "D. 10160"
+    ]
+  },
+  {
+    "number": 3,
+    "text": "Lucas, a professional swimmer, developed a cyst in his arm due to repetitive motion. The doctor decided to excise the cyst. Which CPT code represents the excision of a cyst?",
+    "options": [
+      "A. 20005",
+      "B. 20055",
+      "C. 20010",
+      "D. 20020"
+    ]
+  },
+  {
+    "number": 4,
+    "text": "Ella's doctor suspected she might have diabetes. He ordered a Hemoglobin A1c test to assess her average blood sugar levels over the past three months. Which CPT code represents the Hemoglobin A1c test?",
+    "options": [
+      "A. 83036",
+      "B. 83033",
+      "C. 83035",
+      "D. 83034"
+    ]
+  },
+  {
+    "number": 5,
+    "text": "Riley had an overactive thyroid and was recommended for a thyroid lobectomy. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 60210",
+      "B. 60212",
+      "C. 60220",
+      "D. 60225"
+    ]
+  },
+  {
+    "number": 6,
+    "text": "After a series of tests, Dr. Wright determined that Katie had a kidney stone and recommended a percutaneous nephrostolithotomy. Which CPT code corresponds to this procedure?",
+    "options": [
+      "A. 50010",
+      "B. 50020",
+      "C. 50200",
+      "D. 50543"
+    ]
+  },
+  {
+    "number": 7,
+    "text": "Ethan, experiencing persistent flank pain, underwent a diagnostic renal angiography. Which CPT code represents this procedure?",
+    "options": [
+      "A. 50010",
+      "B. 50220",
+      "C. 50200",
+      "D. 50398"
+    ]
+  },
+  {
+    "number": 8,
+    "text": "The Relative Value Unit (RVU) associated with a CPT code reflects:",
+    "options": [
+      "A. The complexity of the procedure",
+      "B. The average time a procedure takes",
+      "C. The cost associated with performing the procedure",
+      "D. All of the above"
+    ]
+  },
+  {
+    "number": 9,
+    "text": "What does the term 'bradycardia' refer to?",
+    "options": [
+      "A. Fast heartbeat",
+      "B. Slow heartbeat",
+      "C. Irregular heartbeat",
+      "D. Strong heartbeat"
+    ]
+  },
+  {
+    "number": 10,
+    "text": "After weeks of sinus congestion, Olivia saw an ENT specialist. The doctor decided to perform a nasal endoscopy. Which CPT code describes this procedure?",
+    "options": [
+      "A. 30000",
+      "B. 30140",
+      "C. 31231",
+      "D. 31237"
+    ]
+  },
+  {
+    "number": 11,
+    "text": "During her yoga class, Claire felt a sharp pain in her thigh. The doctor diagnosed her with a seroma that needed drainage. Which CPT code should be used for the drainage of a seroma?",
+    "options": [
+      "A. 20005",
+      "B. 20055",
+      "C. 20010",
+      "D. 20016"
+    ]
+  },
+  {
+    "number": 12,
+    "text": "Jackson has been feeling pain and pressure in his sinuses. The ENT decided to perform a sinusotomy to improve drainage. Which CPT code represents this procedure?",
+    "options": [
+      "A. 31020",
+      "B. 31256",
+      "C. 31287",
+      "D. 31288"
+    ]
+  },
+  {
+    "number": 13,
+    "text": "During a routine check-up, Mark was diagnosed with essential (primary) hypertension. Which ICD-10-CM code represents this condition?",
+    "options": [
+      "A. I10",
+      "B. I11.9",
+      "C. I12.9",
+      "D. I13.10"
+    ]
+  },
+  {
+    "number": 14,
+    "text": "After tests indicated abnormal parathyroid function, Natalie underwent a parathyroidectomy. Which CPT code represents this procedure?",
+    "options": [
+      "A. 60212",
+      "B. 60240",
+      "C. 60100",
+      "D. 60500"
+    ]
+  },
+  {
+    "number": 15,
+    "text": "David uses a manual wheelchair due to his mobility limitations. Which HCPCS Level II code pertains to a standard manual wheelchair?",
+    "options": [
+      "A. K0001",
+      "B. K0002",
+      "C. K0003",
+      "D. K0004"
+    ]
+  },
+  {
+    "number": 16,
+    "text": "After a fall, Clara's primary care doctor ordered an X-ray of her wrist. The radiologist took three views of her wrist. Which CPT code pertains to this X-ray?",
+    "options": [
+      "A. 73110",
+      "B. 73100",
+      "C. 73120",
+      "D. 73115"
+    ]
+  },
+  {
+    "number": 17,
+    "text": "While eating popcorn, Mike felt a sharp pain and found he had bitten the inside of his cheek, causing a mucocele. His dentist performed a removal of the mucocele. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 40804",
+      "B. 40812",
+      "C. 41108",
+      "D. 40819"
+    ]
+  },
+  {
+    "number": 18,
+    "text": "During a routine check-up, Brian was diagnosed with benign essential hypertension. What ICD-10-CM code should be used for this diagnosis?",
+    "options": [
+      "A. I10",
+      "B. I15.0",
+      "C. I15.1",
+      "D. I15.2"
+    ]
+  },
+  {
+    "number": 19,
+    "text": "Megan had been facing difficulty urinating. Her urologist performed a cystourethroscopy to diagnose the issue. Which CPT code describes this procedure?",
+    "options": [
+      "A. 52000",
+      "B. 50250",
+      "C. 50200",
+      "D. 50395"
+    ]
+  },
+  {
+    "number": 20,
+    "text": "Ryan has had chronic sinusitis for months. The doctor advised functional endoscopic sinus surgery (FESS) to clear the blockages. Which CPT code should be used for this procedure?",
+    "options": [
+      "A. 31255",
+      "B. 31256",
+      "C. 31267",
+      "D. 31276"
+    ]
+  },
+  {
+    "number": 21,
+    "text": "Which part of the brain is responsible for regulating vital functions like heartbeat and breathing?",
+    "options": [
+      "A. Cerebellum",
+      "B. Medulla Oblongata",
+      "C. Cerebrum",
+      "D. Pons"
+    ]
+  },
+  {
+    "number": 22,
+    "text": "After a trip to a tropical country, Jessica was diagnosed with Dengue fever without warning signs. Which ICD-10-CM code represents this diagnosis?",
+    "options": [
+      "A. A90",
+      "B. A91",
+      "C. A92.0",
+      "D. A92.8"
+    ]
+  },
+  {
+    "number": 23,
+    "text": "After a car accident, Liam required a retrograde pyelography to assess kidney damage. Which CPT code should be used for this procedure?",
+    "options": [
+      "A. 50320",
+      "B. 50430",
+      "C. 50200",
+      "D. 50390"
+    ]
+  },
+  {
+    "number": 24,
+    "text": "Olivia went to the pediatrician for her annual checkup. The doctor conducted a comprehensive review covering her past, family, and social history. Which CPT code represents this level of history-taking?",
+    "options": [
+      "A. 99391",
+      "B. 99382",
+      "C. 99392",
+      "D. 99381"
+    ]
+  },
+  {
+    "number": 25,
+    "text": "During his physical therapy, John was provided with a therapeutic elastic band. Which HCPCS Level II code represents the supply of this band?",
+    "options": [
+      "A. A4450",
+      "B. A4465",
+      "C. A4466",
+      "D. A4470"
+    ]
+  },
+  {
+    "number": 26,
+    "text": "Dr. Lewis suspected a liver issue with Lily and ordered a comprehensive metabolic panel. Which CPT code is for a comprehensive metabolic panel?",
+    "options": [
+      "A. 80053",
+      "B. 80051",
+      "C. 80050",
+      "D. 80055"
+    ]
+  },
+  {
+    "number": 27,
+    "text": "The heart is enclosed in a double-layered sac called the:",
+    "options": [
+      "A. Pericardium",
+      "B. Myocardium",
+      "C. Endocardium",
+      "D. Epicardium"
+    ]
+  },
+  {
+    "number": 28,
+    "text": "'Osteoporosis' describes a condition where:",
+    "options": [
+      "A. Bones become soft and bendable",
+      "B. Bone density is increased",
+      "C. Bones are broken easily",
+      "D. Bones become brittle and fragile due to loss of tissue"
+    ]
+  },
+  {
+    "number": 29,
+    "text": "Leo had been experiencing difficulty breathing and went to a clinic. The doctor performed a procedure to remove nasal polyps. Which CPT code corresponds to this procedure?",
+    "options": [
+      "A. 30110",
+      "B. 30140",
+      "C. 30220",
+      "D. 31237"
+    ]
+  },
+  {
+    "number": 30,
+    "text": "For his severe back pain, Dr. Simmons administers an epidural injection to Mike. Which HCPCS Level II code corresponds to the supply of the injection?",
+    "options": [
+      "A. J1020",
+      "B. J1030",
+      "C. J1040",
+      "D. J1050"
+    ]
+  },
+  {
+    "number": 31,
+    "text": "Experiencing persistent headaches, Daniel was sent for an MRI of his brain. Which CPT code covers an MRI of the brain without contrast?",
+    "options": [
+      "A. 70551",
+      "B. 70553",
+      "C. 70549",
+      "D. 70550"
+    ]
+  },
+  {
+    "number": 32,
+    "text": "Dr. Johnson saw Sarah in the ER after she experienced a severe asthma attack. After stabilization, he conducted a comprehensive review of her systems and medical history. Which CPT code represents this level of history-taking?",
+    "options": [
+      "A. 99221",
+      "B. 99218",
+      "C. 99223",
+      "D. 99220"
+    ]
+  },
+  {
+    "number": 33,
+    "text": "Ella went to the doctor after experiencing pain from a swollen salivary gland. The doctor performed a sialolithotomy. Which CPT code represents this procedure?",
+    "options": [
+      "A. 40810",
+      "B. 40812",
+      "C. 40819",
+      "D. 40820"
+    ]
+  },
+  {
+    "number": 34,
+    "text": "During a follow-up visit, Dr. Allen asked Emily about the progress of her symptoms, her current medications, and performed a limited examination. Which CPT code represents this level of service?",
+    "options": [
+      "A. 99212",
+      "B. 99214",
+      "C. 99213",
+      "D. 99215"
+    ]
+  },
+  {
+    "number": 35,
+    "text": "In medical terminology, the prefix 'osteo-' relates to which of the following?",
+    "options": [
+      "A. Bone",
+      "B. Heart",
+      "C. Liver",
+      "D. Brain"
+    ]
+  },
+  {
+    "number": 36,
+    "text": "Lucas went to the hospital after noticing blood in his urine. The doctor performed a renal biopsy. Which CPT code represents this procedure?",
+    "options": [
+      "A. 50200",
+      "B. 50220",
+      "C. 50225",
+      "D. 50230"
+    ]
+  },
+  {
+    "number": 37,
+    "text": "Ryan had been experiencing chronic chest pain. During a diagnostic procedure, the anesthesiologist administered anesthesia to keep him comfortable. Which CPT code represents anesthesia for intrathoracic procedures?",
+    "options": [
+      "A. 00520",
+      "B. 00522",
+      "C. 00524",
+      "D. 00526"
+    ]
+  },
+  {
+    "number": 38,
+    "text": "While hiking, Alex slipped on a rock and hurt his ankle. At the hospital, they discovered a hematoma that needed to be incised and drained. Which CPT code represents this procedure?",
+    "options": [
+      "A. 20005",
+      "B. 20055",
+      "C. 20000",
+      "D. 20025"
+    ]
+  },
+  {
+    "number": 39,
+    "text": "Bianca visited an oral surgeon due to a cyst under her tongue. The surgeon decided to perform a marsupialization of the ranula. Which CPT code is appropriate for this procedure?",
+    "options": [
+      "A. 40800",
+      "B. 41115",
+      "C. 40801",
+      "D. 40806"
+    ]
+  },
+  {
+    "number": 40,
+    "text": "Sarah uses a continuous positive airway pressure (CPAP) device for her sleep apnea. Which HCPCS Level II code pertains to the CPAP device?",
+    "options": [
+      "A. E0601",
+      "B. E0621",
+      "C. E0631",
+      "D. E0650"
+    ]
+  },
+  {
+    "number": 41,
+    "text": "During a hernia repair, Dr. Stevens administered anesthesia to ensure Michael was comfortable and pain-free. Which CPT code represents anesthesia for an inguinal hernia repair?",
+    "options": [
+      "A. 00102",
+      "B. 00144",
+      "C. 00145",
+      "D. 00148"
+    ]
+  },
+  {
+    "number": 42,
+    "text": "Sophie, pregnant with her first child, went for an ultrasound in her second trimester. Which CPT code is appropriate for a routine obstetric ultrasound of a fetus?",
+    "options": [
+      "A. 76805",
+      "B. 76810",
+      "C. 76815",
+      "D. 76816"
+    ]
+  },
+  {
+    "number": 43,
+    "text": "Sophie, after a minor car accident, had a nosebleed that wouldn't stop. The ER doctor performed a nasal endoscopy to control the posterior nosebleed. Which CPT code is appropriate for this procedure?",
+    "options": [
+      "A. 30000",
+      "B. 31255",
+      "C. 31231",
+      "D. 30903"
+    ]
+  },
+  {
+    "number": 44,
+    "text": "Ryan had been experiencing chronic chest pain. His cardiologist ordered a chest CT scan with contrast. Which CPT code represents a CT of the chest with contrast?",
+    "options": [
+      "A. 71250",
+      "B. 71260",
+      "C. 71270",
+      "D. 71275"
+    ]
+  },
+  {
+    "number": 45,
+    "text": "Nina, who had been dealing with depression, visited a psychiatrist who prescribed her a 30-minute psychotherapy session. Which CPT code is appropriate for individual psychotherapy for 30 minutes?",
+    "options": [
+      "A. 90832",
+      "B. 90834",
+      "C. 90837",
+      "D. 90839"
+    ]
+  },
+  {
+    "number": 46,
+    "text": "Tom was diagnosed with bilateral primary osteoarthritis of the knee. Which ICD-10-CM code is suitable for this diagnosis?",
+    "options": [
+      "A. M17.0",
+      "B. M17.1",
+      "C. M17.2",
+      "D. M17.3"
+    ]
+  },
+  {
+    "number": 47,
+    "text": "Samantha was diagnosed with acute sinusitis due to Streptococcus pneumoniae. What ICD-10-CM code corresponds to her condition?",
+    "options": [
+      "A. J01.00",
+      "B. J01.10",
+      "C. J01.01",
+      "D. J01.11"
+    ]
+  },
+  {
+    "number": 48,
+    "text": "Dr. Parker recommended a colonoscopy for Maria due to her family history of colorectal cancer. Which CPT code represents a diagnostic colonoscopy?",
+    "options": [
+      "A. 45378",
+      "B. 45379",
+      "C. 45380",
+      "D. 45381"
+    ]
+  },
+  {
+    "number": 49,
+    "text": "Lena, a 28-year-old, was diagnosed with a mild form of endometriosis. Which ICD-10-CM code corresponds to her diagnosis?",
+    "options": [
+      "A. N80.0",
+      "B. N80.1",
+      "C. N80.2",
+      "D. N80.3"
+    ]
+  },
+  {
+    "number": 50,
+    "text": "Leo visited a cardiologist due to chest pain. The doctor took an extended history, reviewed multiple systems, and performed a detailed examination. Which CPT code represents this level of service?",
+    "options": [
+      "A. 99221",
+      "B. 99222",
+      "C. 99223",
+      "D. 99220"
+    ]
+  },
+  {
+    "number": 51,
+    "text": "Robert visited an ophthalmologist after experiencing blurry vision. After examination, the doctor diagnosed him with cataracts. Which CPT code corresponds to a cataract removal with intraocular lens insertion?",
+    "options": [
+      "A. 66982",
+      "B. 66984",
+      "C. 66983",
+      "D. 66985"
+    ]
+  },
+  {
+    "number": 52,
+    "text": "The largest bone in the human body is the:",
+    "options": [
+      "A. Humerus",
+      "B. Femur",
+      "C. Tibia",
+      "D. Fibula"
+    ]
+  },
+  {
+    "number": 53,
+    "text": "Which organ is responsible for producing insulin?",
+    "options": [
+      "A. Pancreas",
+      "B. Liver",
+      "C. Kidney",
+      "D. Spleen"
+    ]
+  },
+  {
+    "number": 54,
+    "text": "With symptoms of anemia, Riley's doctor ordered a complete blood count with differential. Which CPT code pertains to this test?",
+    "options": [
+      "A. 85027",
+      "B. 85025",
+      "C. 85029",
+      "D. 85023"
+    ]
+  },
+  {
+    "number": 55,
+    "text": "Sophie, pregnant with her first child, went for an ultrasound in her second trimester. The anesthesiologist administered anesthesia to keep her comfortable during the procedure. Which CPT code represents anesthesia for a routine obstetric ultrasound?",
+    "options": [
+      "A. 00860",
+      "B. 00864",
+      "C. 00862",
+      "D. 00868"
+    ]
+  },
+  {
+    "number": 56,
+    "text": "Which U.S. federal regulation protects the privacy and security of patients' medical information?",
+    "options": [
+      "A. Affordable Care Act (ACA)",
+      "B. Clinical Laboratory Improvement Amendments (CLIA)",
+      "C. Health Information Technology for Economic and Clinical Health (HITECH) Act",
+      "D. Health Insurance Portability and Accountability Act (HIPAA)"
+    ]
+  },
+  {
+    "number": 57,
+    "text": "After her morning run, Maria noticed a painful abscess on her thigh. She immediately went to the clinic, where the doctor performed an incision and drainage. Which CPT code represents the incision and drainage of an abscess?",
+    "options": [
+      "A. 10080",
+      "B. 10021",
+      "C. 10060",
+      "D. 10160"
+    ]
+  },
+  {
+    "number": 58,
+    "text": "James had difficulty breathing and underwent a pulmonary function test to assess his lung function. Which CPT code represents a simple pulmonary function test?",
+    "options": [
+      "A. 94010",
+      "B. 94060",
+      "C. 94070",
+      "D. 94015"
+    ]
+  },
+  {
+    "number": 59,
+    "text": "After a minor car accident, Emma was taken to the emergency room. They found a hematoma in her shoulder that needed incision and drainage. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 20005",
+      "B. 20010",
+      "C. 20016",
+      "D. 20100"
+    ]
+  },
+  {
+    "number": 60,
+    "text": "For outpatient coding, when coding for a condition that is both acute and chronic and separate subentries exist in the alphabetic index, which code should be sequenced first?",
+    "options": [
+      "A. Acute",
+      "B. Chronic",
+      "C. Either - based on the severity",
+      "D. The condition that is being treated during the visit"
+    ]
+  },
+  {
+    "number": 61,
+    "text": "Alex was diagnosed with type 1 diabetes mellitus without complications. Which ICD-10-CM code represents this diagnosis?",
+    "options": [
+      "A. E10.9",
+      "B. E11.9",
+      "C. E13.9",
+      "D. E08.9"
+    ]
+  },
+  {
+    "number": 62,
+    "text": "John, an avid gardener, discovered a wart on his finger. Concerned about its appearance, he consulted a physician who recommended its removal. Which CPT code covers the excision of a wart?",
+    "options": [
+      "A. 10021",
+      "B. 10040",
+      "C. 10060",
+      "D. 10120"
+    ]
+  },
+  {
+    "number": 63,
+    "text": "According to CPT guidelines, if a code exists that describes a certain service or procedure, you should:",
+    "options": [
+      "A. Use a similar code that might fit",
+      "B. Use the exact code describing the service",
+      "C. Use an unspecified code",
+      "D. Use any code as long as it's from the correct section"
+    ]
+  },
+  {
+    "number": 64,
+    "text": "Dr. Lewis found a nodule in Chloe's thyroid and decided to perform a core needle biopsy. Which CPT code covers this procedure?",
+    "options": [
+      "A. 60100",
+      "B. 60240",
+      "C. 60271",
+      "D. 60101"
+    ]
+  },
+  {
+    "number": 65,
+    "text": "Grace required a knee replacement. The anesthesiologist administered anesthesia specific to the lower leg procedure. Which CPT code is suitable for anesthesia during a knee replacement?",
+    "options": [
+      "A. 01402",
+      "B. 01400",
+      "C. 01404",
+      "D. 01406"
+    ]
+  },
+  {
+    "number": 66,
+    "text": "During a routine checkup, a physician noticed a suspicious lesion on Peter's back. To ensure it was benign, the doctor performed a punch biopsy. Which CPT code is appropriate for a punch biopsy of the skin?",
+    "options": [
+      "A. 10040",
+      "B. 10005",
+      "C. 11104",
+      "D. 11100"
+    ]
+  },
+  {
+    "number": 67,
+    "text": "Elena visited the ER with a severe migraine without aura, not intractable. What ICD-10-CM code corresponds to her condition?",
+    "options": [
+      "A. G43.009",
+      "B. G43.109",
+      "C. G43.209",
+      "D. G43.309"
+    ]
+  },
+  {
+    "number": 68,
+    "text": "Michael had always had a large mole on his arm. However, recently he observed changes in its appearance. On the advice of his friend, he visited a dermatologist who biopsied the mole. Which CPT code pertains to the biopsy of a lesion?",
+    "options": [
+      "A. 10040",
+      "B. 10005",
+      "C. 10060",
+      "D. 11100"
+    ]
+  },
+  {
+    "number": 69,
+    "text": "What is the purpose of the National Correct Coding Initiative (NCCI)?",
+    "options": [
+      "A. Ensure appropriate coding based on the medical record",
+      "B. Prevent improper payment of procedures that should not be billed together",
+      "C. Assign specific dollar amounts to procedures",
+      "D. Monitor fraudulent billing practices across states"
+    ]
+  },
+  {
+    "number": 70,
+    "text": "Peter visited a dermatologist for a persistent rash. The doctor diagnosed him with atopic dermatitis of the hands. What ICD-10-CM code represents this diagnosis?",
+    "options": [
+      "A. L20.81",
+      "B. L20.82",
+      "C. L20.83",
+      "D. L20.84"
+    ]
+  },
+  {
+    "number": 71,
+    "text": "Sophia went to a dermatologist for a facial consultation. The doctor noticed a milia near her eye and removed it. Which CPT code represents the removal of milia?",
+    "options": [
+      "A. 10021",
+      "B. 10030",
+      "C. 10040",
+      "D. 10120"
+    ]
+  },
+  {
+    "number": 72,
+    "text": "Owen was diagnosed with thyroid cancer. His oncologist recommended a total thyroidectomy. Which CPT code should be used for this procedure?",
+    "options": [
+      "A. 60212",
+      "B. 60240",
+      "C. 60100",
+      "D. 60252"
+    ]
+  },
+  {
+    "number": 73,
+    "text": "According to the ICD-10-CM guidelines, when a patient has both an acute and chronic condition, which one should be sequenced first?",
+    "options": [
+      "A. Acute condition",
+      "B. Chronic condition",
+      "C. Either - based on the severity",
+      "D. The condition that is being treated during the visit"
+    ]
+  },
+  {
+    "number": 74,
+    "text": "The term 'hepatomegaly' refers to:",
+    "options": [
+      "A. Inflammation of the liver",
+      "B. Enlargement of the liver",
+      "C. Disease of the liver",
+      "D. Absence of the liver"
+    ]
+  },
+  {
+    "number": 75,
+    "text": "Jake came to the clinic for a routine checkup. The doctor asked him basic questions about his current health without going into a detailed history or review of systems. What CPT code represents this level of history-taking?",
+    "options": [
+      "A. 99201",
+      "B. 99212",
+      "C. 99203",
+      "D. 99204"
+    ]
+  },
+  {
+    "number": 76,
+    "text": "During her beach vacation, Lisa noticed a skin tag on her neck. Wanting to wear her new necklace without any obstructions, she decided to visit a dermatologist to have it removed. Which CPT code represents the removal of a skin tag?",
+    "options": [
+      "A. 10021",
+      "B. 10030",
+      "C. 10060",
+      "D. 11200"
+    ]
+  },
+  {
+    "number": 77,
+    "text": "Ava was having persistent nosebleeds. The ENT decided to cauterize the bleeding vessel in her nasal cavity. Which CPT code describes this procedure?",
+    "options": [
+      "A. 30000",
+      "B. 30901",
+      "C. 31231",
+      "D. 31237"
+    ]
+  },
+  {
+    "number": 78,
+    "text": "During a dental cleaning, Dr. Adams noticed a white patch inside Hannah's mouth. She suggested a biopsy of the oral mucosa. Which CPT code covers a biopsy of the oral mucosa?",
+    "options": [
+      "A. 40000",
+      "B. 41105",
+      "C. 40100",
+      "D. 40804"
+    ]
+  },
+  {
+    "number": 79,
+    "text": "After experiencing rapid heartbeats, Karen underwent an electrophysiology study. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 93619",
+      "B. 93620",
+      "C. 93621",
+      "D. 93622"
+    ]
+  },
+  {
+    "number": 80,
+    "text": "While gardening, Chloe got a thorn embedded in her hand. She went to a healthcare provider who removed the foreign body. Which CPT code covers the removal of a foreign body from soft tissue?",
+    "options": [
+      "A. 20005",
+      "B. 20055",
+      "C. 20010",
+      "D. 10120"
+    ]
+  },
+  {
+    "number": 81,
+    "text": "During a football match, Ethan had a collision and developed a hematoma in his upper arm. The doctor performed an incision to drain it. Which CPT code is appropriate for this procedure?",
+    "options": [
+      "A. 20005",
+      "B. 20002",
+      "C. 20010",
+      "D. 20100"
+    ]
+  },
+  {
+    "number": 82,
+    "text": "The term 'hyperglycemia' means:",
+    "options": [
+      "A. Low blood sugar level",
+      "B. Normal blood sugar level",
+      "C. High blood sugar level",
+      "D. Blood without sugar"
+    ]
+  },
+  {
+    "number": 83,
+    "text": "Julie was diagnosed with iron-deficiency anemia secondary to chronic blood loss. Which ICD-10-CM code is appropriate for this diagnosis?",
+    "options": [
+      "A. D50.0",
+      "B. D50.1",
+      "C. D50.8",
+      "D. D50.9"
+    ]
+  },
+  {
+    "number": 84,
+    "text": "Nathan visited the clinic with flu-like symptoms. The doctor took a brief history, focusing mainly on the respiratory system. Which CPT code represents this level of history-taking?",
+    "options": [
+      "A. 99201",
+      "B. 99202",
+      "C. 99203",
+      "D. 99204"
+    ]
+  },
+  {
+    "number": 85,
+    "text": "Dr. Harris diagnosed Grace with hyperthyroidism and recommended a partial thyroidectomy. Which CPT code describes this procedure?",
+    "options": [
+      "A. 60210",
+      "B. 60212",
+      "C. 60100",
+      "D. 60225"
+    ]
+  },
+  {
+    "number": 86,
+    "text": "According to Medicare, the 'Three-Day Payment Window Rule' refers to:",
+    "options": [
+      "A. The timeframe in which a patient must pay their bill",
+      "B. Services provided to a patient 3 days prior to their inpatient admission",
+      "C. The timeframe in which Medicare must process a claim",
+      "D. The period within which a patient can dispute a charge"
+    ]
+  },
+  {
+    "number": 87,
+    "text": "In ICD-10-CM, how should unspecified codes be utilized?",
+    "options": [
+      "A. Frequently; as they are easy to use",
+      "B. Only when the documentation doesn't provide more specific information",
+      "C. When the coder is unsure about the specifics of the condition",
+      "D. In any situation where a quick code is needed"
+    ]
+  },
+  {
+    "number": 88,
+    "text": "Sophia had recurrent UTIs. To determine the cause, her physician performed a cystography. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 50395",
+      "B. 50250",
+      "C. 50200",
+      "D. 51600"
+    ]
+  },
+  {
+    "number": 89,
+    "text": "In CPT coding, what does a modifier -25 indicate?",
+    "options": [
+      "A. Repeat procedure by the same physician",
+      "B. Bilateral procedure",
+      "C. Multiple procedures",
+      "D. Significant and separately identifiable evaluation and management service by the same physician on the same day of the procedure"
+    ]
+  },
+  {
+    "number": 90,
+    "text": "What does the term 'cardiomyopathy' refer to?",
+    "options": [
+      "A. Inflammation of the heart muscle",
+      "B. Enlargement of the heart",
+      "C. Disease of the heart muscle",
+      "D. Blockage in the heart's arteries"
+    ]
+  },
+  {
+    "number": 91,
+    "text": "James noticed a lump in his armpit and visited a physician who diagnosed it as an abscess. The doctor performed an incision and drainage. Which CPT code corresponds to this procedure?",
+    "options": [
+      "A. 20002",
+      "B. 20060",
+      "C. 20000",
+      "D. 20005"
+    ]
+  },
+  {
+    "number": 92,
+    "text": "George received an infusion of Remicade for his Crohn's disease. What HCPCS Level II code corresponds to the Remicade infusion?",
+    "options": [
+      "A. J1745",
+      "B. J1750",
+      "C. J1756",
+      "D. J1760"
+    ]
+  },
+  {
+    "number": 93,
+    "text": "When it comes to Medicare fraud and abuse, what does 'upcoding' refer to?",
+    "options": [
+      "A. Billing for services not rendered",
+      "B. Billing a higher service code than what was performed",
+      "C. Billing for unnecessary services",
+      "D. Assigning a lower code to save the patient money"
+    ]
+  },
+  {
+    "number": 94,
+    "text": "Max complained of fatigue and frequent infections. His doctor ordered an immunoglobulin test to check his immune system's health. Which CPT code corresponds to the immunoglobulin test?",
+    "options": [
+      "A. 82784",
+      "B. 82782",
+      "C. 82785",
+      "D. 82783"
+    ]
+  },
+  {
+    "number": 95,
+    "text": "When a patient is admitted to the hospital for a high fever and is later diagnosed with sepsis, what should be the primary diagnosis according to ICD-10-CM guidelines?",
+    "options": [
+      "A. Fever",
+      "B. Sepsis",
+      "C. Both can be primary",
+      "D. The condition that prompted the admission"
+    ]
+  },
+  {
+    "number": 96,
+    "text": "Jason went to the clinic after noticing a sore that wouldn't heal inside his mouth. The doctor performed an excision of the oral lesion. Which CPT code represents this procedure?",
+    "options": [
+      "A. 41108",
+      "B. 41110",
+      "C. 40100",
+      "D. 40819"
+    ]
+  },
+  {
+    "number": 97,
+    "text": "Nancy was fitted with a below-the-knee artificial limb after her leg amputation. Which HCPCS Level II code represents this prosthetic?",
+    "options": [
+      "A. L5631",
+      "B. L5637",
+      "C. L5645",
+      "D. L5650"
+    ]
+  },
+  {
+    "number": 98,
+    "text": "Tyler had a lump on his thyroid. The endocrinologist performed a fine needle aspiration biopsy. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 60100",
+      "B. 60240",
+      "C. 60220",
+      "D. 60212"
+    ]
+  },
+  {
+    "number": 99,
+    "text": "Lily felt a sudden blockage in her nose. The doctor diagnosed a deviated septum and recommended a septoplasty. Which CPT code pertains to this procedure?",
+    "options": [
+      "A. 31231",
+      "B. 31000",
+      "C. 31254",
+      "D. 30520"
+    ]
+  },
+  {
+    "number": 100,
+    "text": "Anna received an injection of Botox for her chronic migraines. Which HCPCS Level II code represents the Botox injection?",
+    "options": [
+      "A. J0585",
+      "B. J0586",
+      "C. J0587",
+      "D. J0588"
+    ]
+  }
+]
