@@ -86,7 +86,6 @@ export async function answerQuestionsWithConfidence(questions: Question[], state
         }
       } catch (questionError) {
         console.error(`Error processing question ${question.number}:`, questionError);
-        // Add with default values if error occurs
         answeredQuestions.push({
           ...question,
           myAnswer: "A",
@@ -97,7 +96,6 @@ export async function answerQuestionsWithConfidence(questions: Question[], state
     }
   }
 
-  // Rest of the function remains the same
   const lowConfidence = answeredQuestions.filter(q => (q.confidence || 0) < 6).length;
   const mediumConfidence = answeredQuestions.filter(q => {
     const conf = q.confidence || 0;
@@ -117,7 +115,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
   const options = question.options ? question.options.join(' ').toLowerCase() : '';
   const fullText = text + ' ' + options;
 
-  // Check for HCPCS indicators
   if (
     fullText.includes('hcpcs') ||
     fullText.includes('level ii code') ||
@@ -128,7 +125,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
     return 'HCPCS';
   }
 
-  // Check for HCPCS code pattern in options (safely)
   if (question.options) {
     for (const opt of question.options) {
       const match = opt.match(/[A-Z]\d{4}/);
@@ -139,7 +135,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
     }
   }
 
-  // Check for ICD-10 indicators
   if (
     fullText.includes('icd-10') ||
     fullText.includes('diagnosis code') ||
@@ -150,7 +145,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
     return 'ICD-10';
   }
 
-  // Check for ICD-10 code pattern in options (safely)
   if (question.options) {
     for (const opt of question.options) {
       if (opt.match(/[A-Z]\d{2}(\.\d+)?/)) {
@@ -160,7 +154,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
     }
   }
 
-  // Check for CPT indicators
   if (
     fullText.includes('cpt') ||
     fullText.includes('procedure code') ||
@@ -170,7 +163,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
     return 'CPT';
   }
 
-  // Check for CPT code pattern in options (safely)
   if (question.options) {
     for (const opt of question.options) {
       if (opt.match(/\b\d{5}\b/)) {
@@ -180,7 +172,6 @@ export function determineQuestionType(question: Question): 'HCPCS' | 'ICD-10' | 
     }
   }
 
-  // Default to general
   question.questionType = 'GENERAL';
   return 'GENERAL';
 }
@@ -191,21 +182,18 @@ export function extractCodesWithContext(text: string): Array<{ code: string, cod
 
   const results: Array<{ code: string, codeType: string, context: string }> = [];
 
-  // Define regex patterns for different code types
   const patterns: { [key: string]: RegExp } = {
     "CPT": /\b(\d{5})\b/g,
     "ICD-10": /\b([A-Z]\d{2}(\.\d+)?)\b/g,
     "HCPCS": /\b([A-Z]\d{4})\b/g
   };
 
-  // For each code type, find all matches and extract context
   for (const [codeType, pattern] of Object.entries(patterns)) {
     let match;
-    const patternCopy = new RegExp(pattern); // Create a new RegExp to reset lastIndex
+    const patternCopy = new RegExp(pattern);
     while ((match = patternCopy.exec(text)) !== null) {
       const code = match[1];
 
-      // Extract context (sentence containing the code)
       const sentenceStart = text.lastIndexOf('.', match.index) + 1;
       const sentenceEnd = text.indexOf('.', match.index);
       const context = text.substring(
@@ -228,7 +216,6 @@ export async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
   console.log("🔄 Merging explanations with cached code descriptions...");
 
   try {
-    // Load cached code descriptions
     if (!await fs.pathExists(CACHED_CODE_DESCRIPTIONS_JSON)) {
       throw new Error(`Cached code descriptions file not found: ${CACHED_CODE_DESCRIPTIONS_JSON}`);
     }
@@ -236,25 +223,18 @@ export async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
     const cachedCodes = await fs.readJSON(CACHED_CODE_DESCRIPTIONS_JSON);
     console.log(`Loaded cached code descriptions with ${Object.values(cachedCodes).flat().length} entries`);
 
-    // Extract explanations from answers PDF
     const explanations = await extractExplanationsFromAnswersPdf();
     console.log(`Extracted ${explanations.length} explanations from answers PDF`);
 
-    // Create a deep copy of the cached codes
     const mergedCodes = JSON.parse(JSON.stringify(cachedCodes));
 
-    // Create a map for quick lookup of explanations by question number
     const explanationMap = new Map();
     explanations.forEach(exp => explanationMap.set(exp.number, exp));
 
-    // Create a map for quick lookup of explanations by code
     const codeExplanationMap = new Map();
 
-    // Process explanations to extract codes and map them
     for (const explanation of explanations) {
-      // If explanation already has a code property, add it to the map
       if (explanation.correctAnswer) {
-        // Extract code from answer (e.g., "A. G43.009" -> "G43.009")
         const codeMatch = explanation.correctAnswer.match(/[A-Z]\d{2}(\.\d+)?|\d{5}|[A-Z]\d{4}/);
         if (codeMatch) {
           const primaryCode = codeMatch[0];
@@ -262,35 +242,27 @@ export async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
         }
       }
 
-      // Extract codes from the explanation text
       const extractedCodes = extractCodesWithContext(explanation.explanation);
 
-      // Add all extracted codes to the map
       for (const codeInfo of extractedCodes) {
         codeExplanationMap.set(codeInfo.code, explanation.explanation);
       }
     }
 
-    // Count of explanations added
     let explanationsAdded = 0;
     let newCodesAdded = 0;
 
-    // For each code type (CPT, ICD-10, HCPCS)
     for (const codeType of ["CPT", "ICD-10", "HCPCS"]) {
       if (!mergedCodes[codeType]) continue;
 
-      // For each code in this type
       for (const codeEntry of mergedCodes[codeType]) {
-        // Check if we have an explanation for this code
         if (codeExplanationMap.has(codeEntry.code)) {
           codeEntry.explanation = codeExplanationMap.get(codeEntry.code);
           explanationsAdded++;
         }
       }
 
-      // Now check for codes in explanations that aren't in our cache
       for (const [code, explanation] of codeExplanationMap.entries()) {
-        // Determine code type
         let detectedCodeType: string;
         if (/^\d{5}$/.test(code)) {
           detectedCodeType = "CPT";
@@ -299,16 +271,13 @@ export async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
         } else if (/^[A-Z]\d{4}$/.test(code)) {
           detectedCodeType = "HCPCS";
         } else {
-          continue; // Skip if we can't determine the code type
+          continue;
         }
 
-        // Skip if not matching the current codeType
         if (detectedCodeType !== codeType) continue;
 
-        // Check if this code exists in our cache
         const codeExists = mergedCodes[codeType].some((entry: any) => entry.code === code);
 
-        // If code doesn't exist, add it
         if (!codeExists) {
           mergedCodes[codeType].push({
             code,
@@ -321,7 +290,6 @@ export async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
       }
     }
 
-    // Add a metadata section to track the merge
     mergedCodes.metadata = {
       originalSource: CACHED_CODE_DESCRIPTIONS_JSON,
       explanationsSource: ANSWERS_PDF,
@@ -333,11 +301,9 @@ export async function mergeExplanationsWithCachedDescriptions(): Promise<any> {
       newCodesAdded
     };
 
-    // Create the directory if it doesn't exist
     const dirPath = EXPLANATIONS_MERGE_PDF;
     await fs.ensureDir(dirPath);
 
-    // Save the merged data to a new file
     const outputPath = `${dirPath}/merged_code_descriptions.json`;
     await fs.writeJSON(outputPath, mergedCodes, { spaces: 2 });
     console.log(`✅ Merged explanations saved to: ${outputPath}`);
@@ -355,13 +321,11 @@ export async function compareOriginalAndMergedDescriptions(): Promise<void> {
   console.log("🔍 Comparing original and merged code descriptions...");
 
   try {
-    // Load original cached code descriptions
     const originalPath = CACHED_CODE_DESCRIPTIONS_JSON;
     if (!await fs.pathExists(originalPath)) {
       throw new Error(`Original file not found: ${originalPath}`);
     }
 
-    // Load merged code descriptions
     const mergedPath = `${EXPLANATIONS_MERGE_PDF}/merged_code_descriptions.json`;
     if (!await fs.pathExists(mergedPath)) {
       throw new Error(`Merged file not found: ${mergedPath}`);
@@ -370,12 +334,10 @@ export async function compareOriginalAndMergedDescriptions(): Promise<void> {
     const originalCodes = await fs.readJSON(originalPath);
     const mergedCodes = await fs.readJSON(mergedPath);
 
-    // Count codes with explanations
     let totalOriginal = 0;
     let totalMerged = 0;
     let codesWithExplanations = 0;
 
-    // Compare each code type
     for (const codeType of ["CPT", "ICD-10", "HCPCS"]) {
       if (!originalCodes[codeType] || !mergedCodes[codeType]) continue;
 
@@ -387,7 +349,6 @@ export async function compareOriginalAndMergedDescriptions(): Promise<void> {
       totalOriginal += originalCount;
       totalMerged += mergedCount;
 
-      // Count codes with explanations in this type
       const withExplanations = mergedCodes[codeType].filter((code: any) => code.explanation).length;
       codesWithExplanations += withExplanations;
 
@@ -395,7 +356,6 @@ export async function compareOriginalAndMergedDescriptions(): Promise<void> {
       console.log(`  Merged: ${mergedCount} codes`);
       console.log(`  With explanations: ${withExplanations} codes (${Math.round(withExplanations / mergedCount * 100)}%)`);
 
-      // Show a sample of codes with explanations
       if (withExplanations > 0) {
         const sample = mergedCodes[codeType].find((code: any) => code.explanation);
         if (sample) {

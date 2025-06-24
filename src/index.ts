@@ -46,7 +46,6 @@ async function extractNode(state: GraphStateType): Promise<Partial<GraphStateTyp
   console.log("🔍 Looking for questions.json file...");
 
   try {
-    // First check if questions.json exists
     if (await fs.pathExists(QUESTIONS_JSON)) {
       console.log(`✅ Found ${QUESTIONS_JSON}! Loading questions from JSON file...`);
       const questionsData = await fs.readJSON(QUESTIONS_JSON);
@@ -54,12 +53,10 @@ async function extractNode(state: GraphStateType): Promise<Partial<GraphStateTyp
       return { extractedQuestions: questionsData };
     }
 
-    // If JSON file doesn't exist, fall back to PDF processing
     console.log(`⚠️ ${QUESTIONS_JSON} not found. Falling back to PDF processing...`);
     const pdfContent = await processPdf(TEST_PDF);
     const questions = await extractQuestions(pdfContent);
 
-    // Save the extracted questions to JSON for future use
     console.log(`💾 Saving extracted questions to ${QUESTIONS_JSON} for future use...`);
     await fs.writeJSON(QUESTIONS_JSON, questions, { spaces: 2 });
     console.log(`✅ Saved ${questions.length} questions to JSON file`);
@@ -97,7 +94,6 @@ async function devilsAdvocateNode(state: GraphStateType): Promise<Partial<GraphS
 async function printQuestionsByType(questions: Question[]): Promise<void> {
   console.log("📋 Questions by Type:");
 
-  // Group questions by type
   const cptQuestions = questions.filter(q => q.questionType === 'CPT');
   const icdQuestions = questions.filter(q => q.questionType === 'ICD-10');
   const hcpcsQuestions = questions.filter(q => q.questionType === 'HCPCS');
@@ -117,13 +113,11 @@ async function printQuestionsByType(questions: Question[]): Promise<void> {
 }
 
 async function enrichNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
-  // 1. Early exit if all answers are correct
   if (!state.testResults || state.testResults.incorrectAnswers === 0) {
     console.log("🎉 No incorrect answers! No enrichment needed.");
     return {};
   }
 
-  // 2. Load merged code descriptions
   const mergedPath = `${EXPLANATIONS_MERGE_PDF}/merged_code_descriptions.json`;
   if (!await fs.pathExists(mergedPath)) {
     console.error("❌ Merged code descriptions not found!");
@@ -131,29 +125,24 @@ async function enrichNode(state: GraphStateType): Promise<Partial<GraphStateType
   }
   const codeDescriptions = await fs.readJSON(mergedPath);
 
-  // 3. Build set of incorrect question numbers
   const incorrectNumbers = new Set(
     state.testResults.details
       .filter(q => !q.isCorrect)
       .map(q => q.number)
   );
 
-  // 4. Enrich only incorrect questions
   for (const q of state.verifiedQuestions) {
     if (!incorrectNumbers.has(q.number) || !q.options) continue;
 
-    // Find correct answer letter for this question
     const result = state.testResults.details.find(d => d.number === q.number);
     const correctLetter = result?.correctAnswer;
     if (!correctLetter) continue;
 
-    // Find the correct option and extract the code
     const correctOption = q.options.find(opt => opt.trim().startsWith(correctLetter + '.'));
     const codeMatch = correctOption?.match(/[A-Z]\.\s*([\w\.]+)/);
     const correctCode = codeMatch ? codeMatch[1] : null;
     if (!correctCode) continue;
 
-    // Determine code type and set
     let codeSet: any[] | null = null, codeType = '';
     if (/^\d{5}$/.test(correctCode)) { codeSet = codeDescriptions.CPT; codeType = 'CPT'; }
     else if (/^[A-Z]\d{2}/.test(correctCode)) { codeSet = codeDescriptions['ICD-10']; codeType = 'ICD-10'; }
@@ -163,7 +152,6 @@ async function enrichNode(state: GraphStateType): Promise<Partial<GraphStateType
     const codeEntry = codeSet.find((c: any) => c.code === correctCode);
     if (!codeEntry) continue;
 
-    // Call LLM to enrich the explanation
     const improvedExplanation = await enrichCodeDescriptionWithLLM({
       code: correctCode,
       codeType,
@@ -179,7 +167,6 @@ async function enrichNode(state: GraphStateType): Promise<Partial<GraphStateType
     }
   }
 
-  // 5. Save updated code descriptions
   await fs.writeJSON(mergedPath, codeDescriptions, { spaces: 2 });
   console.log(`✅ Codebook enriched with new scenario-based explanations.`);
 
@@ -192,19 +179,16 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
   try {
     let testResults: TestResults;
 
-    // First check if answer_key.json exists
     if (await fs.pathExists(ANSWER_KEY_JSON)) {
       console.log(`✅ Found ${ANSWER_KEY_JSON}! Loading answer key from JSON file...`);
 
       const answerKeyData = await fs.readJSON(ANSWER_KEY_JSON);
 
-      // Process the answer key data
       const finalAnswers = state.verifiedQuestions.map(q => ({
         number: q.number,
         myAnswer: q.verifiedAnswer || q.myAnswer
       }));
 
-      // Compare answers with the key
       const results = answerKeyData.map((keyItem: any) => {
         const myAnswer = finalAnswers.find(a => a.number === keyItem.number);
         return {
@@ -235,12 +219,10 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
 
       console.log(`✅ Comparison complete: ${correctCount}/${totalCount} (${percentage}%)`);
     } else {
-      // If JSON file doesn't exist, fall back to PDF processing
       console.log(`⚠️ ${ANSWER_KEY_JSON} not found. Falling back to PDF processing...`);
       const answerKeyContent = await processPdf(ANSWERS_PDF);
       testResults = await compareWithAnswerKey(state.verifiedQuestions, answerKeyContent);
 
-      // Save the answer key to JSON for future use
       console.log(`💾 Saving answer key to ${ANSWER_KEY_JSON} for future use...`);
       const answerKeyData = testResults.details.map(item => ({
         number: item.number,
@@ -250,7 +232,6 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
       console.log(`✅ Saved answer key to JSON file`);
     }
 
-    // Update questions with correctness information
     const updatedQuestions = state.verifiedQuestions.map(q => {
       const resultItem = testResults.details.find((r: any) => r.number === q.number);
       if (resultItem) {
@@ -263,11 +244,9 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
       return q;
     });
 
-    // Generate and save performance log
     const performanceLog = await generatePerformanceLog(updatedQuestions);
     await savePerformanceLog(performanceLog);
 
-    // Print questions by type
     await printQuestionsByType(updatedQuestions);
 
     return {
@@ -317,7 +296,7 @@ async function startCLI() {
     verifiedQuestions: [],
     testResults: null,
     questionLimit: undefined,
-    useExplanations: false
+    useExplanations: true
   };
 
   const ask = () => {
@@ -329,13 +308,11 @@ async function startCLI() {
 
       if (input.startsWith('/run')) {
         try {
-          // Extract number of questions if provided
           const match = input.match(/\/run\s+(\d+)/);
           const questionLimit = match ? parseInt(match[1]) : undefined;
 
           console.log(`🚀 Starting advanced medical coding testing Agent${questionLimit ? ` (limited to ${questionLimit} questions)` : ''}!!!`);
 
-          // Store the limit in the state
           state.questionLimit = questionLimit;
 
           const result = await app.invoke(state);

@@ -24,7 +24,6 @@ export class PerplexityAPI {
       throw new Error("Perplexity API key not configured");
     }
 
-    // Choose model based on type and pro preference
     let model: string;
     let maxTokens: number;
 

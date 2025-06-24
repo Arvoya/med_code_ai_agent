@@ -1,6 +1,5 @@
 
 export function extractKeywords(text: string): string[] {
-  // Remove common words and extract key medical terms
   const words = text.toLowerCase()
     .replace(/[^\w\s]/g, '')
     .split(/\s+/)
