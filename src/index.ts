@@ -7,6 +7,7 @@ import { Question, TestResults, Loop } from './types';
 import { OUTPUT_FILE, ANSWERS_PDF, TEST_PDF, PERFORMANCE_LOG_JSON, ANSWER_KEY_JSON, EXPLANATIONS_MERGE_PDF, QUESTIONS_JSON } from './config/constants';
 import { compareOriginalAndMergedDescriptions, compareWithAnswerKey, verifyLowConfidenceAnswers, enrichCodeDescriptionWithLLM, savePerformanceLog, mergeExplanationsWithCachedDescriptions, devilsAdvocateCheck, extractQuestions, answerQuestionsWithConfidence, generatePerformanceLog } from './agent_helpers'
 import { processPdf, saveAnswersToFile } from './utils/pdf'
+import { llm } from "./config/models";
 
 dotenv.config();
 
@@ -301,7 +302,11 @@ async function startCLI() {
     testResults: null,
     questionLimit: undefined,
     useExplanations: true,
-    runTimes: 1
+    loop: {
+      model: "",
+      loopCount: 1,
+      currentLoop: 1
+    }
   };
 
   const ask = () => {
@@ -379,7 +384,9 @@ async function startCLI() {
       }
       else if (input.startsWith("/loop")) {
         const match = input.match(/\/loop\s+(\d+)/);
-        const questionLimit = match ? parseInt(match[1]) : undefined;
+        const loopCount = match ? parseInt(match[1]) : 1;
+        state.loop.loopCount = loopCount
+        console.log(`🔁 Agent will loop ${loopCount} times using the model ${llm.model}.`)
       }
       else if (input === '/performance') {
         try {
