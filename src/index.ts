@@ -108,7 +108,7 @@ const llmVerify = new ChatOpenAI({
 
 
 const llmAnswer = new ChatOpenAI({
-  model: "gpt-4o",
+  model: "o3-mini",
 });
 
 
@@ -1110,7 +1110,6 @@ async function useO4MiniForQuestion(
     .map(([code, desc]) => `${code}: ${desc}`)
     .join('\n');
 
-  console.log("CONTEXT INFO FROM CODE DESCRIPTION: ", contextInfo)
 
   const questionPrompt = `You are a certified medical coding expert. Answer this question using the provided code descriptions and rate your confidence CONSERVATIVELY.
 
@@ -1525,7 +1524,7 @@ async function loadCodeDescriptions(state: GraphStateType): Promise<any> {
   }
 }
 
-async function verifyLowConfidenceAnswers(questions: Question[]): Promise<Question[]> {
+async function verifyLowConfidenceAnswers(questions: Question[], state: GraphStateType): Promise<Question[]> {
   const lowConfidenceQuestions = questions.filter(q => (q.confidence || 0) < 6);
 
   if (lowConfidenceQuestions.length === 0) {
@@ -1538,27 +1537,88 @@ async function verifyLowConfidenceAnswers(questions: Question[]): Promise<Questi
   const verifiedQuestions = [...questions];
   let gptSuccessCount = 0;
 
+  // Load all cached code descriptions once before the loop
+  let cachedCodes: any;
+  try {
+    cachedCodes = await loadCodeDescriptions(state);
+  } catch {
+    console.log("No cached code descriptions found. Verification may have lower accuracy.");
+    cachedCodes = { "HCPCS": [], "ICD-10": [], "CPT": [] }; // Ensure object exists
+  }
+
   for (let i = 0; i < lowConfidenceQuestions.length; i++) {
     const question = lowConfidenceQuestions[i];
     console.log(`Verifying ${i + 1}/${lowConfidenceQuestions.length}: Question ${question.number} (Initial Confidence: ${question.confidence})...`);
 
+    const questionType = determineQuestionType(question);
+    console.log(`Question ${question.number} identified as ${questionType} question`);
+
+    const codeDescriptions: Map<string, string> = new Map();
+
+    // --- Start: Code Description Extraction Logic ---
+    if (question.options) {
+      for (const option of question.options) {
+        let matches: RegExpMatchArray | null = null;
+        let codeType: 'HCPCS' | 'ICD-10' | 'CPT' | null = null;
+
+        // Determine code type and extract codes based on pattern
+        if (/[A-Z]\d{4}/g.test(option)) {
+          matches = option.match(/[A-Z]\d{4}/g);
+          codeType = 'HCPCS';
+        } else if (/[A-Z]\d{2}(\.\d+)?/g.test(option)) {
+          matches = option.match(/[A-Z]\d{2}(\.\d+)?/g);
+          codeType = 'ICD-10';
+        } else if (/\b\d{5}\b/g.test(option)) {
+          matches = option.match(/\b\d{5}\b/g);
+          codeType = 'CPT';
+        }
+
+        if (matches && codeType && cachedCodes[codeType]) {
+          for (const code of matches) {
+            if (codeDescriptions.has(code)) continue; // Skip if already found
+
+            const cachedCode = cachedCodes[codeType].find((item: any) => item.code === code);
+            if (cachedCode) {
+              let fullDescription = cachedCode.description;
+              if (state.useExplanations && cachedCode.explanation) {
+                fullDescription += ` | Explanation: ${cachedCode.explanation}`;
+              }
+              codeDescriptions.set(code, fullDescription);
+            } else {
+              console.log(`Code ${code} (${codeType}) not found in cache`);
+            }
+          }
+        }
+      }
+    }
+    // --- End: Code Description Extraction Logic ---
+
     // --- GPT-4o Verification ---
     try {
+      // Build the context string from the descriptions we found
+      let codeDescriptionsContext = '';
+      if (codeDescriptions.size > 0) {
+        const descriptionsArray = Array.from(codeDescriptions.entries()).map(([code, desc]) => `${code}: ${desc}`);
+        codeDescriptionsContext = `**Official Code Descriptions:**\n${descriptionsArray.join('\n')}\n`;
+      }
+
       const gptPrompt = `You are a senior medical coding auditor. Re-examine this question with detailed analysis and provide your response in the requested format.
+Use the official code descriptions provided below to inform your reasoning.
 
 **Question ${question.number}:** ${question.text}
 ${question.options ? question.options.join('\n') : ''}
 Current Answer: ${question.myAnswer}
 
+${codeDescriptionsContext}
 **Task:**
-Analyze each option against current coding guidelines. Provide your reasoning, then conclude with the mandatory JSON block.
+Analyze each option against current coding guidelines, using the provided descriptions as the source of truth. Provide your reasoning, then conclude with the mandatory JSON block.
 
 **Output Format:**
 You MUST conclude your entire response with a single JSON code block in the following format. Do not add any text after this block.
 
 \`\`\`json
 {
-  "reasoningSummary": "A brief summary of why your answer is correct and others are wrong.",
+  "reasoningSummary": "A brief summary of why your answer is correct and others are wrong based on the provided descriptions.",
   "finalAnswer": "[A/B/C/D]",
   "confidence": [A number from 1-10]
 }
@@ -1569,13 +1629,13 @@ You MUST conclude your entire response with a single JSON code block in the foll
 
       const jsonBlockStart = content.lastIndexOf('```json');
       if (jsonBlockStart === -1) {
-        throw new Error("Could not find the mandatory JSON block in the o3-pro response.");
+        throw new Error("Could not find the mandatory JSON block in the LLM response.");
       }
 
       const jsonString = content.substring(jsonBlockStart + 7, content.lastIndexOf('```'));
       const result = JSON.parse(jsonString);
 
-      const fullReasoning = `o3-pro Analysis:\n${content.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
+      const fullReasoning = `LLM Analysis:\n${content.split('```json')[0].trim()}\n\nSummary: ${result.reasoningSummary}`;
 
       const questionIndex = verifiedQuestions.findIndex(q => q.number === question.number);
       verifiedQuestions[questionIndex] = {
@@ -1585,7 +1645,7 @@ You MUST conclude your entire response with a single JSON code block in the foll
         reasoning: fullReasoning
       };
 
-      console.log(`  ✅ Question ${question.number}: Verified with GPT-4o. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
+      console.log(`  ✅ Question ${question.number}: Verified with LLM. Answer: ${result.finalAnswer} (Conf: ${result.confidence})`);
       gptSuccessCount++;
 
     } catch (gptError: any) {
@@ -1851,7 +1911,7 @@ async function answerNode(state: GraphStateType): Promise<Partial<GraphStateType
 }
 
 async function verifyNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
-  const verified = await verifyLowConfidenceAnswers(state.answeredQuestions);
+  const verified = await verifyLowConfidenceAnswers(state.answeredQuestions, state);
   return { verifiedQuestions: verified };
 }
 
