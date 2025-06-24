@@ -6,7 +6,7 @@ import * as readline from 'readline';
 import * as fs from 'fs-extra';
 import * as dotenv from 'dotenv';
 import * as cheerio from 'cheerio';
-import { exec } from 'child_process'; // Add this line
+import { exec } from 'child_process';
 
 dotenv.config();
 
