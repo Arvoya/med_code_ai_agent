@@ -47,8 +47,10 @@ more opportunity to give proper data relative to the time of the test *2023*.
 
 `Extract -> Answer -> Verify -> Compare -> Enrich`
 
-Due to too many false positives I shortened the Pipeline in v2 vs v1 that had
-additional `Challenge` node. Currently just hard-coded out.
+Due to too many false positives I changed the Pipeline in v2 vs v1 that had
+additional `Challenge` node. Currently just hard-coded out, but now included
+is the `Enrich` node which allows for self reflection and deeper explanation for
+future testing.
 
 ### Process
 
