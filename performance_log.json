@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-06-24T05:44:21.116Z",
+  "timestamp": "2025-06-24T20:25:32.512Z",
   "questions": {
     "1": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -37,7 +37,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 10,
+      "confidence": 8,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -53,7 +53,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 7,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },
@@ -61,7 +61,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "D",
       "correctAnswer": "D"
     },
@@ -84,17 +84,17 @@
     "11": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": true,
+      "isCorrect": false,
       "confidence": 7,
-      "initialAnswer": "C",
+      "initialAnswer": "D",
       "correctAnswer": "C"
     },
     "12": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": false,
+      "isCorrect": true,
       "confidence": 10,
-      "initialAnswer": "A",
+      "initialAnswer": "B",
       "correctAnswer": "B"
     },
     "13": {
@@ -156,9 +156,9 @@
     "20": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": false,
-      "confidence": 8,
-      "initialAnswer": "C",
+      "isCorrect": true,
+      "confidence": 10,
+      "initialAnswer": "B",
       "correctAnswer": "B"
     },
     "21": {
@@ -228,9 +228,9 @@
     "29": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": true,
-      "confidence": 10,
-      "initialAnswer": "A",
+      "isCorrect": false,
+      "confidence": 9,
+      "initialAnswer": "D",
       "correctAnswer": "A"
     },
     "30": {
@@ -268,9 +268,9 @@
     "34": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": false,
+      "isCorrect": true,
       "confidence": 9,
-      "initialAnswer": "A",
+      "initialAnswer": "C",
       "correctAnswer": "C"
     },
     "35": {
@@ -301,7 +301,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },
@@ -341,7 +341,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 8,
       "initialAnswer": "D",
       "correctAnswer": "D"
     },
@@ -365,7 +365,7 @@
       "questionType": "ICD-10",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "B",
       "correctAnswer": "B"
     },
@@ -396,9 +396,9 @@
     "50": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": true,
-      "confidence": 7,
-      "initialAnswer": "C",
+      "isCorrect": false,
+      "confidence": 9,
+      "initialAnswer": "A",
       "correctAnswer": "C"
     },
     "51": {
@@ -461,7 +461,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },
@@ -469,8 +469,8 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": false,
-      "confidence": 7,
-      "initialAnswer": "B",
+      "confidence": 8,
+      "initialAnswer": "C",
       "correctAnswer": "D"
     },
     "60": {
@@ -492,10 +492,10 @@
     "62": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": true,
+      "isCorrect": false,
       "confidence": 2,
       "initialAnswer": "A",
-      "verifiedAnswer": "B",
+      "verifiedAnswer": "D",
       "correctAnswer": "B"
     },
     "63": {
@@ -518,7 +518,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 7,
+      "confidence": 10,
       "initialAnswer": "B",
       "correctAnswer": "B"
     },
@@ -526,7 +526,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 10,
+      "confidence": 9,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -542,7 +542,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 10,
+      "confidence": 9,
       "initialAnswer": "D",
       "correctAnswer": "D"
     },
@@ -566,7 +566,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 7,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -582,7 +582,7 @@
       "questionType": "ICD-10",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },
@@ -598,7 +598,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 7,
+      "confidence": 9,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },
@@ -622,7 +622,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "B",
       "correctAnswer": "B"
     },
@@ -669,9 +669,9 @@
     "84": {
       "questionType": "CPT",
       "modelUsed": "o3-mini",
-      "isCorrect": false,
-      "confidence": 9,
-      "initialAnswer": "A",
+      "isCorrect": true,
+      "confidence": 8,
+      "initialAnswer": "B",
       "correctAnswer": "B"
     },
     "85": {
@@ -686,7 +686,7 @@
       "questionType": "GENERAL",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 10,
+      "confidence": 8,
       "initialAnswer": "B",
       "correctAnswer": "B"
     },
@@ -726,7 +726,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },
@@ -750,7 +750,7 @@
       "questionType": "CPT",
       "modelUsed": "o3-mini",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "A",
       "correctAnswer": "A"
     },

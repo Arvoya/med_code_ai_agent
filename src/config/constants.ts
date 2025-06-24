@@ -1,0 +1,9 @@
+export const TEST_PDF = "./test.pdf";
+export const ANSWERS_PDF = "./answers.pdf";
+export const EXPLANATIONS_MERGE_PDF = "./explanations";
+export const OUTPUT_FILE = "./answers.txt";
+export const QUESTIONS_JSON = "./questions.json";
+export const ANSWER_KEY_JSON = "./answer_key.json";
+export const CACHED_CODE_DESCRIPTIONS_JSON = "./cached_code_descriptions.json";
+export const PERFORMANCE_LOG_JSON = "./performance_log.json";
+export const PERFORMANCE_HISTORY_JSON = "./performance_history.json";

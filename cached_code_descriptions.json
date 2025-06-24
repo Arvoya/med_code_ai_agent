@@ -22,7 +22,7 @@
     {
       "code": "10080",
       "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider open (incises) and drains the contents of a pilonidal cyst.",
-      "explanation": "10080 is the CPT code for incision and drainage of pilonidal cyst; simple."
+      "explanation": "CPT 10080 – Incision & Drainage (I&D) of a SIMPLE PILONIDAL CYST  \nMnemonic: “80 SITS on the TAIL-BONE—NOWHERE ELSE”\n\n─────────────────────────────────────────────────\n1. ONE-LINE DEFINITION  \nSingle scalpel incision in the natal cleft (sacrococcygeal “tail-bone” area) to release an abscess limited to the primary pilonidal pocket, followed by minimal irrigation / light packing—nothing more.\n\n2. CODE-IT CHECKLIST (EVERY BOX MUST BE ✓)  \n☐ Anatomic site = mid-line intergluteal / sacrococcygeal area (true pilonidal)  \n☐ Action words = “incision & drainage,” “stab incision,” “simple I&D”  \n☐ Complexity = ONE opening, no branching tracts, no wide excision  \n☐ Devices left behind = NONE (loose wick or light gauze is OK)  \n☐ No additional work = no curettage, no seton, no drain, no flap, no marsupialization  \n\nIf any box is ✗, do NOT bill 10080.\n\n3. FAST DECISION TREE (EXAM & REAL WORLD)  \nA. Where is the abscess?  \n   • Natal cleft / tail-bone → go to B.  \n   • Anywhere else (thigh, axilla, breast, groin, face, etc.) → use General Abscess Pathway (10060/10061/10160/10180).  \n\nB. Pilonidal location—what was done?  \n   • One incision, simple drainage → 10080  \n   • Multiple incisions, curettage, seton/drain, deroofing → 10081 (complicated)  \n   • Formal excision of cyst/sinus tracts → 11770–11772 (excision series)\n\n4. “RED-LIGHT” SITUATIONS—10080 IS WRONG IF:  \n✗ Site is NOT natal cleft (even if the note says “pilonidal-type abscess”).  \n✗ Only a needle or catheter used → 10160 (needle aspiration) or 10021 (FNA)  \n✗ Post-operative wound abscess → 10180  \n✗ Entire cyst/tracts excised → 11770–11772  \n✗ Penrose, suction drain, or seton left in place → 10081\n\n5. MOST COMMON MIX-UP: 10060 vs 10080  \n10060 = Simple I&D of abscess ANYWHERE on the body EXCEPT the natal cleft.  \n10080 = Simple I&D ONLY in the natal cleft.  \nQuick memory hook: “60 can go anywhere; 80 sits on the tail-bone.”\n\n6. MINI-SCRIPTS—WHAT TO CODE  \n✓ 10080 (CORRECT)  \n“1-cm midline incision within natal cleft; purulent fluid drained, cavity irrigated, iodoform wick placed. No secondary tracts.”  \n✗ 10060 (NOT 10080) – Thigh example  \n“1.5-cm fluctuant abscess on anterior thigh; single stab incision, pus evacuated, gauze packing inserted.”  \n✗ 10160 (NOT 10080) – Needle only  \n“18-g needle aspiration of axillary abscess; no scalpel incision performed.”  \n✗ 11770 (NOT 10080) – Excision  \n“Elliptical excision of pilonidal cyst with all sinus tracts down to fascia; wound closed primarily.”\n\n7. RAPID “YES/NO” STICKER FOR YOUR MONITOR  \nTail-bone? YES  \nScalpel cut? YES  \nSimple drain/pack only? YES  \n→ 10080  \nIf any answer is NO → pick 10060, 10061, 10081, 10160, 10180, or 11770-11772 as appropriate.\n\n8. REAL-WORLD TIP  \nOperative notes that say only “I&D abscess” are dangerous. Before you default to 10060/10061, scan for the words “intergluteal,” “natal cleft,” or “sacrococcygeal.” If absent, assume NOT pilonidal.\n\nBOTTOM LINE  \n10080 = Tail-bone + ONE scalpel incision + SIMPLE drainage.  \nAnything else? Different code."
     },
     {
       "code": "10021",
@@ -39,22 +39,22 @@
     },
     {
       "code": "20005",
-      "description": "No Summary found for this code",
-      "explanation": "20005 is the CPT code for incision and drainage of soft tissue abscess, leg or ankle; superficial."
+      "description": "",
+      "explanation": "══════════════════════════════════════════════════════════════════════\nCPT 20005 – Incision & Drainage, Superficial Abscess / Hematoma / Seroma /\n                 Inflamed Bursa   ANATOMIC ZONE: LOWER-LEG & ANKLE ONLY\n                 (knee-joint line → but NOT including the foot)\n══════════════════════════════════════════════════════════════════════\n\n1. THREE “LOCK-IN” QUESTIONS – all must be YES or code out:\n   A. Where is the lesion?   Below the patella AND above the malleoli (calf, shin, Achilles area, medial / lateral malleolus)      YES / NO  \n   B. How deep is it?        ONLY superficial / subcutaneous / bursal. No mention of fascia, muscle, deep compartments, or a drain left in place.      YES / NO  \n   C. What was done?         Simple I&D (incise, break loculations, irrigate, pack or loosely close). No counter-incisions, no complex closure.      YES / NO  \n\n   If ANY answer = NO → 20005 is wrong. Go to 20002 (thigh/knee), 20006 (deep lower-leg), or 10060/10061 (other body areas) as appropriate.\n\n2. THE #1 CONFUSION PAIR – 20005 vs. 20010  \n   • 20005 = DISTAL, lower-leg/ankle surface drain   (“I’m working near the cleats.”)  \n   • 20010 = PROXIMAL, upper-arm/elbow surface drain (“I can shake the patient’s hand.”)  \n   Mnemonic: ODD numbers march DISTAL (…-05 = lower leg) – EVEN numbers march PROXIMAL (…-10 = upper arm).\n\n   Football-collision hematoma, UPPER ARM → 20010, never 20005. Highlight this in audits; it is the most frequent mis-pick.\n\n3. COMMON TRAPS & SAFETY FLAGS\n   • Op note says “drain left in situ” or “deep lateral compartment opened” → automatically 20006 (deep).  \n   • Ankle, heel cord, malleolus abscess mistakenly sent out on 10060/10061 → change to 20005 (musculoskeletal section wins over integumentary).  \n   • “Just under the skin of the knee” but you can palpate patella → too high → 20002, not 20005.  \n   • Documentation uses vague term “leg” only: Force the surgeon to state CALF / SHIN / ANKLE or you cannot defend 20005.\n\n4. DOCUMENTATION CHECKLIST – have ALL THREE:\n   ☐ Exact distal-leg word (calf, shin, Achilles, ankle, medial/lateral malleolus)  \n   ☐ Depth descriptor (superficial, subcutaneous, seroma cavity, bursal)  \n   ☐ Simple I&D steps only, no drain left  \n\n   Miss one box? Query or recode.\n\n5. REAL-WORLD EXAMPLES\n   ✓ “3-cm purulent seroma, right calf; 1-cm incision, blunt dissection, irrigation, iodoform packing.” → CPT 20005  \n   ✓ “Posterior ankle (Achilles) bursitis with abscess; superficial I&D performed, no drain.” → 20005  \n   ✗ “Hematoma, upper arm from football tackle; 2-cm incision, evacuated.” → 20010 (NOT 20005)  \n   ✗ “Deep intramuscular calf abscess; counter-incision, Penrose drain left.” → 20006  \n\n6. GLOBAL INFORMATION\n   • 10-day global period.  \n   • Bundles incision, drainage, manual breakup of loculations, irrigation, simple closure/packing.\n\nONE-LINE TAKEAWAY  \n20005 lives strictly between the knee joint line and the malleoli and stays superficial—think “simple surface drain on the shin/ankle.” Anything higher, lower, or deeper—STOP—pick a different code."
     },
     {
       "code": "20055",
-      "description": "CPT code 20055 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "20010",
-      "description": "No Summary found for this code",
-      "explanation": "20010 is the CPT code for incision and drainage of hematoma, seroma or fluid collection; upper arm or elbow."
+      "description": "",
+      "explanation": "================================================================================\nCPT 20010 ‑ Incision & Drainage (I&D) of Hematoma, Seroma, Traumatic or Post-Operative Fluid Collection  \nANATOMIC ZONE: UPPER ARM or ELBOW — OPEN, DEEP\n================================================================================\n\nA. WHAT 20010 ACTUALLY PAYS FOR\n• A brand-new, surgical-suite incision that passes through ALL three layers  \n  – Skin → Sub-cutaneous fat → Investing fascia  \n  – Enters an intramuscular, inter-muscular, or sub-fascial space.  \n• Complete evacuation / lysis of loculations, copious irrigation, optional limited debridement, and placement of a drain or packing.  \n• Simple skin closure, if performed.\n\nB. THE TWO NON-NEGOTIABLE FENCEPOSTS  \n   1. PROXIMAL limit: just distal to the glenohumeral (shoulder) joint  \n   2. DISTAL limit: tip of the olecranon (elbow)  \n\nIf the operative note mentions ANY other anatomic region—shoulder, axilla, forearm, thigh, knee, hip, leg, chest wall, back, etc.—20010 is automatically wrong.\n\nC. 3-STEP “QUICK CHECK” BEFORE YOU CODE  \n1. Site                       → Is it clearly “upper arm” or “elbow”?  \n2. Depth                      → Was the fascia opened OR does the note state intra-/inter-muscular, sub-fascial, or deep space?  \n3. New Incision vs. Re-open   → Was a NEW cut made (or is there modifier 58/78/79 justification)?  \n\nYES to all three = 20010.  \nIf any answer is NO, look elsewhere (see Section E).\n\nD. MINIMUM DOCUMENTATION TO SUPPORT 20010  \n1. Laterality + exact site (“left distal upper arm,” “right posterior elbow”)  \n2. Statement of fascial entry / deep cavity (“fascia incised; cavity noted in intramuscular plane”)  \n3. Type + estimated volume of fluid evacuated  \n4. Details of irrigation, debridement, drain or packing  \n5. Confirmation this was a NEW incision (or modifier explanation)\n\nE. CODES MOST FREQUENTLY CONFUSED WITH 20010 — HOW TO TELL THEM APART\n\n• 27301  (Thigh / knee, deep): If the note says “thigh,” “quadriceps,” or “hamstring,” STOP — thigh has its own dedicated deep I&D code (27301). 20010 is never correct for thigh seromas or abscesses.  \n• 25028  (Forearm / wrist, deep): Same concept for distal arm.  \n• 27030  (Hip), 27603 (Leg), 20016 (Trunk, when no regional code exists) — Use the region-specific deep I&D code whenever it exists; default to 20016 only when NONE exists (e.g., chest wall, back).  \n• 10140  / 10160  (Superficial hematoma/seroma OR abscess): Use when tissue plane is limited to skin/sub-Q. These are “lump-in-office” procedures, not OR deep dissections.  \n• 20005  / 20055: These are highly specialized codes (e.g., ring removal, halo traction, etc.) and almost never correct for a routine extremity fluid collection. When you see a simple seroma or hematoma, mentally cross -out 20005 and 20055 unless the op note describes the very specific scenario printed in CPT.\n\nF. EXAM & REAL-WORLD “GOTCHAS”  \n• Thigh ≠ Arm: On tests, “seroma in the thigh” almost always maps to 27301—not 20010, 20005, or 20055.  \n• “Near the elbow” ≠ “Elbow”: Make sure the dictation states the incision was within the fenceposts and not on the proximal forearm.  \n• “Re-opening of recent incision” during the global period is bundled (modifier 78); do not assign 20010 unless modifier criteria are met.\n\nG. MEMORY HOOK  \n“Two joints guard 20010: shoulder above, elbow below. If you read anything outside those guards—drop the code and go to the region-specific option.”\n\n================================================================================"
     },
     {
       "code": "20020",
-      "description": "CPT code 20020 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.",
-      "explanation": "20020 is the CPT code for incision and removal of foreign body, subcutaneous tissues; simple."
+      "description": "",
+      "explanation": "CPT 20020  \nIncision and Removal of Foreign Body, Subcutaneous Tissue – SIMPLE\n\n----------------------------------------------------\n1. PLAIN-ENGLISH DEFINITION (“Stab-and-Grab”)\nA tiny skin nick (≤1 cm) made only deep enough to enter the subcutaneous fat, followed by extraction of an inert, NON-living item (splinter, glass, gravel, metal, bullet fragment, plastic, etc.). Closure, if any, is a single simple suture; no undermining, no layered repair, no drain.\n\n----------------------------------------------------\n2. THE “S-O-S” RULE—EVERY LETTER MUST BE IN THE NOTE\nS  Subcutaneous ONLY – the surgeon never crosses fascia or touches muscle, tendon, joint, or bone.  \nO  Object is NON-LIVING – foreign body = not biologic: wood, glass, metal, plastic, stone.  \nS  Simple Technique – ≤1 cm skin incision, no enlargement, no debridement, no drain, no layered closure.\n\nMiss any letter → abandon 20020.\n\n----------------------------------------------------\n3. HARD-STOP WORDS—AUTOMATIC “NOT 20020”\ncyst ganglion lipoma neuroma nodule tumor mass abscess hematoma seroma implant hardware  \nThese describe biologic tissue or fluid collections. Use lesion-excision or I&D codes instead.\n\n----------------------------------------------------\n4. RAPID DIFFERENTIAL—WHAT CODE WHEN?\nWHAT CAME OUT? WHERE WAS IT? HOW DEEP WAS CUT? CODE\n• Inert object   Subcutaneous  ≤1 cm nick    → 20020\n• Pus/blood/serum Subcutaneous  Simple I&D    → 20005\n• Pus/blood/serum Deep to fascia Complex I&D    → 20010\n• Benign skin lesion (cyst, wart, nevus)  Dermis/epidermis → 11400-11446\n• Soft-tissue mass (cyst/lipoma) in arm  SubQ/Muscle   → 24071-24079 series\n• Bone cyst of humerus (intramedullary)  Bone      → 20055\n• Foreign body in muscle/tendon      Past fascia   → 20520/20525\n\nMnemonic:  \nNon-living junk? 20020.  \nLiving lump or liquid? Look elsewhere.\n\n----------------------------------------------------\n5. DOCUMENTATION CHECKLIST—VERIFY BEFORE CODING\n☐ Object named and described as inert/non-biologic.  \n☐ Location explicitly limited to subcutaneous tissue.  \n☐ Incision size ≤1 cm; no extension/undermining.  \n☐ No layered closure, drain, or complex repair.\n\nIf every box is not checked, 20020 is wrong.\n\n----------------------------------------------------\n6. REAL-WORLD EXAMPLES\n✓ Correct use:  \n“3 mm stab incision over mid-forearm; glass shard retrieved from subcutaneous fat; single 4-0 nylon suture placed. No deep structures violated.” → 20020\n\n✗ Incorrect uses (code shown instead of 20020):  \n“2 cm epidermoid cyst excised from forearm subcutaneous tissue” → 24071 (soft-tissue tumor excision, subcutaneous, upper arm).  \n“Removal of bullet lodged in deltoid muscle” → 20520 (removal of foreign body, muscle).  \n“Corticotomy with curettage of humeral bone cyst” → 20055.  \n“Incision and drainage of superficial elbow abscess” → 20005.\n\n----------------------------------------------------\n7. QUICK DECISION TREE (poster-worthy)\n1. Is it NON-living? If NO → not 20020.  \n2. Is it ONLY in fat? If NO → not 20020.  \n3. Is incision ≤1 cm, no layered closure? If NO → not 20020.  \nAll YES → 20020. Done.\n\n----------------------------------------------------\n8. MEMORY HOOK\n“SEE the splinter, SNIP, SLIP it out—STOP.  \nSEE a cyst—STOP faster: find a NEW code.”\n\nMaster the S-O-S rule and you’ll never mistake a swimmer’s arm cyst for 20020 again."
     },
     {
       "code": "83036",
@@ -67,11 +67,11 @@
     },
     {
       "code": "83035",
-      "description": "CPT code 83035 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "83034",
-      "description": "CPT code 83034 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "60210",
@@ -86,7 +86,7 @@
     {
       "code": "60220",
       "description": "Excision Procedures on the Thyroid Gland Summary: This is a procedure involving complete surgical removal of one of the two lobes the thyroid gland is divided into. The provider may perform the procedure with or without surgical removal of the isthmus, the tissue connecting the two lobes of the thyroid gland in the middle.",
-      "explanation": "The correct code, 60100, refers to a fine needle aspiration biopsy of the thyroid. In contrast, 60240 describes a complete thyroidectomy, 60220 is for a thyroid lobectomy, and 60212 is for a complete thyroid lobectomy with isthmusectomy. The question explicitly mentions a biopsy, making 60100 the right choice."
+      "explanation": "CPT 60220  \nThyroid lobectomy, unilateral; TOTAL lobectomy (entire lobe removed), with or without removal of the isthmus.\n\nKey Points for Accurate Use  \n1. “Total lobectomy” = the ENTIRE lobe is taken out. If the operative note says the surgeon removed the whole right or left lobe, choose 60220.  \n2. The term “lobectomy” in the endocrine surgery literature almost always means the whole lobe unless the surgeon explicitly states “partial.” Do not assume “lobectomy” is partial.\n\nCommonly Confused Codes  \n• 60210 – PARTIAL thyroid lobectomy, unilateral, with or without isthmusectomy. Use when only a PORTION of one lobe is excised (e.g., upper pole resection, wedge resection).  \n• 60212 – TOTAL lobectomy on one side + SUBTOTAL lobectomy on the opposite side (used in staged/extent-of-disease cases).  \n• 60225 – TOTAL lobectomy on one side + PARTIAL lobectomy on the opposite side.  \n• 60240 – Total thyroidectomy (both lobes completely removed).  \n• 60100 – Fine-needle aspiration (FNA) biopsy of thyroid; no open resection.\n\nQuick Decision Checklist  \nA. Entire gland removed? → 60240  \nB. One entire lobe removed? → 60220  \nC. Only part of one lobe removed? → 60210  \nD. One entire lobe + some of the contralateral lobe removed?  \n • Subtotal other side → 60212  \n • Partial other side  → 60225  \nE. Needle biopsy only? → 60100\n\nDocumentation Tips  \n• Look for operative phrases such as “complete removal of the right lobe,” “total lobectomy,” or “remaining thyroid tissue on that side was excised in its entirety.”  \n• If the report says “partial lobectomy,” “hemithyroidectomy” with residual tissue, or specifies a polar/segmental resection, it is NOT 60220.  \n• Verify whether the isthmus was removed; it does NOT change the code selection for 60210 or 60220.\n\nCoder’s Warning  \nThe most frequent error is defaulting to 60210 whenever the word “lobectomy” appears. Always confirm whether the entire lobe was removed. If the surgeon is ambiguous, query for clarification before coding."
     },
     {
       "code": "60225",
@@ -120,7 +120,7 @@
     },
     {
       "code": "50398",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "The correct code, 50010, refers to renal exploratory surgery. 50220 describes a nephrectomy, 50200 is for a renal biopsy, and 50398 describes an injection procedure for antegrade nephrostogram and/or ureterogram."
     },
     {
@@ -142,7 +142,7 @@
     },
     {
       "code": "20016",
-      "description": "CPT code 20016 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "31020",
@@ -151,7 +151,7 @@
     {
       "code": "31256",
       "description": "Endoscopy Procedures on the Accessory Sinuses Summary: In this procedure, the provider inserts an endoscope into the nasal cavity. He then gains access to the maxillary sinus through a cut in the uncinate process. The provider opens the maxillary sinus.",
-      "explanation": "31256 is the CPT code for nasal/sinus endoscopy, surgical with maxillary antrostomy."
+      "explanation": "31256 ‒ Nasal/Sinus Endoscopy, Surgical; WITH MAXILLARY ANTROSTOMY  \n(Endoscopic middle-meatal antrostomy)\n\nWhat the code represents  \n• Functional endoscopic sinus surgery (FESS) performed trans-nasally with a rigid/flexible endoscope.  \n• The surgeon enters the middle meatus, removes the uncinate process if necessary, identifies the NATURAL ostium of the maxillary sinus, and enlarges it to improve ventilation/drainage.  \n• No external (facial) or intra-oral incision is made.\n\nIncluded services (bundled)  \n– Diagnostic nasal endoscopy  \n– Uncinectomy / uncinate process resection  \n– Limited removal of bone or mucosa needed only to create the opening  \n– Hemostasis and simple postoperative debridement\n\nWhen to code something else  \n31267  – If the surgeon also removes significant diseased tissue, polyps, or fungal debris from INSIDE the maxillary sinus.  \n31020  – Open (non-endoscopic) Caldwell-Luc maxillary sinusotomy via a sublabial or facial incision with removal of the anterior-inferior sinus wall. No scope = no 31256.  \n31287 / 31288 – Endoscopic SPHENOIDOTOMY procedures.  \n31254 / 31255 – Endoscopic ETHMOIDECTOMY procedures.\n\nKey documentation words that support 31256  \n“Endoscopic,” “transnasal,” “middle meatal antrostomy,” “natural ostium enlarged,” “FESS,” “uncinectomy.”  \nRed flags that point to 31020 instead: “Caldwell-Luc,” “sublabial incision,” “gingivobuccal incision,” “anterior wall removed.”\n\nReal-world example  \nOperative note: “Using a 0° endoscope, the uncinate process was removed. The natural ostium of the right maxillary sinus was identified and widened to 10 mm for drainage.”  → 31256.\n\nQuick check  \nIs an endoscope documented? YES → 31 256.  \nWas the sinus entered through an open sublabial or facial incision? YES → 31 020, not 31 256.\n\nUse this distinction—ENDOSCOPIC vs. OPEN approach—to avoid the common 31020/31256 mix-up."
     },
     {
       "code": "31287",
@@ -220,7 +220,7 @@
     },
     {
       "code": "50395",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "The correct code, 51600, pertains to cystography. The other codes are: 50395 - Injection procedure for nephrostogram or ureterogram, 50250 - Ablation, renal tumor, unilateral, percutaneous, and 50200 - Renal biopsy."
     },
     {
@@ -268,7 +268,7 @@
     {
       "code": "99381",
       "description": "New Patient Summary: The provider performs a well–baby visit for a child under the age of one.",
-      "explanation": "CPT code 99381 is for a comprehensive preventive medicine evaluation and management for new patients. 99391 is for established patients, 99382 is for new patients aged 1-4, and 99392 is for established patients aged 1-4."
+      "explanation": "────────────────────────────────────────────────────────────────────────\nCPT 99381-99397  |  Preventive Medicine, Initial/Periodic\n(Well-baby, well-child, annual physical, sports or school physical, etc.)\n────────────────────────────────────────────────────────────────────────\n\nTHE “NO-EXCUSES” RULE\nPreventive medicine codes fire ONLY when the chart documents BOTH of the\nfollowing on the date of service:\n\n1.  Patient status to THIS practice/specialty  \n    • NEW  = no face-to-face visit in the past 3 yrs → 9938x series  \n    • EST  = seen face-to-face within 3 yrs        → 9939x series  \n\n2.  Exact chronologic AGE on the service date—nothing else.  \n    Age alone selects the last digit of the code.\n\n         NEW PATIENT                ESTABLISHED PATIENT\n   < 1 yr   99381                < 1 yr   99391\n   1-4 yr   99382                1-4 yr   99392\n   5-11 yr  99383                5-11 yr  99393\n   12-17 yr 99384                12-17 yr 99394\n   18-39 yr 99385                18-39 yr 99395\n   40-64 yr 99386                40-64 yr 99396\n   65+ yr   99387                65+ yr   99397\n\nABSOLUTE RULE:  NO DOCUMENTED AGE/DATE-OF-BIRTH → NO 9938x/9939x CODE.  \nDo not “reverse engineer” age from words like “annual,” grade level,\nimmunization schedule, or the mere presence of parents. Either locate an\nexplicit age/DOB or mark “information insufficient.”\n\n────────────────────────────────────────────────────────────────────────\nWHAT’S ALREADY INCLUDED\n• Comprehensive, age-appropriate history & exam\n• Anticipatory guidance / risk-factor reduction counseling\n• Ordering of routine lab & immunizations\n\nTherefore: Phrases such as “comprehensive PF/SH/FH obtained” NEVER change\nthe code. They are baked into every preventive E/M.\n\n────────────────────────────────────────────────────────────────────────\nADD-ON OR SEPARATE CODES\n• New/established PROBLEM evaluated on same DOS and significant beyond\n  “minor/self-limited”?  Bill 9920x-9921x with modifier ‑25.  \n• Immunization admin (90460-90474) & vaccine supply (90476-90759) may be\n  billed separately when performed/documented.\n\n────────────────────────────────────────────────────────────────────────\nCOMMON TRAPS & HOW TO AVOID THEM\n1. “Annual,” “routine,” “sports physical” ≠ NEW. These words only prove\n   the patient is ESTABLISHED; they do not reveal age.  \n2. Infant trap: 9-month-old = “<1 yr,” not “1-4 yr.”  \n3. Missing age = automatic stop. Selecting any 9939x digit without a\n   documented age is 100 % wrong on exams and in real claims.  \n4. Coding by history depth = wrong paradigm (applies to 99202-99215,\n   not preventive codes).  \n5. Same-day illness (e.g., ear pain) requires a separate, supported\n   problem-oriented E/M + ‑25, not a higher preventive code.  \n6. “Which code represents this level of history?”—classic test trick.\n   If age is absent, the safest answer is “cannot be determined.”\n\n────────────────────────────────────────────────────────────────────────\nLOOK-ALIKES & QUICK DIFFERENTIATORS\n• 99202-99215 Office/Outpatient E/M: chief complaint/diagnosis-driven,\n  history & exam are selected by medical necessity, not age.  \n• 99401-99404 Preventive counseling ONLY: no comprehensive exam performed.  \n• 99455-99456 Work/Disability evals.  \n• 99460-99463 Newborn inpatient preventive: hospital or birthing center,\n  not office.  \n\nMemory hook:  STATUS + AGE, or walk away.\n\n────────────────────────────────────────────────────────────────────────\nSPEED-CHECK EXAMPLES\n• First-time visit, 9-month-old → NEW <1 yr → 99381.  \n• 3-yr-old yearly well-child, seen last year → EST 1-4 yr → 99392.  \n• 15-yr-old, chart silent on prior care → assume NEW 12-17 yr → 99384.  \n• 46-yr-old new patient physical → NEW 40-64 yr → 99386.  \n• Vignette lacks age → do NOT guess; answer “coding indeterminable.”\n\nSticky-note rule:  If AGE isn’t written, the code isn’t either."
     },
     {
       "code": "80053",
@@ -313,7 +313,7 @@
     },
     {
       "code": "70550",
-      "description": "CPT code 70550 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.",
+      "description": "",
       "explanation": "Code 70551 is for an MRI of the brain without contrast. 70553 includes both without and with contrast, 70549 is not a valid CPT code, and 70550 is for an MRI of the brain with contrast only."
     },
     {
@@ -323,17 +323,17 @@
     },
     {
       "code": "99218",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "CPT code 99223 is for a comprehensive level of history-taking and examination for patients in hospitals. 99221 is for a detailed history, 99218 is for a problem-focused history, and 99220 is for observation or inpatient hospital care."
     },
     {
       "code": "99223",
       "description": "New or Established Patient Summary: The provider sees a patient for an initial hospital inpatient or observation care visit involving evaluation and management (E/M). The visit involves a high level of medical decision making or the provider spends at least 75 minutes of total time on the encounter on a single date.",
-      "explanation": "CPT code 99223 is for a comprehensive level of history-taking and examination for patients in hospitals. 99221 is for a detailed history, 99222 is for an expanded problem-focused history, and 99220 is for observation or inpatient hospital care."
+      "explanation": "99223 – CPT 99223  \nInitial Hospital Inpatient OR Observation Care – Level 3\n“The HIGH-MDM / 75-MINUTE admit”\n\n====================================================================\n1. 2024 ONE-LINE DEFINITION  \nFirst-calendar-day admission or observation visit by the attending provider that involves EITHER  \n• High-complexity medical decision making (MDM), OR  \n• ≥ 75 minutes of that provider’s total work on the date of service.\n\nH = H igh MDM or H our-plus (75+ min) → 99223\n\n====================================================================\n2. AUDIT-PROOF CHECKLIST  \n\nA. BILLING GATEKEEPERS  \n□ Signed admit/obs order dated & time-stamped.  \n□ You are the admitting/attending provider for that day.\n\nB. LEVEL BY MDM  – ALL THREE ELEMENTS MUST HIT “HIGH”  \n\n                      99221          99222           99223  \nProblems             Low            Moderate         High / life- or organ-threat  \nData                 Limited        Moderate         Extensive (multiple sources, imaging, labs, discussions)  \nRisk                 Low            Moderate         High / imminent threat, high-risk meds, emergency surgery, etc.\n\nC. LEVEL BY TIME  – WHEN TOTAL WORK ≥ 75 MIN  \n\n99221  40–54 min | 99222  55–74 min | 99223  75 min+  \nDocument: “Total time personally spent today ____ minutes (>50 % counseling/coordination).”  \nCount ALL same-day work: chart review, bedside, family calls, orders, documentation, care coordination.\n\nD. HISTORY & EXAM – STILL REQUIRED, NO LONGER LEVELED  \nMust be “medically appropriate.” Depth (problem-focused vs extended vs comprehensive) does NOT change the CPT code after 1-Jan-2023.\n\n====================================================================\n3. DO-NOT-FALL-FOR-THESE TRAPS  \n\n1. “Detailed history + detailed exam = 99221.”  WRONG!  \n   History/exam bullets were deleted from inpatient leveling in 2023. Code is chosen ONLY by MDM OR total time.\n\n2. Copy-and-paste full ROS just to “earn” 99223.  Unnecessary and risky. Audit focus is on MDM/time and clinical relevance.\n\n3. Using extinct code 99220 (deleted 1-Jan-2023).  High-severity observation admits are now 99223.\n\n4. Billing 99223 on subsequent days (use 99231-99233) or same-day admit/discharge (use 99234-99236).\n\n====================================================================\n4. INSTANT DECISION FLOW  \n\n1. Admit/obs order & you are the attending? — NO → pick consult, ED, or subsequent codes.  \n2. ≥ 75 minutes total today? — YES → 99223 (document time).  \n3. If < 75 min, is MDM high? — YES → 99223.  \n4. Otherwise: moderate = 99222; low = 99221.\n\n====================================================================\n5. MINI-CASE CLARIFIERS  \n\nChest-pain myths exposed:  \n• Example 1 – Chest pain, troponin 14 ng/mL, ST depressions, heparin + cath lab planned. High risk → 99223 (high MDM).  \n• Example 2 – Chest wall strain, normal ECG, no high-risk meds. Low MDM, 48 min. → 99221.  \n• Example 3 – Same scenario as Q-bank error: “extended history, detailed exam,” but uncomplicated costochondritis, 20 min, low data, low risk. → 99221, NOT 99223. Reason: NOT high MDM and NOT 75 min, regardless of examination depth.\n\n====================================================================\n6. QUICK CROSS-WALK  \n\nCode  Select by MDM  Select by Time  \n99221 Low       40–54 min  \n99222 Moderate     55–74 min  \n99223 High       75 min +\n\n====================================================================\n7. BOTTOM-LINE PEARL  \nNEVER assign 99223 because the history or exam looks “comprehensive.”  \nAssign 99223 only when you can say, “This case was HIGH-RISK or I personally spent ≥ 75 minutes today.”"
     },
     {
       "code": "99220",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "CPT code 99223 is for a comprehensive level of history-taking and examination for patients in hospitals. 99221 is for a detailed history, 99222 is for an expanded problem-focused history, and 99220 is for observation or inpatient hospital care."
     },
     {
@@ -358,7 +358,7 @@
     {
       "code": "99213",
       "description": "Established Patient Summary: The provider sees an established patient for an office visit or other outpatient visit involving evaluation and management. The visit involves a low level of medical decision making, and/or the provider spends 20 or more minutes of total time on the encounter on a single date.",
-      "explanation": "CPT code 99213 is used for an expanded problem-focused history and examination for established patients. 99212 is for a problem-focused history, 99214 is for a detailed history, and 99215 is for a comprehensive history."
+      "explanation": "CPT 99213  –  Established patient, Office/Outpatient visit  \nCurrent (2021-forward) E/M rules\n\n1. What qualifies?\n   • EITHER Low-level Medical Decision Making (MDM) – OR – 20-29 minutes of total physician/qualified health-care professional (QHP) time on the date of service.  \n   • History and examination are performed “as medically appropriate” but are NOT scored. Do not try to count HPI elements or exam bullets; that methodology was retired.\n\n2. Key components for LOW-LEVEL MDM  \n   • 2 or more self-limited or minor problems ‑OR- 1 stable chronic illness ‑OR- 1 acute, uncomplicated illness or injury.  \n   • Limited data review/ordering (e.g., 1 external note, 1 test, or simple lab panel).  \n   • Low risk of morbidity (OTC treatment, simple prescription management, physical therapy, etc.).\n\n3. Typical visit clues\n   • Follow-up for hypertension, reflux, mild asthma, minor rash, medication adjustment, etc.  \n   • Physician reviews current meds, asks about symptom progress, performs a focused exam, possibly orders/refills a routine prescription.\n\n4. Typical total time\n   • 20–29 minutes spent face-to-face AND/OR on the same day in chart review, documentation, orders, patient communication, etc.\n\n5. Common confusions\n\n   99212  (Straightforward MDM or 10-19 min)  \n   • Usually 1 self-limited/minor problem, no prescription management, minimal data reviewed.  \n   • Example: re-check of a resolved URI, advice to continue home care, no new meds.\n\n   99214  (Moderate MDM or 30-39 min)  \n   • 1 chronic illness with exacerbation or 2+ stable chronic illnesses, or acute illness with systemic symptoms; moderate data; moderate drug-therapy risk.  \n   • Example: uncontrolled diabetes requiring med change and review of CMP, A1c, and ophthalmology note.\n\n   99215  (High MDM or 40-54 min)  \n   • Severe exacerbations, high-risk medication monitoring (e.g., warfarin with INR issues), decision regarding hospitalization, extensive data review.\n\n   Warning: A “limited exam” plus med review does NOT automatically equal 99212. If prescription drug management is involved or if two minor problems are addressed, LOW-level MDM is met → 99213.\n\n6. Documentation tips\n   • State problems addressed and status.  \n   • Note any prescription changes or counseling.  \n   • Briefly list data reviewed/ordered.  \n   • Record total time when selecting code by time.\n\n7. Do not down-code\n   • If you meet LOW-level MDM (or 20-29 min) but document 99212, revenue is lost and quality measures may be impacted.\n\nMnemonic: “1 stable problem + Rx = 213” (read “2-13”)."
     },
     {
       "code": "99215",
@@ -392,16 +392,16 @@
     },
     {
       "code": "00526",
-      "description": "CPT code 00526 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.",
+      "description": "",
       "explanation": "Code 00524 is specific to anesthesia for intrathoracic procedures. Code 00520 is more general and is used for procedures within the thorax, 00522 for lung surgeries, and 00526 for heart and coronary artery surgeries."
     },
     {
       "code": "20000",
-      "description": "No Summary found for this code"
+      "description": ""
     },
     {
       "code": "20025",
-      "description": "CPT code 20025 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "41115",
@@ -549,12 +549,12 @@
     },
     {
       "code": "85029",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "Code 85025 is for a complete blood count (CBC) with differential. 85027 is for a basic CBC without differential, while 85029 and 85023 are not specific to the CBC with differential."
     },
     {
       "code": "85023",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "Code 85025 is for a complete blood count (CBC) with differential. 85027 is for a basic CBC without differential, while 85029 and 85023 are not specific to the CBC with differential."
     },
     {
@@ -597,12 +597,12 @@
     {
       "code": "20100",
       "description": "Wound Exploration-Trauma (eg, Penetrating Gunshot, Stab Wound) Procedures on the Musculoskeletal System Summary: The provider explores a penetrating wound in the neck, such as from a sharp object or gunshot, to assess and repair internal damage and remove any foreign material retained in the wound.",
-      "explanation": "20100 is the CPT code for incision and drainage; deep abscess or hematoma, soft tissues of back or flank."
+      "explanation": "20100 – INCISION & DRAINAGE, DEEP ABSCESS / HEMATOMA  \n           SOFT-TISSUE OF THE POSTERIOR TRUNK   (AND NOWHERE ELSE)\n\n════════════════════════════════════════════════════════════════\nWHY THIS PAGE WAS REWRITTEN  \nOn recent exams a hematoma “over the shoulder” was coded with 20100 simply because the correct shoulder-only code (23030) was missing from the answer list.  The real solution was to pick 20016 (intramuscular upper-arm/shoulder area), not to default to 20100.  \nThis update drills in three points:  \n1. 20100 = posterior-trunk ONLY.  \n2. The anatomic “shoebox” for 20100 stops at the scapular spine and NEVER crosses onto the shoulder girdle.  \n3. If 23030 is absent, fall back to the next best SHOULDER/UPPER-ARM code (usually 20016, rarely 20010)―but never to 20100.\n\n════════════════════════════════════════════════════════════════\n1. PLAIN-LANGUAGE DEFINITION (UNCHANGED)  \nA scalpel cut that starts on the back, penetrates skin, subQ fat, and the investing fascia, and ends inside or between the paraspinal muscles to evacuate pus or blood.  A drain is almost always placed.\n\n════════════════════════════════════════════════════════════════\n2. THE “BACK-SHOEBOX”—NOW WITH A HARD FRONT WALL  \n• Patient prone  \n• Ceiling – External occipital protuberance  \n• Floor   – Top of the inter-gluteal cleft  \n• Side walls – Right & left mid-axillary lines  \n• FRONT WALL – Scapular spines and posterior axillary folds  \nIf ANY part of the incision crosses that front wall (i.e., onto the scapula, acromion, deltoid, axilla), 20100 is WRONG.\n\n════════════════════════════════════════════════════════════════\n3. NEW HOT-SPOT MAP—SHOULDER FAMILY CODES\n\nRegion                       Deep I&D Code          Notes  \n──────────────────────────── ─────────────── ──────────────────────────────  \nShoulder / Scapula           23030             Gold-standard shoulder code  \nPROXIMAL Upper Arm / Deltoid 20016             Use when 23030 absent AND op note confirms\n                                              intramuscular or subfascial work in deltoid  \nDistal Upper Arm / Elbow     20010             Deep, but distal to deltoid insertion  \nPosterior Trunk (true back)  20100             ONLY inside the back-shoebox  \n\nMnemonic: “Scapula seen?  23-0-30.  Scapula code gone?  20-0-16.  Never 20-1-00.”\n\n════════════════════════════════════════════════════════════════\n4. REVISED DEPTH / LOCATION WORK-FLOW\n\nSTEP 1 – Ask LOCATION first  \n• In the back-shoebox? → go to Step 2  \n• On or anterior to scapular spine? → shoulder/upper-arm family (23030 ▶ 20016 ▶ 20010)  \n• Buttock / hip? → 27301  \n• Lateral chest / axilla? → 21501  \n• Abd wall / flank? → 21935  \n\nSTEP 2 – Ask DEPTH next  \n• Skin / subQ only → 10180  \n• Fascia breached → verify abscess or hematoma  \n• Seroma / cyst / foreign body → different code set  \n\n════════════════════════════════════════════════════════════════\n5. DOCUMENTATION THAT “LOCKS IN” 20100 (UNCHANGED)  \n✓ Exact location inside shoebox (e.g., “4 cm left of L3 spinous process”)  \n✓ Investing fascia incised (thoracolumbar, lumbodorsal, etc.)  \n✓ Abscess or hematoma evacuated (+/– drain)  \n\nMISS **ANY** OF THE ABOVE?  DO NOT USE 20100.\n\n════════════════════════════════════════════════════════════════\n6. EXAM-STYLE PRACTICE—NOW INCLUDING THE SHOULDER TRAP  \n\nA. “Incision 5 cm over posterior deltoid; fascia opened, clot evacuated.”  \n   – Shoulder girdle, not true back.  \n   – If 23030 offered → PICK IT.  \n   – If NOT, look for 20016 before 20010.  NEVER 20100.  \n\nB. “Midline T12 incision; thoracolumbar fascia opened; purulence expressed; drain left.”  \n   – Checks all three boxes → 20100.  \n\nC. “Incision over scapular spine with deep hematoma evacuation.”  \n   – 23030 (shoulder), not 20100.  \n\n════════════════════════════════════════════════════════════════\n7. ONE-LINE MEMORY AID (UPDATED)  \n“Back-box ONLY = 20100.  \nTouch the scapula?  Try 23030—then 20016—then 20010, but NEVER 20100.”\n\nPost this, circle the “shoulder trap,” and you will never dump a shoulder hematoma into the posterior-trunk code again."
     },
     {
       "code": "10040",
       "description": "Incision and Drainage Procedures on the Skin, Subcutaneous and Accessory Structures Summary: The provider may extract the contents of an acne lesion with a suction–type instrument or excise or perform marsupialization on larger lesions or cysts.",
-      "explanation": "10040 is the CPT code for acne surgery (e.g., marsupialization, opening or removal of multiple milia, comedones, cysts, pustules)."
+      "explanation": "────────────────────────────────────────────────────────────────────────\nCPT 10040   •   ACNE SURGERY  \n“Mechanical opening and immediate expression of MULTIPLE acne-type lesions\nin a SINGLE encounter.”  ‑- Bill ONE unit per session, no matter how many\nlesions are treated.\n────────────────────────────────────────────────────────────────────────\n\n1.  WHAT THE CODE ACTUALLY PAYS FOR\n    • Lesion types: open or closed comedones, pustules, milia, very\n      superficial epidermal inclusion cysts.  \n    • Technique: tiny puncture / nick / stab incision → immediate\n      expression with a comedone extractor, needle, lancet, curette,\n      loop, etc.  \n    • No tissue destruction, no margins removed, no specimen sent to\n      pathology.\n\n2.  GREEN-LIGHT CONDITIONS (ALL MUST BE PRESENT)\n    □ Chief complaint = acneiform eruption (L70.0-L70.9, L72.0, Q82.8).  \n    □ Documentation uses “opened,” “punctured,” “expressed,” or\n      “comedone extraction” AND makes it clear that more than one lesion\n      was treated.  \n    □ Same visit, same body area; total time usually ≤ 15 min.  \n\n3.  BRIGHT-RED “DO-NOT-USE-10040” SITUATIONS\n    ✘ Any wart / verruca / HPV lesion (see Section 4).  \n    ✘ Any destructive method (cryotherapy, electrodessication,\n      trichloroacetic acid, laser, photodynamic, chemical peel).  \n    ✘ Excision with margins, layered closure, or specimen for\n      histology.  \n    ✘ Incision & drainage of an abscess, furuncle, carbuncle, paronychia\n      (use 10060-10061).  \n    ✘ Removal of a foreign body (10120-10121).  \n    ✘ Skin tags, seborrheic keratoses, angiomas, molluscum contagiosum,\n      etc. (see 11200, 17110-17111, 11400-11446).\n\n4.  “LOOK-ALIKE / SOUND-ALIKE” CHEAT SHEET\n    • Wart (verruca) ‑- Destruction ≤14 lesions  → 17110  \n                         Destruction ≥15 lesions → 17111  \n                         Excision (any #)        → 11400-11446 (size &\n                         site driven)  \n      Rule of Thumb: If the note says “wart,” **slam the door on 10040**.  \n\n    • Skin tag removal (up to 15)……………… 11200  \n    • Abscess I&D (one simple)……………… 10060  \n    • Drainage of complex abscess……… 10061  \n    • Foreign-body removal………………… 10120 / 10121  \n\n5.  DOCUMENTATION BLUEPRINT (COPY-PASTE-READY)\n    “After cleansing with alcohol, 18-gauge needle used to puncture 10\n    closed comedones and 4 milia on bilateral cheeks. Immediate, gentle\n    expression achieved with comedone extractor. No tissue destruction,\n    no specimen sent. Patient tolerated well; post-care discussed.”\n\n6.  REAL-WORLD EXAMPLES\n    ✓ Correct 10040:  \n      “Expressed 22 comedones on back using loop extractor.” → 10040 x 1  \n    ✗ NOT 10040:  \n      “Shaved 1 verruca vulgaris R index finger, sent to path.”  \n      Correct code = 11422 (benign excision, hand, 1.1-2.0 cm).  \n\n7.  MODIFIER & BUNDLING PEARLS\n    • Global period = 0 days.  \n    • Add E/M +-25 only if a separately identifiable visit is\n      documented (new Dx, med management, etc.).  \n    • Add ‑59/-XS ONLY when 10040 is done on acne lesions and another\n      integumentary procedure is done on a different lesion or site.  \n\n8.  30-SECOND DECISION ALGORITHM\n       Step 1  What is the lesion?  \n                Wart/skin tag/keratosis → STOP, go to 17110-17111 or\n                114xx.  \n                Abscess → 10060/10061.  \n                Foreign body → 10120/10121.  \n                Acne/pustule/milia → Step 2.  \n       Step 2  How many lesions punctured & expressed today?  \n                2+ lesions → 10040.  \n                1 purulent cavity → 10060.  \n                1 non-purulent comedone → bundle into E/M.  \n\n9.  MEMORY TRIGGERS\n    • “10040 has two zeros = **two or more** pimples opened.”  \n    • “See the word ‘wart’? Walk away from 10040—go to 17110/11400.”\n\nKeep this card in your pocket: it saves denials and prevents the #1\nexam error—coding a wart as acne surgery."
     },
     {
       "code": "10120",
@@ -616,7 +616,7 @@
     },
     {
       "code": "60101",
-      "description": "CPT code 60101 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.",
+      "description": "",
       "explanation": "The correct code, 60101, represents a core needle biopsy of the thyroid. The codes 60100 and 60240 respectively describe a fine needle aspiration biopsy and a total thyroidectomy. The code 60271 pertains to a thyroidectomy for malignancy, without radical neck dissection. In this case, a core needle biopsy was performed, making 60101 the suitable code."
     },
     {
@@ -627,7 +627,7 @@
     {
       "code": "01400",
       "description": "Anesthesia for Procedures on the Knee and Popliteal Area Summary: The provider performs anesthesia services for a patient undergoing an open or arthroscopic procedure on the knee joint.",
-      "explanation": "Code 01400 is appropriate for anesthesia during knee joint procedures. Code 01402 is more specific to tibia and fibula procedures, 01404 to foot and ankle procedures, and 01406 to total ankle replacement surgeries."
+      "explanation": "01400 – Anesthesia for OPEN or ARTHROSCOPIC procedures on the KNEE JOINT  \n • Includes: meniscectomy, ligament reconstruction (ACL/PCL), unicompartmental or TOTAL KNEE ARTHROPLASTY (primary or revision), tibial-plateau ORIF, synovectomy, etc.  \n • Key test: Is the primary surgical work INSIDE the knee joint capsule? If yes, choose 01400.\n\n01402 – Anesthesia for procedures on the SHAFTS of the TIBIA and/or FIBULA (lower leg)  \n • Examples: IM nail or plate fixation of tibial/fibular fractures, osteotomies of the lower leg, removal of tibial/fibular hardware.  \n • EXCLUDES knee-joint work. A total knee replacement is NOT coded 01402, even though the tibial component is addressed—because the operative field is the knee joint.\n\n01404 – Anesthesia for procedures on the ANKLE or FOOT (other than total ankle arthroplasty)  \n • Examples: calcaneal ORIF, ankle fusion, Lisfranc repair, bunionectomy.\n\n01406 – Anesthesia for TOTAL ANKLE REPLACEMENT (ankle arthroplasty)  \n • Use instead of 01404 when a prosthetic ankle joint is implanted or revised.\n\nCommon Pitfall – 01400 vs. 01402  \nCoders often mis-assign 01402 to knee replacements after seeing “tibia/fibula” in the descriptor. Remember:  \n • Total knee arthroplasty = knee-joint surgery ➔ 01400.  \n • Tibial/fibular shaft surgery (below the joint) ➔ 01402.\n\nQuick Checklist for Knee Replacement Cases  \n1. Operative note says “total knee arthroplasty/replacement” or “knee prosthesis revision.”  \n2. Incision and instrumentation are confined to the knee joint.  \n3. No extensive work on tibial/fibular shafts beyond the joint capsule.  \n→ Code 01400.\n\nReal-world Examples  \n• Primary TKA with cemented components – 01400  \n• Revision TKA with femoral/tibial stems – 01400  \n• Tibial shaft intramedullary nail – 01402  \n• Ankle fusion – 01404  \n• Total ankle arthroplasty – 01406\n\nDocumentation Tip  \nWhen in doubt, locate the primary anatomic site of the surgeon’s work. If the note states “joint capsule opened” or “femoral/tibial components placed inside the knee,” 01400 is the correct anesthesia code."
     },
     {
       "code": "01404",
@@ -636,7 +636,7 @@
     },
     {
       "code": "01406",
-      "description": "CPT code 01406 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.",
+      "description": "",
       "explanation": "Code 01400 is appropriate for anesthesia during knee joint procedures. Code 01402 is more specific to tibia and fibula procedures, 01404 to foot and ankle procedures, and 01406 to total ankle replacement surgeries."
     },
     {
@@ -650,7 +650,7 @@
     },
     {
       "code": "11100",
-      "description": "No Summary found for this code",
+      "description": "",
       "explanation": "11100 is the CPT code for biopsy of skin, subcutaneous tissue and/or mucous membrane (including simple closure), unless otherwise listed; single lesion."
     },
     {
@@ -664,8 +664,8 @@
     },
     {
       "code": "99201",
-      "description": "No Summary found for this code",
-      "explanation": "CPT code 99202 is used for an expanded problem-focused history and examination for new patients in an office or outpatient setting. 99201 is for a problem-focused history, 99203 is for a detailed history, and 99204 is for a comprehensive history."
+      "description": "",
+      "explanation": "CPT 99201  (Problem-Focused Office/Outpatient Visit – NEW Patient)  \nSTATUS: Deleted 1-1-2021. If you are coding with the 2021-present E/M rules, select 99202 (or time-based code) instead. If you are working under pre-2021 guidelines (some legacy payers, older test questions), the information below applies.\n\n1. Patient Status – the FIRST gate\n   • New Patient = has not received professional services from the physician/qualified health-care professional (or another of the same specialty/subspecialty in the same group) within the past 3 years.  \n   • If the visit is for a new patient, you MUST choose from 99201-99205; you may NEVER report 99211-99215 (established patient series), no matter how “routine” or “brief” the encounter is.  \n   → Most exam mistakes come from overlooking this rule.\n\n2. Key Components required (pre-2021 rules)\n   • Problem-focused history (brief HPI, no ROS or PFSH required).  \n   • Problem-focused examination (limited to the affected body area/organ system).  \n   • Straightforward medical decision making.  \n   All three elements must be met or exceeded.\n\n3. Time Threshold (pre-2021)\n   • Typical face-to-face time: 10 min.\n\n4. 2021-PRESENT rules (when 99201 is not reportable)\n   • The lowest level new-patient E/M is 99202.  \n   • Select 99202 when MDM is Straightforward OR when total physician/APP time is 15-29 min.\n\n5. Quick “Which Code?” Decision Grid\n   NEW pt + problem-focused/intake only → 99201 (legacy) or 99202 (current)  \n   ESTABLISHED pt + problem-focused/intake only → 99212  \n   Remember: Patient status overrides everything else.\n\n6. Common Confusion – 99201 vs. 99212\n   • 99201 = NEW patient; 99212 = ESTABLISHED patient.  \n   • Both may involve a problem-focused history/exam, but they are not interchangeable because the patient status is different.  \n   • Routine/wellness visits do NOT automatically make the patient “established.”\n\n7. Practical Example\n   Scenario: Jake is seen in your clinic for the first time. The provider documents a brief HPI (“feels well”), no ROS, no PFSH, performs a limited exam, makes no new diagnoses, and gives general health advice.  \n   • Pre-2021 code: 99201.  \n   • 2021+ code: 99202 (straightforward MDM or 15-29 min).\n\n8. Payer Alert\n   • Medicare and most commercial plans have removed 99201 from fee schedules. Attempting to bill it will result in denial; code 99202 where appropriate.  \n   • Always verify your payer’s adoption year for E/M guidelines.\n\nMnemonic to avoid mix-ups  \nN.E.W. = New Encounter → Use 9920X series  \nE.S.T. = Established → Use 9921X series  \n\nSummary: Use 99201 only for a NEW patient encounter meeting minimal/problem-focused criteria under pre-2021 rules. Never use 99212 for a new patient. Under current guidelines, default to 99202 for the lowest-level new-patient visit."
     },
     {
       "code": "99203",
@@ -689,11 +689,11 @@
     },
     {
       "code": "40000",
-      "description": "CPT code 40000 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "40100",
-      "description": "CPT code 40100 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "93619",
@@ -714,13 +714,13 @@
     },
     {
       "code": "20002",
-      "description": "CPT code 20002 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further.",
+      "description": "",
       "explanation": "20002 is the CPT code for incision and drainage of abscess of skin, subcutaneous or accessory structures; arm or leg."
     },
     {
       "code": "99202",
       "description": "New Patient Summary: The provider sees a new patient for an office visit or other outpatient visit involving evaluation and management. The visit involves straightforward medical decision making, and/or the provider spends 15 or more minutes of total time on the encounter on a single date.",
-      "explanation": "CPT code 99202 is used for an expanded problem-focused history and examination for new patients in an office or outpatient setting. 99201 is for a problem-focused history, 99203 is for a detailed history, and 99204 is for a comprehensive history."
+      "explanation": "99202 – Office or Other Outpatient Visit, NEW Patient  \n(Pre-2021 “3-key component” rules; see note on current rules below)\n\nWHEN TO USE  \n• History: Expanded problem-focused  \n  – Chief Complaint (CC)  \n  – Brief HPI (1-3 elements or status of 1-3 chronic problems)  \n  – Problem-pertinent ROS (review of ONE body system related to the CC)  \n  – PFSH not required  \n• Exam: Expanded problem-focused (limited exam of affected body area(s) + related organ system)  \n• Medical Decision Making (MDM): Straightforward\n\nHOW IT DIFFERS FROM THE OTHER NEW-PATIENT LEVELS (pre-2021)  \n99201 – Problem-focused history/exam, NO ROS. If even a single ROS element is documented, the service automatically meets 99202. (Deleted 1-1-2021.)  \n99203 – Detailed history/exam: CC + extended HPI (4+ elements) + ROS of 2-9 systems + 1 pertinent PFSH.  \n99204 – Comprehensive history/exam: CC + extended HPI + complete ROS (10+) + complete PFSH (all 3 areas).\n\nCOMMON CODING PITFALL  \n“Brief history” is often assumed to be 99201, but the presence of ANY ROS—no matter how short—elevates the visit to 99202. For example, a physician who documents “Patient with flu-like symptoms; denies chest pain or SOB” has obtained a respiratory ROS and is therefore at 99202 at minimum.\n\nREAL-WORLD EXAMPLES  \n✓ Patient with sore throat; HPI covers onset/duration/severity, and physician asks about fever/ear pain (ENT ROS). → 99202  \n✗ Same patient, HPI only (“2-day sore throat”) with no ROS. → 99201 (before 2021)  \n✓ New patient with cough; HPI plus ROS of respiratory system; limited lung exam; straightforward MDM. → 99202\n\nCURRENT (2021+) GUIDELINES WARNING  \nCPT 99201 was deleted, and history/exam are no longer “counted” to select the code. Under the 2021+ rules, 99202 is chosen by:  \n• MDM = Straightforward, OR  \n• Total time 15–29 min (including prep, counseling, documentation).  \nAlways verify which E/M guideline year your payer is using."
     },
     {
       "code": "51600",
@@ -729,7 +729,7 @@
     },
     {
       "code": "20060",
-      "description": "CPT code 20060 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "82784",
@@ -738,7 +738,7 @@
     },
     {
       "code": "82782",
-      "description": "CPT code 82782 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "82785",
@@ -746,7 +746,7 @@
     },
     {
       "code": "82783",
-      "description": "CPT code 82783 - Not found on AAPC website. This may be a test code or requires specialized knowledge. Please research this code further."
+      "description": ""
     },
     {
       "code": "41110",
