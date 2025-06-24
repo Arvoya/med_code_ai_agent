@@ -95,49 +95,49 @@ const GraphState = Annotation.Root({
 
 type GraphStateType = typeof GraphState.State;
 
-//NOTE: OLD MODELS
-//
-// const llm = new ChatOpenAI({
-//   model: "gpt-4o",
-//   temperature: 0.1,
-// });
-// //
-// const llmVerify = new ChatOpenAI({
-//   model: "o4-mini",
-// });
-//
-//
-// const llmAnswer = new ChatOpenAI({
-//   model: "o3-mini",
-// });
-
-
-//NOTE: NEW MODELS
+//NOTE: PAID MODELS
 //
 const llm = new ChatOpenAI({
-  model: "Gemma 3 12b", // This name is ignored by LM Studio
+  model: "gpt-4o",
   temperature: 0.1,
-  openAIApiKey: "lm-studio", // Any non-empty string works
-  configuration: {
-    baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
-  },
+});
+//
+const llmVerify = new ChatOpenAI({
+  model: "o3",
 });
 
-const llmVerify = new ChatOpenAI({
-  model: "Gemma 3 12b", // This name is ignored by LM Studio
-  openAIApiKey: "lm-studio",
-  configuration: {
-    baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
-  },
-});
 
 const llmAnswer = new ChatOpenAI({
-  model: "Gemma 3 12b", // This name is ignored by LM Studio
-  openAIApiKey: "lm-studio",
-  configuration: {
-    baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
-  },
+  model: "o3-mini",
 });
+
+
+//NOTE: LOCAL MODELS
+//
+// const llm = new ChatOpenAI({
+//   model: "Gemma 3 12b", // This name is ignored by LM Studio
+//   temperature: 0.1,
+//   openAIApiKey: "lm-studio", // Any non-empty string works
+//   configuration: {
+//     baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
+//   },
+// });
+//
+// const llmVerify = new ChatOpenAI({
+//   model: "Gemma 3 12b", // This name is ignored by LM Studio
+//   openAIApiKey: "lm-studio",
+//   configuration: {
+//     baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
+//   },
+// });
+//
+// const llmAnswer = new ChatOpenAI({
+//   model: "Gemma 3 12b", // This name is ignored by LM Studio
+//   openAIApiKey: "lm-studio",
+//   configuration: {
+//     baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
+//   },
+// });
 
 
 class PerplexityAPI {
