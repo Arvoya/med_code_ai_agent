@@ -45,10 +45,10 @@ more opportunity to give proper data relative to the time of the test *2023*.
 
 ## WorkFlow PipeLine
 
-`Extract -> Answer -> Verify -> Compare`
+`Extract -> Answer -> Verify -> Compare -> Enrich`
 
 Due to too many false positives I shortened the Pipeline in v2 vs v1 that had
-additional `Challenge` node.
+additional `Challenge` node. Currently just hard-coded out.
 
 ### Process
 
@@ -70,12 +70,10 @@ additional `Challenge` node.
 7. Compare Answers_Key with Agent Answers
 8. Log Performance and Patterns of Model
 9. Merge Explanation found within Answers PDF to New Explanation_Data JSON file
-10. *Re-Run entire process with learned experience*
+& have it analyze what code it misunderstood and enrich its understanding for
+deeper learning
+10. **Re-Run entire process with enriched/learned experience**
 
-> \* Step **10** is optional in the model. I found the explanations within the Answers
-PDF to result in more accurate answers. I believe its because the code data
-relative to the time of the test. Potentially
-some errors in test is due to Codes no longer existing or being changed.
 
 ## Performance Metrics
 
@@ -89,7 +87,7 @@ some errors in test is due to Codes no longer existing or being changed.
 | Gemma 3 27b         | 70%                  | 63%     | 71%       | 77%        | 93%         |
 | MedGemma 27b        | 84%                  | 80%     | 86%       | 85%        | 100%        |
 | gpt-4o              | 84%                  | 77%     | 86%       | 100%       | 100%        |
-| **o3-mini**             | **90%**                  | **88%**     | **100%**      | **92%**        | **93%**         |
+| **o3-mini**             | **93%**                  | **86%**     | **100%**      | **100%**        | **93%**         |
 | o4-mini             | 86%                  | 82%     | 86%       | 92%        | 100%        |
 | Medical DeepSeek R1 | 76%                  | 75%     | 86%       | 77%        | 73%         |
 | ii-medical-8b       | 48%                  | 42%     | 14%       | 69%        | 80%         |
@@ -129,9 +127,11 @@ a wonderful resource to explore and learn about other LLM's. I had high
 hopes for ii-medical-8b but that and MedGemma could be better used for processing
 medical images.
 
-To get above 90% I would also look into the [CPT
+To get above 93% I would also look into the [CPT
 Developers Program](https://platform.ama-assn.org/ama/#/dev-program) as CPT questions
 make up 65% of entire exam.
+
+o3-mini averages around 90%, I'm hoping after many more runs it could slowly start to improve. May require better prompting to adjust its *enrichment* adjustment.
 
 ## Quick Start
 
