@@ -414,13 +414,12 @@ export async function verifyLowConfidenceAnswers(questions: Question[], state: G
   const verifiedQuestions = [...questions];
   let gptSuccessCount = 0;
 
-  // Load all cached code descriptions once before the loop
   let cachedCodes: any;
   try {
     cachedCodes = await loadCodeDescriptions(state);
   } catch {
     console.log("No cached code descriptions found. Verification may have lower accuracy.");
-    cachedCodes = { "HCPCS": [], "ICD-10": [], "CPT": [] }; // Ensure object exists
+    cachedCodes = { "HCPCS": [], "ICD-10": [], "CPT": [] };
   }
 
   for (let i = 0; i < lowConfidenceQuestions.length; i++) {
@@ -432,13 +431,13 @@ export async function verifyLowConfidenceAnswers(questions: Question[], state: G
 
     const codeDescriptions: Map<string, string> = new Map();
 
-    // --- Start: Code Description Extraction Logic ---
+
     if (question.options) {
       for (const option of question.options) {
         let matches: RegExpMatchArray | null = null;
         let codeType: 'HCPCS' | 'ICD-10' | 'CPT' | null = null;
 
-        // Determine code type and extract codes based on pattern
+
         if (/[A-Z]\d{4}/g.test(option)) {
           matches = option.match(/[A-Z]\d{4}/g);
           codeType = 'HCPCS';
@@ -452,7 +451,7 @@ export async function verifyLowConfidenceAnswers(questions: Question[], state: G
 
         if (matches && codeType && cachedCodes[codeType]) {
           for (const code of matches) {
-            if (codeDescriptions.has(code)) continue; // Skip if already found
+            if (codeDescriptions.has(code)) continue;
 
             const cachedCode = cachedCodes[codeType].find((item: any) => item.code === code);
             if (cachedCode) {
@@ -468,11 +467,11 @@ export async function verifyLowConfidenceAnswers(questions: Question[], state: G
         }
       }
     }
-    // --- End: Code Description Extraction Logic ---
 
-    // --- GPT-4o Verification ---
+
+
     try {
-      // Build the context string from the descriptions we found
+
       let codeDescriptionsContext = '';
       if (codeDescriptions.size > 0) {
         const descriptionsArray = Array.from(codeDescriptions.entries()).map(([code, desc]) => `${code}: ${desc}`);
@@ -548,6 +547,8 @@ export async function devilsAdvocateCheck(questions: Question[]): Promise<Questi
     return conf >= 6 && conf <= 7;
   });
 
+  //TODO: consider reimplementing...
+  //
   // Select 50% of medium confidence questions randomly
   // const sampleSize = Math.ceil(mediumConfidenceQuestions.length * 0.5);
   // const sampledQuestions = mediumConfidenceQuestions
@@ -701,23 +702,23 @@ Return JSON:
 export async function savePerformanceLog(performanceLog: PerformanceLog): Promise<void> {
   console.log("💾 Saving performance log...");
 
-  // Save current performance log
+
   await fs.writeJSON(PERFORMANCE_LOG_JSON, performanceLog, { spaces: 2 });
   console.log(`✅ Performance log saved to: ${PERFORMANCE_LOG_JSON}`);
 
-  // Update performance history
+
   try {
     let history: PerformanceLog[] = [];
 
-    // Check if history file exists
+
     if (await fs.pathExists(PERFORMANCE_HISTORY_JSON)) {
       history = await fs.readJSON(PERFORMANCE_HISTORY_JSON);
     }
 
-    // Add current log to history
+
     history.push(performanceLog);
 
-    // Save updated history
+
     await fs.writeJSON(PERFORMANCE_HISTORY_JSON, history, { spaces: 2 });
     console.log(`✅ Performance history updated in: ${PERFORMANCE_HISTORY_JSON}`);
 
@@ -750,11 +751,11 @@ Update and improve the code description to help future coders avoid this mistake
 -   Add clarifications, warnings, or use-case examples as needed.
 -   If this code is often confused with another, explain how to tell them apart.
 -   Make the explanation more robust and practical for real-world coding.
+-   Make it easy for an LLM to understand and be confident with this new understanding.
 
 Return only the improved code description.
   `.trim();
 
-  // Use your existing OpenAI or LangChain LLM setup
   const response = await llm.invoke(prompt);
   return typeof response.content === 'string' ? response.content.trim() : '';
 }
@@ -762,7 +763,7 @@ Return only the improved code description.
 export async function generatePerformanceLog(questions: Question[]): Promise<PerformanceLog> {
   console.log("📊 Generating performance log...");
 
-  // Initialize counters
+
   const summary = {
     totalQuestions: questions.length,
     correctAnswers: questions.filter(q => q.isCorrect).length,
@@ -775,32 +776,32 @@ export async function generatePerformanceLog(questions: Question[]): Promise<Per
     byModel: {} as { [modelName: string]: { total: number; correct: number; percentage: number } }
   };
 
-  // Initialize questions object
+
   const questionsLog: { [questionId: string]: any } = {};
 
-  // Process each question
+
   for (const q of questions) {
     const questionType = q.questionType || 'GENERAL';
     const modelUsed = q.modelUsed || 'unknown';
 
-    // Add to question type stats
+
     summary.byQuestionType[questionType].total++;
     if (q.isCorrect) {
       summary.byQuestionType[questionType].correct++;
     }
 
-    // Initialize model stats if needed
+
     if (!summary.byModel[modelUsed]) {
       summary.byModel[modelUsed] = { total: 0, correct: 0, percentage: 0 };
     }
 
-    // Add to model stats
+
     summary.byModel[modelUsed].total++;
     if (q.isCorrect) {
       summary.byModel[modelUsed].correct++;
     }
 
-    // Add question details to log
+
     questionsLog[q.number.toString()] = {
       questionType,
       modelUsed,
@@ -812,7 +813,7 @@ export async function generatePerformanceLog(questions: Question[]): Promise<Per
     };
   }
 
-  // Calculate percentages
+
   for (const type in summary.byQuestionType) {
     const stats = summary.byQuestionType[type as keyof typeof summary.byQuestionType];
     stats.percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
@@ -823,7 +824,7 @@ export async function generatePerformanceLog(questions: Question[]): Promise<Per
     stats.percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
   }
 
-  // Create the log object
+
   const performanceLog: PerformanceLog = {
     timestamp: new Date().toISOString(),
     questions: questionsLog,
