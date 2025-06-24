@@ -603,13 +603,11 @@ export async function useO4MiniForQuestion(
   question: Question,
   codeDescriptions: Map<string, string>
 ): Promise<{ answer: string, confidence: number, reasoning: string }> {
-  const o4Mini = llmAnswer;
 
   const contextInfo = Array.from(codeDescriptions.entries())
     .map(([code, desc]) => `${code}: ${desc}`)
     .join('\n');
 
-  console.log("CONTEXT INFO BEING SHARED WITH PROMPT", contextInfo)
 
   const questionPrompt = `You are a certified medical coding expert. Answer this question using the provided code descriptions and rate your confidence CONSERVATIVELY.
 
@@ -630,7 +628,7 @@ Answer: [A/B/C/D]
 Confidence: [1-10]
 Reasoning: [brief explanation of your choice]`;
 
-  const response = await o4Mini.invoke([
+  const response = await llmAnswer.invoke([
     { role: "system", content: "You are a medical coding expert. Be conservative with confidence ratings." },
     { role: "user", content: questionPrompt }
   ]);
