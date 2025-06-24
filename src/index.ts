@@ -97,47 +97,47 @@ type GraphStateType = typeof GraphState.State;
 
 //NOTE: OLD MODELS
 //
-const llm = new ChatOpenAI({
-  model: "gpt-4o",
-  temperature: 0.1,
-});
+// const llm = new ChatOpenAI({
+//   model: "gpt-4o",
+//   temperature: 0.1,
+// });
+// //
+// const llmVerify = new ChatOpenAI({
+//   model: "o4-mini",
+// });
 //
-const llmVerify = new ChatOpenAI({
-  model: "o4-mini",
-});
-
-
-const llmAnswer = new ChatOpenAI({
-  model: "o3-mini",
-});
+//
+// const llmAnswer = new ChatOpenAI({
+//   model: "o3-mini",
+// });
 
 
 //NOTE: NEW MODELS
 //
-// const llm = new ChatOpenAI({
-//   model: "Medical LLM", // This name is ignored by LM Studio
-//   temperature: 0.1,
-//   openAIApiKey: "lm-studio", // Any non-empty string works
-//   configuration: {
-//     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
-//   },
-// });
-//
-// const llmVerify = new ChatOpenAI({
-//   model: "Medical LLM", // This name is ignored by LM Studio
-//   openAIApiKey: "lm-studio",
-//   configuration: {
-//     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
-//   },
-// });
-//
-// const llmAnswer = new ChatOpenAI({
-//   model: "Medical LLM", // This name is ignored by LM Studio
-//   openAIApiKey: "lm-studio",
-//   configuration: {
-//     baseURL: "http://169.254.208.215:1234/v1", // Your LM Studio server URL
-//   },
-// });
+const llm = new ChatOpenAI({
+  model: "Gemma 3 12b", // This name is ignored by LM Studio
+  temperature: 0.1,
+  openAIApiKey: "lm-studio", // Any non-empty string works
+  configuration: {
+    baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
+  },
+});
+
+const llmVerify = new ChatOpenAI({
+  model: "Gemma 3 12b", // This name is ignored by LM Studio
+  openAIApiKey: "lm-studio",
+  configuration: {
+    baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
+  },
+});
+
+const llmAnswer = new ChatOpenAI({
+  model: "Gemma 3 12b", // This name is ignored by LM Studio
+  openAIApiKey: "lm-studio",
+  configuration: {
+    baseURL: "http://10.0.0.102:1234/v1", // Your LM Studio server URL
+  },
+});
 
 
 class PerplexityAPI {
@@ -342,7 +342,7 @@ async function answerQuestionsWithConfidence(questions: Question[], state: Graph
             await handleCPTQuestions(question, answeredQuestions, state);
             break;
           default:
-            await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
+            await handleGeneralQuestion(question, answeredQuestions, state);
             break;
         }
       } catch (questionError) {
@@ -648,7 +648,7 @@ async function handleHCPCSQuestion(question: Question, answeredQuestions: Questi
   } else {
     // No HCPCS codes found in options, use o4-mini
     console.log(`No HCPCS codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
+    await handleGeneralQuestion(question, answeredQuestions, state);
   }
 }
 
@@ -865,7 +865,7 @@ async function handleCPTQuestions(question: Question, answeredQuestions: Questio
   } else {
     // No CPT codes found in options, use o4-mini
     console.log(`No CPT codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
+    await handleGeneralQuestion(question, answeredQuestions, state);
   }
 }
 
@@ -876,7 +876,7 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
   // For ICD-10 guideline questions without specific codes, use o4-mini
   if (!question.options || !question.options.some(opt => /[A-Z]\d{2}(\.\d+)?/.test(opt))) {
     console.log(`No ICD-10 codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
+    await handleGeneralQuestion(question, answeredQuestions, state);
     return;
   }
 
@@ -1034,17 +1034,17 @@ async function handleICD10Question(question: Question, answeredQuestions: Questi
   } else {
     // No ICD-10 codes found in options, use o4-mini
     console.log(`No ICD-10 codes found in options for question ${question.number}, using ${llmAnswer.model}...`);
-    await handleCPTOrGeneralQuestion(question, answeredQuestions, state);
+    await handleGeneralQuestion(question, answeredQuestions, state);
   }
 }
 
 // Handle CPT or general medical coding questions
-async function handleCPTOrGeneralQuestion(question: Question, answeredQuestions: Question[], state: GraphStateType): Promise<void> {
-  console.log(`Processing CPT/General question ${question.number} with 04mini...`);
+async function handleGeneralQuestion(question: Question, answeredQuestions: Question[], state: GraphStateType): Promise<void> {
+  console.log(`Processing General question ${question.number} with ${llmAnswer.model}...`);
 
   const questionPrompt = `You are a certified medical coding expert. Answer this question and rate your confidence CONSERVATIVELY.
 
-IMPORTANT: Be honest about uncertainty. Medical coding has many nuances and edge cases.
+IMPORTANT: Be honest about uncertainty. Medical questions has many nuances and edge cases.
 - Rate 10 only if you're absolutely certain based on clear guidelines
 - Rate 7-9 for solid answers with good reasoning
 - Rate 4-6 if you're unsure between options
@@ -1122,10 +1122,8 @@ IMPORTANT: Be honest about uncertainty. Medical coding has many nuances and edge
 Question ${question.number}: ${question.text}
 ${question.options ? question.options.join('\n') : ''}
 
-Code Descriptions from Official Database:
+Vital Code Descriptions from Official Database:
 ${contextInfo}
-
-If Descriptions have duplicates reason more into each one.
 
 Respond in this exact format:
 Answer: [A/B/C/D]
@@ -1609,7 +1607,7 @@ Use the official code descriptions provided below to inform your reasoning.
 ${question.options ? question.options.join('\n') : ''}
 Current Answer: ${question.myAnswer}
 
-${codeDescriptionsContext}
+Vital Coding Descriptions: ${codeDescriptionsContext}
 **Task:**
 Analyze each option against current coding guidelines, using the provided descriptions as the source of truth. Provide your reasoning, then conclude with the mandatory JSON block.
 
