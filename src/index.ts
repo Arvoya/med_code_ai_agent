@@ -3,7 +3,7 @@ import * as readline from 'readline';
 import * as fs from 'fs-extra';
 import * as dotenv from 'dotenv';
 import { exec } from 'child_process';
-import { Question, TestResults } from './types';
+import { Question, TestResults, Loop } from './types';
 import { OUTPUT_FILE, ANSWERS_PDF, TEST_PDF, PERFORMANCE_LOG_JSON, ANSWER_KEY_JSON, EXPLANATIONS_MERGE_PDF, QUESTIONS_JSON } from './config/constants';
 import { compareOriginalAndMergedDescriptions, compareWithAnswerKey, verifyLowConfidenceAnswers, enrichCodeDescriptionWithLLM, savePerformanceLog, mergeExplanationsWithCachedDescriptions, devilsAdvocateCheck, extractQuestions, answerQuestionsWithConfidence, generatePerformanceLog } from './agent_helpers'
 import { processPdf, saveAnswersToFile } from './utils/pdf'
@@ -35,6 +35,10 @@ const GraphState = Annotation.Root({
   useExplanations: Annotation<boolean>({
     reducer: (current: boolean, update: boolean) => update,
     default: () => true
+  }),
+  loop: Annotation<Loop>({
+    reducer: (current: Loop, update: Loop) => update,
+    default: () => ({ model: "", loopCount: 1, currentLoop: 1 })
   })
 });
 
@@ -296,7 +300,8 @@ async function startCLI() {
     verifiedQuestions: [],
     testResults: null,
     questionLimit: undefined,
-    useExplanations: true
+    useExplanations: true,
+    runTimes: 1
   };
 
   const ask = () => {
@@ -371,6 +376,10 @@ async function startCLI() {
         } else {
           console.log("❌ No questions extracted yet. Run /run first.");
         }
+      }
+      else if (input.startsWith("/loop")) {
+        const match = input.match(/\/loop\s+(\d+)/);
+        const questionLimit = match ? parseInt(match[1]) : undefined;
       }
       else if (input === '/performance') {
         try {

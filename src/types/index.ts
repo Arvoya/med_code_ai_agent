@@ -34,6 +34,12 @@ export interface EnrichArgs {
   aiReasoning: string;
 }
 
+export interface Loop {
+  model: string;
+  loopCount: number;
+  currentLoop: number;
+}
+
 export interface PerformanceLog {
   timestamp: string;
   questions: {
