@@ -9,7 +9,7 @@ export function useLocalModels(): boolean {
 
 export const llm = useLocalModels()
   ? new ChatOpenAI({
-    model: "Gemma 3 12b",
+    model: process.env.LOCAL_MODEL,
     temperature: 0.1,
     openAIApiKey: "lm-studio",
     configuration: {
@@ -17,12 +17,12 @@ export const llm = useLocalModels()
     },
   })
   : new ChatOpenAI({
-    model: "o3",
+    model: "o3-mini",
   });
 
 export const llmVerify = useLocalModels()
   ? new ChatOpenAI({
-    model: "Gemma 3 12b",
+    model: process.env.LOCAL_MODEL,
     openAIApiKey: "lm-studio",
     configuration: {
       baseURL: process.env.LM_STUDIO_URL || "http://localhost:1234/v1",
@@ -34,7 +34,7 @@ export const llmVerify = useLocalModels()
 
 export const llmAnswer = useLocalModels()
   ? new ChatOpenAI({
-    model: "Gemma 3 12b",
+    model: process.env.LOCAL_MODEL,
     openAIApiKey: "lm-studio",
     configuration: {
       baseURL: process.env.LM_STUDIO_URL || "http://localhost:1234/v1",
