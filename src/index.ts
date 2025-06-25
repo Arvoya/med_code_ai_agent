@@ -346,7 +346,7 @@ async function startCLI() {
             state.loop.currentLoop = 1;
           }
 
-          const result = await app.invoke(state);
+          const result = await app.invoke(state, { recursionLimit: 40 });
           state = { ...state, ...result };
 
           if (state.testResults) {

@@ -1,0 +1,4204 @@
+[
+  {
+    "timestamp": "2025-06-25T05:11:11.213Z",
+    "questions": {
+      "1": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "2": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "3": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 2,
+        "initialAnswer": "A",
+        "verifiedAnswer": "A",
+        "correctAnswer": "D"
+      },
+      "4": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "5": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "6": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "7": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 5,
+        "initialAnswer": "D",
+        "verifiedAnswer": "D",
+        "correctAnswer": "A"
+      },
+      "8": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "9": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "10": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "11": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "12": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "B"
+      },
+      "13": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "14": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "15": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "16": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "17": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "18": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "19": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "20": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "21": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "22": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "23": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "24": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "25": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "26": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "27": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "28": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "29": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "30": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "31": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "32": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "33": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "34": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "35": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "36": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "37": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "38": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "39": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "40": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "41": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "42": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "43": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "44": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "45": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "46": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "47": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "48": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "49": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "50": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "C"
+      },
+      "51": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "52": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "53": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "54": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "55": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "56": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "57": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "58": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "59": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "B",
+        "correctAnswer": "D"
+      },
+      "60": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "61": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "62": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "verifiedAnswer": "None",
+        "correctAnswer": "B"
+      },
+      "63": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "64": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "65": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "66": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "67": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "68": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "69": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "70": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "71": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "72": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "73": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "74": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "75": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "76": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "77": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "78": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "79": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "80": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "81": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "82": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "83": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "84": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "B"
+      },
+      "85": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "86": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "87": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "88": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "89": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "90": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "91": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "92": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "93": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "94": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "95": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "96": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "97": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "98": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "99": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "100": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      }
+    },
+    "summary": {
+      "totalQuestions": 100,
+      "correctAnswers": 87,
+      "byQuestionType": {
+        "CPT": {
+          "total": 65,
+          "correct": 53,
+          "percentage": 82
+        },
+        "ICD-10": {
+          "total": 13,
+          "correct": 13,
+          "percentage": 100
+        },
+        "HCPCS": {
+          "total": 7,
+          "correct": 6,
+          "percentage": 86
+        },
+        "GENERAL": {
+          "total": 15,
+          "correct": 15,
+          "percentage": 100
+        }
+      },
+      "byModel": {
+        "gpt-4o": {
+          "total": 100,
+          "correct": 87,
+          "percentage": 87
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-25T05:17:54.045Z",
+    "questions": {
+      "1": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "2": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "3": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "4": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "5": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "6": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "7": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "A"
+      },
+      "8": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "9": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "10": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "11": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "12": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "13": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "14": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "15": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "16": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "17": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "18": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "19": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "20": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "21": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "22": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "23": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "24": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "25": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "26": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "27": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "28": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "29": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "30": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "31": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "32": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "33": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "34": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "35": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "36": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "37": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "38": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 5,
+        "initialAnswer": "C",
+        "verifiedAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "39": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "40": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "41": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "42": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "43": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "44": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "45": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "46": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "47": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "48": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "49": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "50": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "A",
+        "correctAnswer": "C"
+      },
+      "51": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "52": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "53": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "54": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "55": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "56": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "57": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "58": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "59": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "D"
+      },
+      "60": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "61": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "62": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 4,
+        "initialAnswer": "D",
+        "verifiedAnswer": "D",
+        "correctAnswer": "B"
+      },
+      "63": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "64": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "65": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "66": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "67": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "68": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "69": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "70": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "71": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "72": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "73": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "74": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "75": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "76": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "77": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "78": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "79": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "80": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "81": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "82": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "83": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "84": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "B"
+      },
+      "85": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "86": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "87": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "88": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "89": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "90": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "91": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "92": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "93": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "94": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "95": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "96": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "97": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "98": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "99": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "100": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      }
+    },
+    "summary": {
+      "totalQuestions": 100,
+      "correctAnswers": 89,
+      "byQuestionType": {
+        "CPT": {
+          "total": 65,
+          "correct": 55,
+          "percentage": 85
+        },
+        "ICD-10": {
+          "total": 13,
+          "correct": 13,
+          "percentage": 100
+        },
+        "HCPCS": {
+          "total": 7,
+          "correct": 6,
+          "percentage": 86
+        },
+        "GENERAL": {
+          "total": 15,
+          "correct": 15,
+          "percentage": 100
+        }
+      },
+      "byModel": {
+        "gpt-4o": {
+          "total": 100,
+          "correct": 89,
+          "percentage": 89
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-25T05:46:21.896Z",
+    "questions": {
+      "1": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "2": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "3": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "4": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "5": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "6": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "7": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 1,
+        "initialAnswer": "A",
+        "verifiedAnswer": "None",
+        "correctAnswer": "A"
+      },
+      "8": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "9": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "10": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "11": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "12": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "13": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "14": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "15": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "16": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "17": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "18": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "19": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "20": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "21": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "22": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "23": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "24": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "verifiedAnswer": "A",
+        "correctAnswer": "D"
+      },
+      "25": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "26": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "27": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "28": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "29": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "30": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "31": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "32": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "33": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "34": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "35": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "36": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "37": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "38": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 3,
+        "initialAnswer": "A",
+        "verifiedAnswer": "None",
+        "correctAnswer": "A"
+      },
+      "39": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "40": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "41": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "42": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "43": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "44": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "45": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "46": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "47": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "48": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "49": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "50": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "A",
+        "correctAnswer": "C"
+      },
+      "51": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "52": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "53": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "54": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "55": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "56": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "57": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "58": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "59": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "D"
+      },
+      "60": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "61": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "62": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 5,
+        "initialAnswer": "A",
+        "verifiedAnswer": "D",
+        "correctAnswer": "B"
+      },
+      "63": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "64": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "65": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "66": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "67": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "68": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "69": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "70": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "71": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "72": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "73": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "74": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "75": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "76": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "77": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "78": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "79": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "80": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "81": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "82": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "83": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "84": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "correctAnswer": "B"
+      },
+      "85": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "86": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "87": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "88": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "89": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "90": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "91": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "92": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "93": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "94": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "95": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "96": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "97": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "98": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "99": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "100": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      }
+    },
+    "summary": {
+      "totalQuestions": 100,
+      "correctAnswers": 88,
+      "byQuestionType": {
+        "CPT": {
+          "total": 65,
+          "correct": 54,
+          "percentage": 83
+        },
+        "ICD-10": {
+          "total": 13,
+          "correct": 13,
+          "percentage": 100
+        },
+        "HCPCS": {
+          "total": 7,
+          "correct": 6,
+          "percentage": 86
+        },
+        "GENERAL": {
+          "total": 15,
+          "correct": 15,
+          "percentage": 100
+        }
+      },
+      "byModel": {
+        "gpt-4o": {
+          "total": 100,
+          "correct": 88,
+          "percentage": 88
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-25T05:53:20.607Z",
+    "questions": {
+      "1": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "2": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "3": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "4": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "5": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "6": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "7": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "D",
+        "correctAnswer": "A"
+      },
+      "8": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "9": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "10": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "11": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "12": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "13": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "14": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "15": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "16": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "17": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "18": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "19": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "20": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "21": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "22": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "23": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "24": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "25": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "26": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "27": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "28": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "29": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "30": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "31": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "32": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "33": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "34": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "A",
+        "correctAnswer": "C"
+      },
+      "35": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "36": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "37": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "38": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 5,
+        "initialAnswer": "A",
+        "verifiedAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "39": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "40": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "41": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "42": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "43": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "44": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "45": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "46": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "correctAnswer": "B"
+      },
+      "47": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "48": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "49": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "50": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "correctAnswer": "C"
+      },
+      "51": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "52": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "53": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "54": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "55": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "56": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "57": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "58": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "59": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "D"
+      },
+      "60": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "61": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "62": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 5,
+        "initialAnswer": "C",
+        "verifiedAnswer": "D",
+        "correctAnswer": "B"
+      },
+      "63": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "64": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "65": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "66": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "67": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "68": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "69": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "70": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "71": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "72": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "73": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "74": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "75": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "76": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "77": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "78": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "79": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "80": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "81": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "82": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "83": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "84": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "85": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "86": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "87": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "88": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "89": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "90": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "91": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "92": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "93": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "94": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "95": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "96": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "97": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "98": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "99": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "100": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      }
+    },
+    "summary": {
+      "totalQuestions": 100,
+      "correctAnswers": 88,
+      "byQuestionType": {
+        "CPT": {
+          "total": 65,
+          "correct": 55,
+          "percentage": 85
+        },
+        "ICD-10": {
+          "total": 13,
+          "correct": 12,
+          "percentage": 92
+        },
+        "HCPCS": {
+          "total": 7,
+          "correct": 6,
+          "percentage": 86
+        },
+        "GENERAL": {
+          "total": 15,
+          "correct": 15,
+          "percentage": 100
+        }
+      },
+      "byModel": {
+        "gpt-4o": {
+          "total": 100,
+          "correct": 88,
+          "percentage": 88
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-25T05:59:33.551Z",
+    "questions": {
+      "1": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "2": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "3": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "4": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "5": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "6": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "7": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "D",
+        "correctAnswer": "A"
+      },
+      "8": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "9": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "10": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "11": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "12": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "13": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "14": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "15": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "16": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "17": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "18": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "19": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "20": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 7,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "21": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "22": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "23": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "24": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "D"
+      },
+      "25": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "C",
+        "correctAnswer": "B"
+      },
+      "26": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "27": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "28": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "29": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "30": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "31": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "32": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "33": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "34": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "35": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "36": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "37": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "38": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 6,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "39": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "40": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "41": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "42": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "43": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "44": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "45": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "46": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "47": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "48": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "49": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "50": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 6,
+        "initialAnswer": "A",
+        "correctAnswer": "C"
+      },
+      "51": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "52": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "53": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "54": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "55": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "56": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "57": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "58": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "59": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "D"
+      },
+      "60": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "61": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "62": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "verifiedAnswer": "[]",
+        "correctAnswer": "B"
+      },
+      "63": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "64": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "65": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "66": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "67": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "68": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "69": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "70": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "71": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "72": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "73": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "74": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "75": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "76": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "77": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "78": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "79": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "80": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "81": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": false,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "A"
+      },
+      "82": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "83": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "84": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 7,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "85": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "86": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "87": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "88": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "89": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "90": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "C",
+        "correctAnswer": "C"
+      },
+      "91": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "92": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "93": {
+        "questionType": "GENERAL",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "94": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "95": {
+        "questionType": "ICD-10",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "96": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "97": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 8,
+        "initialAnswer": "B",
+        "correctAnswer": "B"
+      },
+      "98": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 10,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      },
+      "99": {
+        "questionType": "CPT",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "D",
+        "correctAnswer": "D"
+      },
+      "100": {
+        "questionType": "HCPCS",
+        "modelUsed": "gpt-4o",
+        "isCorrect": true,
+        "confidence": 9,
+        "initialAnswer": "A",
+        "correctAnswer": "A"
+      }
+    },
+    "summary": {
+      "totalQuestions": 100,
+      "correctAnswers": 90,
+      "byQuestionType": {
+        "CPT": {
+          "total": 65,
+          "correct": 56,
+          "percentage": 86
+        },
+        "ICD-10": {
+          "total": 13,
+          "correct": 13,
+          "percentage": 100
+        },
+        "HCPCS": {
+          "total": 7,
+          "correct": 6,
+          "percentage": 86
+        },
+        "GENERAL": {
+          "total": 15,
+          "correct": 15,
+          "percentage": 100
+        }
+      },
+      "byModel": {
+        "gpt-4o": {
+          "total": 100,
+          "correct": 90,
+          "percentage": 90
+        }
+      }
+    }
+  }
+]
