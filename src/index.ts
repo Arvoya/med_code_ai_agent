@@ -45,7 +45,20 @@ const GraphState = Annotation.Root({
 
 export type GraphStateType = typeof GraphState.State;
 
+async function shouldContinueLoop(state: GraphStateType): Promise<string> {
+  return state.loop.currentLoop <= state.loop.loopCount ? "continue" : "stop";
+}
 
+async function loopDecisionNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
+  console.log(`🔄 Completed loop ${state.loop.currentLoop} of ${state.loop.loopCount}`);
+
+  const updatedLoop = {
+    ...state.loop,
+    currentLoop: state.loop.currentLoop + 1
+  };
+
+  return { loop: updatedLoop };
+}
 
 async function extractNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
   console.log("🔍 Looking for questions.json file...");
@@ -104,16 +117,12 @@ async function printQuestionsByType(questions: Question[]): Promise<void> {
   const hcpcsQuestions = questions.filter(q => q.questionType === 'HCPCS');
   const generalQuestions = questions.filter(q => q.questionType === 'GENERAL');
 
-  console.log(`CPT Questions (${cptQuestions.length}):`);
   cptQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
 
-  console.log(`\nICD-10 Questions (${icdQuestions.length}):`);
   icdQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
 
-  console.log(`\nHCPCS Questions (${hcpcsQuestions.length}):`);
   hcpcsQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
 
-  console.log(`\nGeneral Questions (${generalQuestions.length}):`);
   generalQuestions.forEach(q => console.log(`  ${q.number}. ${q.text.substring(0, 50)}...`));
 }
 
@@ -252,7 +261,6 @@ async function compareNode(state: GraphStateType): Promise<Partial<GraphStateTyp
     const performanceLog = await generatePerformanceLog(updatedQuestions);
     await savePerformanceLog(performanceLog);
 
-    await printQuestionsByType(updatedQuestions);
 
     return {
       testResults: testResults,
@@ -272,13 +280,22 @@ const workflow = new StateGraph(GraphState)
   .addNode("challenge", devilsAdvocateNode)
   .addNode("compare", compareNode)
   .addNode("enrich", enrichNode)
+  .addNode("loopDecision", loopDecisionNode)
   .addEdge(START, "extract")
   .addEdge("extract", "answer")
   .addEdge("answer", "verify")
   .addEdge("verify", "challenge")
   .addEdge("challenge", "compare")
   .addEdge("compare", "enrich")
-  .addEdge("enrich", END);
+  .addEdge("enrich", "loopDecision")
+  .addConditionalEdges(
+    "loopDecision",
+    shouldContinueLoop,
+    {
+      "continue": "extract",
+      "stop": END
+    }
+  );
 
 const app = workflow.compile();
 
@@ -324,6 +341,10 @@ async function startCLI() {
           console.log(`🚀 Starting advanced medical coding testing Agent${questionLimit ? ` (limited to ${questionLimit} questions)` : ''}!!!`);
 
           state.questionLimit = questionLimit;
+
+          if (state.loop.loopCount === 1) {
+            state.loop.currentLoop = 1;
+          }
 
           const result = await app.invoke(state);
           state = { ...state, ...result };
@@ -385,8 +406,12 @@ async function startCLI() {
       else if (input.startsWith("/loop")) {
         const match = input.match(/\/loop\s+(\d+)/);
         const loopCount = match ? parseInt(match[1]) : 1;
-        state.loop.loopCount = loopCount
-        console.log(`🔁 Agent will loop ${loopCount} times using the model ${llm.model}.`)
+        state.loop = {
+          model: llm.model,
+          loopCount: loopCount,
+          currentLoop: 1
+        };
+        console.log(`🔁 Agent will loop ${loopCount} times using the model ${llm.model}.`);
       }
       else if (input === '/performance') {
         try {

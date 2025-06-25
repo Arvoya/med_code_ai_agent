@@ -747,11 +747,11 @@ Options: ${options ? options.join('\n') : "(none)"}
 AI's (incorrect) reasoning: ${aiReasoning || "(none)"}
 
 --- TASK ---
-Update and improve the code description to this agent avoid this mistake.
--   Add clarifications, warnings, or use-case examples as needed.
--   If this code is often confused with another, explain how to tell them apart.
--   Make the explanation more concise and practical for real-world coding.
--   Make it easy for an LLM to understand and be confident with this new understanding.
+Create an accurate description for CPT code ${code} that would help an AI correctly answer this type of question.
+- Explain when this code should be used, with specific emphasis on cyst excision if applicable
+- Clarify common misconceptions about this code
+- Distinguish this code from similar codes that might cause confusion
+- Provide clear guidance on when to use this code for cyst-related procedures
 
 Return only the improved code description.
   `.trim();
