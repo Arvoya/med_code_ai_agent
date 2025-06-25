@@ -17,7 +17,7 @@ export const llm = useLocalModels()
     },
   })
   : new ChatOpenAI({
-    model: "o3-mini",
+    model: "gpt-4o",
   });
 
 export const llmVerify = useLocalModels()
@@ -29,7 +29,7 @@ export const llmVerify = useLocalModels()
     },
   })
   : new ChatOpenAI({
-    model: "o3",
+    model: "gpt-4o",
   });
 
 export const llmAnswer = useLocalModels()
@@ -41,5 +41,5 @@ export const llmAnswer = useLocalModels()
     },
   })
   : new ChatOpenAI({
-    model: "o3-mini",
+    model: "gpt-4o",
   });

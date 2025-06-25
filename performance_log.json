@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-06-24T23:52:40.867Z",
+  "timestamp": "2025-06-25T04:57:05.235Z",
   "questions": {
     "1": {
       "questionType": "CPT",
@@ -20,9 +20,9 @@
     "3": {
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
-      "isCorrect": false,
-      "confidence": 8,
-      "initialAnswer": "C",
+      "isCorrect": true,
+      "confidence": 9,
+      "initialAnswer": "D",
       "correctAnswer": "D"
     },
     "4": {
@@ -37,8 +37,8 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": false,
-      "confidence": 9,
-      "initialAnswer": "A",
+      "confidence": 8,
+      "initialAnswer": "B",
       "correctAnswer": "C"
     },
     "6": {
@@ -85,7 +85,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": true,
-      "confidence": 9,
+      "confidence": 8,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -93,7 +93,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": true,
-      "confidence": 7,
+      "confidence": 9,
       "initialAnswer": "B",
       "correctAnswer": "B"
     },
@@ -157,7 +157,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": true,
-      "confidence": 7,
+      "confidence": 10,
       "initialAnswer": "B",
       "correctAnswer": "B"
     },
@@ -189,7 +189,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": false,
-      "confidence": 7,
+      "confidence": 9,
       "initialAnswer": "A",
       "correctAnswer": "D"
     },
@@ -284,9 +284,9 @@
     "36": {
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
-      "isCorrect": true,
+      "isCorrect": false,
       "confidence": 10,
-      "initialAnswer": "A",
+      "initialAnswer": "C",
       "correctAnswer": "A"
     },
     "37": {
@@ -301,11 +301,9 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": false,
-      "confidence": [
-        7
-      ],
-      "initialAnswer": "A",
-      "verifiedAnswer": "[A]",
+      "confidence": 10,
+      "initialAnswer": "C",
+      "verifiedAnswer": "D",
       "correctAnswer": "A"
     },
     "39": {
@@ -400,7 +398,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": true,
-      "confidence": 8,
+      "confidence": 6,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -456,7 +454,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": false,
-      "confidence": 9,
+      "confidence": 8,
       "initialAnswer": "C",
       "correctAnswer": "A"
     },
@@ -472,7 +470,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": false,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "B",
       "correctAnswer": "D"
     },
@@ -568,7 +566,7 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": true,
-      "confidence": 8,
+      "confidence": 7,
       "initialAnswer": "C",
       "correctAnswer": "C"
     },
@@ -648,8 +646,9 @@
       "questionType": "CPT",
       "modelUsed": "Gemma 3 12b",
       "isCorrect": false,
-      "confidence": 9,
+      "confidence": 10,
       "initialAnswer": "C",
+      "verifiedAnswer": "C",
       "correctAnswer": "A"
     },
     "82": {
