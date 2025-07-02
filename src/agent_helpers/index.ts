@@ -833,3 +833,18 @@ export async function generatePerformanceLog(questions: Question[]): Promise<Per
 
   return performanceLog;
 }
+
+export async function shouldContinueLoop(state: GraphStateType): Promise<string> {
+  return state.loop.currentLoop <= state.loop.loopCount ? "continue" : "stop";
+}
+
+export async function loopDecisionNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
+  console.log(`🔄 Completed loop ${state.loop.currentLoop} of ${state.loop.loopCount}`);
+
+  const updatedLoop = {
+    ...state.loop,
+    currentLoop: state.loop.currentLoop + 1
+  };
+
+  return { loop: updatedLoop };
+}

@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 import { exec } from 'child_process';
 import { Question, TestResults, Loop } from './types';
 import { OUTPUT_FILE, ANSWERS_PDF, TEST_PDF, PERFORMANCE_LOG_JSON, ANSWER_KEY_JSON, EXPLANATIONS_MERGE_PDF, QUESTIONS_JSON } from './config/constants';
-import { compareOriginalAndMergedDescriptions, compareWithAnswerKey, verifyLowConfidenceAnswers, enrichCodeDescriptionWithLLM, savePerformanceLog, mergeExplanationsWithCachedDescriptions, devilsAdvocateCheck, extractQuestions, answerQuestionsWithConfidence, generatePerformanceLog } from './agent_helpers'
+import { compareOriginalAndMergedDescriptions, compareWithAnswerKey, verifyLowConfidenceAnswers, enrichCodeDescriptionWithLLM, savePerformanceLog, mergeExplanationsWithCachedDescriptions, devilsAdvocateCheck, extractQuestions, answerQuestionsWithConfidence, generatePerformanceLog, loopDecisionNode, shouldContinueLoop } from './agent_helpers'
 import { processPdf, saveAnswersToFile } from './utils/pdf'
 import { llm } from "./config/models";
 
@@ -45,20 +45,6 @@ const GraphState = Annotation.Root({
 
 export type GraphStateType = typeof GraphState.State;
 
-async function shouldContinueLoop(state: GraphStateType): Promise<string> {
-  return state.loop.currentLoop <= state.loop.loopCount ? "continue" : "stop";
-}
-
-async function loopDecisionNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
-  console.log(`🔄 Completed loop ${state.loop.currentLoop} of ${state.loop.loopCount}`);
-
-  const updatedLoop = {
-    ...state.loop,
-    currentLoop: state.loop.currentLoop + 1
-  };
-
-  return { loop: updatedLoop };
-}
 
 async function extractNode(state: GraphStateType): Promise<Partial<GraphStateType>> {
   console.log("🔍 Looking for questions.json file...");
